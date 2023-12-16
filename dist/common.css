@@ -1,5 +1,22 @@
-/* nav */
-nav img {
+/* general */
+#logo {
+    height: 80px;
+    font-family: 'Galada', cursive;
+    font-size: 3rem;
+    color: rgb(253, 50, 77);
+    display: flex;
+    align-items: center;
+}
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+/* left bar */
+#left-bar {
+    /* 73 */
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+nav img, #noti img, #account img {
     height: 24px;
     width: 24px;
 }
@@ -8,8 +25,14 @@ nav li {
     display: flex;
     gap: 24px;
     height: 40px;
+    align-items: center;
 }
 
+/* top-bar */
+#top-bar {
+    /* 73 */
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
 /* page body */
 .banner-display {
     background-color:mediumaquamarine;
@@ -19,6 +42,18 @@ nav li {
 }
 /* footer */
 footer img {
-    height: 24px;
-    width: 24px;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.footer-menu a:hover{
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* lower-bar */
+#lower-bar {
+    /* 75 */
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px; */
+    /* 73 */
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
