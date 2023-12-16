@@ -1,0 +1,24 @@
+/* nav */
+nav img {
+    height: 24px;
+    width: 24px;
+}
+  
+nav li {
+    display: flex;
+    gap: 24px;
+    height: 40px;
+}
+
+/* page body */
+.banner-display {
+    background-color:mediumaquamarine;
+}
+.home-category {
+    background-color: peachpuff;
+}
+/* footer */
+footer img {
+    height: 24px;
+    width: 24px;
+}
