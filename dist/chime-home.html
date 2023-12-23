@@ -21,40 +21,50 @@
     <link rel="stylesheet" href="common.css">
 </head>
 <body>
-    <div class="flex">
-        <div id="left-bar" class="flex flex-col w-[250px] h-screen bg-white py-[8px] px-[24px]">
-            <div id="logo" class="flex  items-center">Chime!</div>
-            <nav class="">
-                <ul class="flex flex-col gap-3">
-                    <li id="home">
-                        <!-- https://www.flaticon.com/free-icon/home_1946488?term=home&page=1&position=2&origin=search&related_id=1946488 -->
-                        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png " alt="home">
-                        Home
-                        <!--src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png"-->
-                    </li>
-                    <li id="lib">
-                        <!-- https://www.flaticon.com/free-icon/music-album_2404718?term=playlist&related_id=2404718 -->
-                        <img src="https://cdn-icons-png.flaticon.com/512/2404/2404474.png" alt="lib">
-                        Library
-                        <!-- src="https://cdn-icons-png.flaticon.com/512/2404/2404718.png"-->
-                    </li>
-                    <li id="premium">
-                        <!-- https://www.flaticon.com/free-icon/premium_9720867?term=premium&related_id=9720867 -->
-                        <img src="https://cdn-icons-png.flaticon.com/512/9720/9720867.png" alt="premium">
-                        Premium
-                        <!-- src="https://cdn-icons-png.flaticon.com/512/9720/9720918.png" -->
-                    </li>
-                    <li id="download">
-                        <!-- https://www.flaticon.com/free-icon/downloading_2381971?term=download&related_id=2381971 -->
-                        <img src="https://cdn-icons-png.flaticon.com/512/2381/2381971.png" alt="download">
-                        Download
-                        <!-- src="https://cdn-icons-png.flaticon.com/512/2382/2382067.png" -->
-                    </li>
-                </ul>
-            </nav>
+    <div class="flex w-full">
+        <div id="left-bar" class="flex flex-col w-[250px] bg-white py-[8px] px-[24px] relative">
+            <div class="fixed">
+                <div id="logo" class="flex  items-center">Chime!</div>
+                <nav class="">
+                    <ul class="flex flex-col gap-3">
+                        <a href="">
+                            <li id="home">
+                                <!-- https://www.flaticon.com/free-icon/home_1946488?term=home&page=1&position=2&origin=search&related_id=1946488 -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png " alt="home">
+                                Home
+                                <!--src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png"-->
+                            </li>
+                        </a>
+                        <a href="">
+                            <li id="lib">
+                                <!-- https://www.flaticon.com/free-icon/music-album_2404718?term=playlist&related_id=2404718 -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/2404/2404474.png" alt="lib">
+                                Library
+                                <!-- src="https://cdn-icons-png.flaticon.com/512/2404/2404718.png"-->
+                            </li>
+                        </a>
+                        <a href="">
+                            <li id="premium">
+                                <!-- https://www.flaticon.com/free-icon/premium_9720867?term=premium&related_id=9720867 -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/9720/9720867.png" alt="premium">
+                                Premium
+                                <!-- src="https://cdn-icons-png.flaticon.com/512/9720/9720918.png" -->
+                            </li>
+                        </a>
+                        <a href="">
+                            <li id="download">
+                                <!-- https://www.flaticon.com/free-icon/downloading_2381971?term=download&related_id=2381971 -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/2381/2381971.png" alt="download">
+                                Download
+                                <!-- src="https://cdn-icons-png.flaticon.com/512/2382/2382067.png" -->
+                            </li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <div class="w-full">
-            <div id="top-bar" class="flex justify-between w-full h-[64px] bg-red-300">
+        <div class="w-full relative">
+            <div id="top-bar" class="flex justify-between w-full h-[64px] bg-red-300 fixed">
                 <div id="search" class="flex items-center w-full h-full px-[24px]">
                     <div class="relative text-gray-600">
                         <input type="search" name="serch" placeholder="Search" class="w-[400px] bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
@@ -65,7 +75,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="w-1/3 flex items-center justify-end px-[24px] gap-6">
+                <div class="w-1/3 flex items-center px-[24px] gap-6">
                     <div id="noti">
                         <!-- https://www.flaticon.com/free-icon/notification_2645890?term=notification&page=1&position=3&origin=search&related_id=2645890 -->
                         <img src="https://cdn-icons-png.flaticon.com/512/2645/2645897.png " alt="">
@@ -81,18 +91,34 @@
                     </div>
                 </div>
             </div>
-            <div id="page-body" class="flex flex-col gap-[24px] px-[16px] py-[8px]">
+            <div id="page-body" class="flex flex-col gap-[24px] mt-[64px] px-[30px] py-[8px]">
                 <div id="new-release" class="banner-display">
                     <!-- div (max 10): new release, world tour -->
                     <!-- js: addAdjHTML -->
                     <!-- animation: think about scrolling effect -->
-                sth</div>
-                <div class="home-category">
+                    <a href="songlink"><img src="https://i.redd.it/qo9vqwuoycca1.jpg" alt=""></a>
+                    
+                </div>
+                <div class="category">
+                    <div id="jump-back-on" class="category-title">Jump back on</div>
                     <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
                     <!-- js: addAdjHTML -->
                     <!-- animation: think about scrolling effect -->
-                sth</div>
-                <footer class="flex justify-between w-full px-[16px] py-[30px] border-t-[1px] border-gray-400 leading-8">
+                    <div class="category-content">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                        <div class="category-content-name">Silver Spoon</div>
+                        <div class="category-content-description"><a href="">BTS</a></div>
+                    </div>
+                </div>
+                <div id="upcoming-event" class="banner-display">
+                    <!-- div (max 10): new release, world tour -->
+                    <!-- js: addAdjHTML -->
+                    <!-- animation: think about scrolling effect -->
+                    <a href="songlink"><img src="https://phinf.wevpstatic.net/MjAyMjExMTNfMTIg/MDAxNjY4MzIwNjY1MzE1._NqU1ohf8ye8tENAlepfRkbSL5ffDVP--OUqDYRtdC8g.Y5DXfYhapx1mRlcuLb4m2iqjnjSvbA9CpzJ8plTudvIg.PNG/5fd17eb0-f99a-4955-a7ef-5aeb1fd089b0.png" alt=""></a>
+                    
+                    <!-- https://0.soompi.io/wp-content/uploads/2022/05/06090034/BTS-12.jpg -->
+                </div>
+                <footer class="flex justify-between w-full px-[16px] py-[30px] mb-[60px] border-t-[1px] border-gray-400 leading-8">
                     <div class="flex w-1/3 justify-between">
                         <ul class="footer-menu">
                             <li id="company" class="footer-header font-semibold">Company</li>
@@ -112,25 +138,21 @@
                     <ul class="flex gap-3">
                         <li id="email">
                             <!-- https://www.flaticon.com/free-icon/email_3178158?term=email&page=1&position=2&origin=search&related_id=3178158 -->
-                            <img src="https://cdn-icons-png.flaticon.com/512/3178/3178158.png "alt="email">
+                            <a href=""><img src="https://cdn-icons-png.flaticon.com/512/3178/3178158.png "alt="email"></a>
                         </li>
                         <li id="instagram">
                             <!-- https://www.flaticon.com/free-icon/instagram_1384015?term=instagram&page=1&position=6&origin=search&related_id=1384015 -->
-                            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png " alt="instagram">
+                            <a href=""><img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png " alt="instagram"></a>
                         </li>
                         <li id="facebook">
                             <!-- https://www.flaticon.com/free-icon/facebook_1384005?term=facebook&page=1&position=2&origin=search&related_id=1384005 -->
-                            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png " alt="facebook">
+                            <a href=""><img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png " alt="facebook"></a>
                         </li>
                     </ul>
                 </footer>
             </div>
         </div>
     </div>
-    <div id="lower-bar" class="fixed bottom-0 h-16 w-screen bg-red-300">
-        <div>
-            hjj
-        </div>
-    </div>
+
 </body>
 </html>
