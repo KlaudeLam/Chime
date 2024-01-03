@@ -39,6 +39,9 @@ nav a:hover {
     background-color: rgb(255, 97, 118);
 }
 /* page body */
+#page-body {
+    background-color: white;
+}
 .banner-display {
     height: 350px;
     width: 100%;
@@ -48,14 +51,13 @@ nav a:hover {
     width: 100%;
     object-fit: cover;
 }
-.category {
-}
 .category-title {
     font-weight: 600;
     font-size: 2rem;
     margin-bottom: 20px;
 }
-.category-content {   
+.category-content { 
+    display: inline-block;
     height: 264px;
     width: 186px;
     /* border: 1px solid black; */
@@ -74,8 +76,35 @@ nav a:hover {
 .category-content-name {
     font-weight: 600;
 }
-.category-content-description a:hover {
+.category-content-description {
+    display: block;
+    width: fit-content;
+}
+.category-content-description:hover {
     text-decoration: underline;
+}
+.category-content-artist {
+    display: inline-block;
+    height: fit-content;
+    width: 186px ;
+    /* border: 1px solid black; */
+    border-radius: 6%;
+
+    background-color: rgb(255, 255, 255);
+    padding: 16px;
+}
+.category-content-artist:hover {
+    /* 73 */
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+.category-content-artist img {
+    /* border: 1px solid black; */
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+.category-content-artist-name {
+    width: 100%;
+    text-align: center;
 }
 /* footer */
 footer img {

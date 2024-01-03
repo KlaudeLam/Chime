@@ -21,51 +21,49 @@
     <link rel="stylesheet" href="common.css">
 </head>
 <body>
-    <div class="flex w-full">
-        <div id="left-bar" class="flex flex-col w-[250px] bg-white py-[8px] px-[24px] relative">
-            <div class="fixed">
-                <div id="logo" class="flex  items-center">Chime!</div>
-                <nav class="">
-                    <ul class="flex flex-col gap-3">
-                        <a href="">
-                            <li id="home">
-                                <!-- https://www.flaticon.com/free-icon/home_1946488?term=home&page=1&position=2&origin=search&related_id=1946488 -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png " alt="home">
-                                Home
-                                <!--src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png"-->
-                            </li>
-                        </a>
-                        <a href="">
-                            <li id="lib">
-                                <!-- https://www.flaticon.com/free-icon/music-album_2404718?term=playlist&related_id=2404718 -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/2404/2404474.png" alt="lib">
-                                Library
-                                <!-- src="https://cdn-icons-png.flaticon.com/512/2404/2404718.png"-->
-                            </li>
-                        </a>
-                        <a href="">
-                            <li id="premium">
-                                <!-- https://www.flaticon.com/free-icon/premium_9720867?term=premium&related_id=9720867 -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/9720/9720867.png" alt="premium">
-                                Premium
-                                <!-- src="https://cdn-icons-png.flaticon.com/512/9720/9720918.png" -->
-                            </li>
-                        </a>
-                        <a href="">
-                            <li id="download">
-                                <!-- https://www.flaticon.com/free-icon/downloading_2381971?term=download&related_id=2381971 -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/2381/2381971.png" alt="download">
-                                Download
-                                <!-- src="https://cdn-icons-png.flaticon.com/512/2382/2382067.png" -->
-                            </li>
-                        </a>
-                    </ul>
-                </nav>
-            </div>
+    <div class="flex flex-wrap w-full">
+        <div id="left-bar" class="w-1/2 md:w-1/3 lg:w-64 fixed md:top-0 md:left-0 h-screen lg:block bg-gray-100 border-r z-30 hidden">
+            <div id="logo" class="flex  items-center">Chime!</div>
+            <nav class="">
+                <ul class="flex flex-col gap-3">
+                    <a href="">
+                        <li id="home">
+                            <!-- https://www.flaticon.com/free-icon/home_1946488?term=home&page=1&position=2&origin=search&related_id=1946488 -->
+                            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png " alt="home">
+                            Home
+                            <!--src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png"-->
+                        </li>
+                    </a>
+                    <a href="">
+                        <li id="lib">
+                            <!-- https://www.flaticon.com/free-icon/music-album_2404718?term=playlist&related_id=2404718 -->
+                            <img src="https://cdn-icons-png.flaticon.com/512/2404/2404474.png" alt="lib">
+                            Library
+                            <!-- src="https://cdn-icons-png.flaticon.com/512/2404/2404718.png"-->
+                        </li>
+                    </a>
+                    <a href="">
+                        <li id="premium">
+                            <!-- https://www.flaticon.com/free-icon/premium_9720867?term=premium&related_id=9720867 -->
+                            <img src="https://cdn-icons-png.flaticon.com/512/9720/9720867.png" alt="premium">
+                            Premium
+                            <!-- src="https://cdn-icons-png.flaticon.com/512/9720/9720918.png" -->
+                        </li>
+                    </a>
+                    <a href="">
+                        <li id="download">
+                            <!-- https://www.flaticon.com/free-icon/downloading_2381971?term=download&related_id=2381971 -->
+                            <img src="https://cdn-icons-png.flaticon.com/512/2381/2381971.png" alt="download">
+                            Download
+                            <!-- src="https://cdn-icons-png.flaticon.com/512/2382/2382067.png" -->
+                        </li>
+                    </a>
+                </ul>
+            </nav>
         </div>
-        <div class="w-full relative">
-            <div id="top-bar" class="flex justify-between w-full h-[64px] bg-red-300 fixed">
-                <div id="search" class="flex items-center w-full h-full px-[24px]">
+        <div class="min-w-[80%] relative">
+            <div id="top-bar" class="flex justify-between min-w-full h-[64px] bg-red-300 fixed">
+                <div id="search" class="flex items-center w-[70%] min-w-[70%] h-full px-[24px]">
                     <div class="relative text-gray-600">
                         <input type="search" name="serch" placeholder="Search" class="w-[400px] bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
                         <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
@@ -75,7 +73,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="w-1/3 flex items-center px-[24px] gap-6">
+                <div class="min-w-[30%] w-[30%] flex items-center px-[24px] gap-6">
                     <div id="noti">
                         <!-- https://www.flaticon.com/free-icon/notification_2645890?term=notification&page=1&position=3&origin=search&related_id=2645890 -->
                         <img src="https://cdn-icons-png.flaticon.com/512/2645/2645897.png " alt="">
@@ -99,16 +97,83 @@
                     <a href="songlink"><img src="https://i.redd.it/qo9vqwuoycca1.jpg" alt=""></a>
                     
                 </div>
-                <div class="category">
-                    <div id="jump-back-on" class="category-title">Jump back on</div>
+                <div id="jump-back-on" class="category">
+                    <div class="category-title">Jump back on</div>
                     <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
                     <!-- js: addAdjHTML -->
                     <!-- animation: think about scrolling effect -->
-                    <div class="category-content">
-                        <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                        <div class="category-content-name">Silver Spoon</div>
-                        <div class="category-content-description"><a href="">BTS</a></div>
+                    <div class="flex gap-2">
+                        <a href="Silverspoon">
+                            <div class="category-content">
+                                <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                                <div class="category-content-name">Silver Spoon</div>
+                                <a href="BTS" class="category-content-description">BTS</a>
+                            </div>
+                        </a>
+                        <a href="Silverspoon">
+                            <div class="category-content">
+                                <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                                <div class="category-content-name">Silver Spoon</div>
+                                <a href="BTS" class="category-content-description">BTS</a>
+                            </div>
+                        </a>
+                        <a href="Silverspoon">
+                            <div class="category-content">
+                                <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                                <div class="category-content-name">Silver Spoon</div>
+                                <a href="BTS" class="category-content-description">BTS</a>
+                            </div>
+                        </a>
                     </div>
+                </div>
+                <div id="popular-albums" class="category">
+                    <div class="category-title">Popular albums</div>
+                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
+                    <!-- js: addAdjHTML -->
+                    <!-- animation: think about scrolling effect -->
+                    <a href="Silverspoon">
+                        <div class="category-content">
+                            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                            <div class="category-content-name">Silver Spoon</div>
+                            <a href="BTS" class="category-content-description">Album - Jungkook</a>
+                        </div>
+                    </a>
+                </div>
+                <div id="playlists" class="category">
+                    <div class="category-title">Playlists</div>
+                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
+                    <!-- js: addAdjHTML -->
+                    <!-- animation: think about scrolling effect -->
+                    <a href="Silverspoon">
+                        <div class="category-content">
+                            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                            <div class="category-content-name">Suy</div>
+                            <a href="BTS" class="category-content-description">Playlist - 20 songs</a>
+                        </div>
+                    </a>
+                </div>
+                <div id="episodes-for-you" class="category">
+                    <div class="category-title">Episodes for you</div>
+                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
+                    <!-- js: addAdjHTML -->
+                    <!-- animation: think about scrolling effect -->
+                    <a href="Silverspoon">
+                        <div class="category-content">
+                            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                            <div class="category-content-name">Silver Spoon</div>
+                            <a href="BTS" class="category-content-description">Have a sip - 42 mins</a>
+                        </div>
+                    </a>
+                </div>
+                <div id="fav-artists" class="category">
+                    <div class="category-title">Fav artists</div>
+                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
+                    <!-- js: addAdjHTML -->
+                    <!-- animation: think about scrolling effect -->
+                    <a class="category-content-artist" href="Silverspoon">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                        <div class="category-content-artist-name">Vũ.</div>
+                    </a>
                 </div>
                 <div id="upcoming-event" class="banner-display">
                     <!-- div (max 10): new release, world tour -->
