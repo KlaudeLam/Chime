@@ -4,3 +4,7 @@ TODO
 
 DONE
 - how to make the left menu stable and only the body roll
+
+ASK
+- Top-bar: Why sticky doesn't hide avatar but fixed does? 
+- Top-bar: justify-between hide the items but gap doesn't?

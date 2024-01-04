@@ -1,11 +1,8 @@
 /* general */
 #logo {
-    height: 80px;
     font-family: 'Galada', cursive;
     font-size: 3rem;
     color: rgb(253, 50, 77);
-    display: flex;
-    align-items: center;
 }
 body {
     font-family: 'Rubik', sans-serif;
@@ -17,19 +14,8 @@ body {
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 nav img, #noti img, #account img {
-    height: 24px;
-    width: 24px;
-}
-  
-nav li {
-    display: flex;
-    gap: 24px;
-    height: 40px;
-    align-items: center;
-}
-
-nav a:hover {
-    font-weight: 600;
+    height: 22px;
+    width: 22px;
 }
 
 /* top-bar */
@@ -37,6 +23,11 @@ nav a:hover {
     /* 73 */
     /* box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px; */
     background-color: rgb(255, 97, 118);
+}
+#bottom-bar {
+    background-color: rgb(255, 97, 118);
+    color: rgb(252, 242, 244);
+
 }
 /* page body */
 #page-body {

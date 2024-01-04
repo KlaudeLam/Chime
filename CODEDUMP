@@ -1,0 +1,16 @@
+*NAVBAR*
+<div class="min-w-[30%] w-[30%] flex items-center px-[24px] gap-6">
+                        <div id="noti">
+                            <!-- https://www.flaticon.com/free-icon/notification_2645890?term=notification&page=1&position=3&origin=search&related_id=2645890 -->
+                            <img class="w-10 h-10 rounded-full shadow-lg" src="https://cdn-icons-png.flaticon.com/512/2645/2645897.png " alt="">
+                            <!-- https://cdn-icons-png.flaticon.com/512/2645/2645890.png " -->
+                            <!-- hover: What's new -->
+                        </div>
+                        <div id="account">
+                            <!-- https://www.flaticon.com/free-icon/user_1144760?term=user&page=1&position=2&origin=search&related_id=1144760 -->
+                            <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png " alt="">
+                            <!-- https://cdn-icons-png.flaticon.com/512/1144/1144811.png  -->
+                            <!-- hover: acc name -->
+                            <!-- click: options -->
+                        </div>
+                    </div>
