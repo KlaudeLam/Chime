@@ -6,4 +6,5 @@ Font:
 
 Ref:
 - homepage: https://www.tailwindawesome.com/resources/vue-tailwind-admin/demo
-- register: https://flowbite.com/blocks/marketing/register/
+- register/login: https://flowbite.com/blocks/marketing/register/
+- library: https://tailwindflex.com/@noob_dev/user-profile-card-with-cover-image

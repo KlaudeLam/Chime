@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
+    <title>Other Artist Name</title>
     <link rel="icon" type="image/x-icon" href="img/chime-logo.jpg">
 
     <!-- Galada: https://fonts.google.com/specimen/Galada?preview.text=Chime!&classification=Handwriting -->
@@ -38,7 +38,7 @@
                             </li>
                         </a>
                         <a href="library.html">
-                            <li id="lib" class="w-full flex items-center gap-6 h-8 text-[15px]  font-semibold">
+                            <li id="lib" class="w-full flex items-center gap-6 h-8 text-[15px]  hover:font-semibold">
                                 <!-- https://www.flaticon.com/free-icon/music-album_2404718?term=playlist&related_id=2404718 -->
                                 <img src="https://cdn-icons-png.flaticon.com/512/2404/2404474.png" alt="lib">
                                 Library
@@ -182,14 +182,16 @@
                             <img id="avatar" class="object-cover object-center h-80" src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Woman looking front'>
                         </div>
                         <div class="flex flex-col justify-end w-[79%] text-left">
-                            <p class="text- font-semibold">Jane Doe</p>
+                            <p class="text- font-semibold">Vũ.</p>
                             <div>
                                 <span class="text-gray-500">4 followers</span>
                                 <span>•</span>
                                 <span class="text-gray-500">13 following</span>
                             </div>
-                            <button class=" block rounded-full bg-bittersweet hover:bg-darkbitterswwet font-semibold
-                            text-sm text-white w-fit mt-2 px-4 py-2">Edit profile</button>
+                            <button id="btn-follow" class=" block rounded-full bg-bittersweet hover:bg-darkbitterswwet font-semibold
+                            text-sm text-white w-fit mt-2 px-4 py-2">Follow</button>
+                            <button id="btn-following" class=" hidden rounded-full bg-bittersweet hover:bg-darkbitterswwet font-semibold
+                            text-sm text-white w-fit mt-2 px-4 py-2">✓ Following</button>
                         </div>
                     </div>
                 </div>
@@ -292,5 +294,7 @@
         </div>
     </div>
     <script type="module" src="home.js"></script>
+    <script type="module" src="other-user.js"></script>
+
 </body>
 </html>

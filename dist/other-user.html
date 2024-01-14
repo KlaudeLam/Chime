@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chime</title>
+    <title>Other User Name</title>
     <link rel="icon" type="image/x-icon" href="img/chime-logo.jpg">
 
     <!-- Galada: https://fonts.google.com/specimen/Galada?preview.text=Chime!&classification=Handwriting -->
@@ -22,49 +22,51 @@
 </head>
 <body>
     <div class="flex flex-wrap">
-        <div id="left-bar" class="px-6 w-1/2 md:w-1/3 lg:w-64 fixed md:top-0 md:left-0 h-screen lg:block z-30 hidden bg-white">
-            <div id="logo" class="w-full h-[64px] flex pt-10 items-center mb-9">
-                <a href="">Chime!</a>
+        <div id="left-bar" class="px-6 w-1/2 md:w-1/3 lg:w-64 fixed md:top-0 md:left-0 h-screen lg:flex lg:flex-col lg:justify-between py-7 z-30 hidden bg-white">
+            <div class="flex flex-col gap-5 mb-5">
+                <div id="logo" class="w-full text-5xl flex items-center">
+                    <a href="home.html">Chime!</a>
+                </div>
+                <nav class="">
+                    <ul class="flex flex-col gap-3">
+                        <a href="home.html">
+                            <li id="home" class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
+                                <!-- https://www.flaticon.com/free-icon/home_1946488?term=home&page=1&position=2&origin=search&related_id=1946488 -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png " alt="home">
+                                Home
+                                <!--src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png"-->
+                            </li>
+                        </a>
+                        <a href="library.html">
+                            <li id="lib" class="w-full flex items-center gap-6 h-8 text-[15px]  hover:font-semibold">
+                                <!-- https://www.flaticon.com/free-icon/music-album_2404718?term=playlist&related_id=2404718 -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/2404/2404474.png" alt="lib">
+                                Library
+                                <!-- src="https://cdn-icons-png.flaticon.com/512/2404/2404718.png"-->
+                            </li>
+                        </a>
+                        <a href="premium.html">
+                            <li id="premium" class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
+                                <!-- https://www.flaticon.com/free-icon/premium_9720867?term=premium&related_id=9720867 -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/9720/9720867.png" alt="premium">
+                                Premium
+                                <!-- src="https://cdn-icons-png.flaticon.com/512/9720/9720918.png" -->
+                            </li>
+                        </a>
+                        <a href="download.html">
+                            <li id="download" class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
+                                <!-- https://www.flaticon.com/free-icon/downloading_2381971?term=download&related_id=2381971 -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/2381/2381971.png" alt="download">
+                                Download
+                                <!-- src="https://cdn-icons-png.flaticon.com/512/2382/2382067.png" -->
+                            </li>
+                        </a>
+                    </ul>
+                </nav>
             </div>
-            <nav class="mb-9">
-                <ul class="flex flex-col gap-3">
-                    <a href="">
-                        <li id="home" class="w-full flex items-center gap-6 h-8 hover:font-semibold">
-                            <!-- https://www.flaticon.com/free-icon/home_1946488?term=home&page=1&position=2&origin=search&related_id=1946488 -->
-                            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png " alt="home">
-                            Home
-                            <!--src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png"-->
-                        </li>
-                    </a>
-                    <a href="">
-                        <li id="lib" class="w-full flex items-center gap-6 h-8 hover:font-semibold">
-                            <!-- https://www.flaticon.com/free-icon/music-album_2404718?term=playlist&related_id=2404718 -->
-                            <img src="https://cdn-icons-png.flaticon.com/512/2404/2404474.png" alt="lib">
-                            Library
-                            <!-- src="https://cdn-icons-png.flaticon.com/512/2404/2404718.png"-->
-                        </li>
-                    </a>
-                    <a href="">
-                        <li id="premium" class="w-full flex items-center gap-6 h-8 hover:font-semibold">
-                            <!-- https://www.flaticon.com/free-icon/premium_9720867?term=premium&related_id=9720867 -->
-                            <img src="https://cdn-icons-png.flaticon.com/512/9720/9720867.png" alt="premium">
-                            Premium
-                            <!-- src="https://cdn-icons-png.flaticon.com/512/9720/9720918.png" -->
-                        </li>
-                    </a>
-                    <a href="">
-                        <li id="download" class="w-full flex items-center gap-6 h-8 hover:font-semibold">
-                            <!-- https://www.flaticon.com/free-icon/downloading_2381971?term=download&related_id=2381971 -->
-                            <img src="https://cdn-icons-png.flaticon.com/512/2381/2381971.png" alt="download">
-                            Download
-                            <!-- src="https://cdn-icons-png.flaticon.com/512/2382/2382067.png" -->
-                        </li>
-                    </a>
-                </ul>
-            </nav>
             <div id="music-player">
                 <div>
-                    <img class="mb-4" src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                    <img class="" src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
                     <div class="category-content-name">Silver Spoon</div>
                     <a href="BTS" class="category-content-description">BTS</a>
                 </div>
@@ -79,13 +81,14 @@
                         </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5.5v13m3.48-5.636 9.016 5.259A1 1 0 0 0 19 17.259V6.741a1 1 0 0 0-1.504-.864l-9.015 5.26a1 1 0 0 0 0 1.727Z"/>
-                      </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                        </svg>
+                    <svg class="btnPlay cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
                         </svg>
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <!-- pause icon -->
+                    <svg class="btnPause hidden cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path d="M8 5V19M16 5V19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg> -->
+                        </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 5.5v13m-3.48-5.636-9.016 5.259A1 1 0 0 1 5 17.259V6.741a1 1 0 0 1 1.504-.864l9.015 5.26a1 1 0 0 1 0 1.727Z"/>
                         </svg>
@@ -154,13 +157,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5.5v13m3.48-5.636 9.016 5.259A1 1 0 0 0 19 17.259V6.741a1 1 0 0 0-1.504-.864l-9.015 5.26a1 1 0 0 0 0 1.727Z"/>
                       </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <svg class="btnPlay cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
                         </svg>
                     <!-- pause icon -->
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
-                        <path d="M8 5V19M16 5V19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg> -->
+                    <svg class="btnPause hidden cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                        <path d="M8 5V19M16 5V19" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 5.5v13m-3.48-5.636-9.016 5.259A1 1 0 0 1 5 17.259V6.741a1 1 0 0 1 1.504-.864l9.015 5.26a1 1 0 0 1 0 1.727Z"/>
                         </svg>
@@ -169,17 +172,34 @@
                         </svg>
                 </div>
             </div>
-            <div id="new-release" class="banner-display mb-7">
-                <!-- div (max 10): new release, world tour -->
-                <!-- js: addAdjHTML -->
-                <!-- animation: think about scrolling effect -->
-                <a href="songlink"><img src="https://i.redd.it/qo9vqwuoycca1.jpg" alt=""></a>
-                
+            <div class="w-full bg-white mb-12">
+                <div class="h-[250px] overflow-hidden">
+                    <img class="object-cover object-top w-full" src='https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Mountain'>
+                </div>
+                <div class="flex flex-col p-3 pb-5 gap-3 border-b">
+                    <div class="flex justify-between w-full h-30">
+                        <div class=" w-[18%] h-fit -mt-[9%] aspect-square relative border-4 border-white rounded-full overflow-hidden">
+                            <img id="avatar" class="object-cover object-center h-80" src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Woman looking front'>
+                        </div>
+                        <div class="flex flex-col justify-end w-[79%] text-left">
+                            <p class="text- font-semibold">John Doe</p>
+                            <div>
+                                <span class="text-gray-500">4 followers</span>
+                                <span>•</span>
+                                <span class="text-gray-500">13 following</span>
+                            </div>
+                            <button id="btn-follow" class=" block rounded-full bg-bittersweet hover:bg-darkbitterswwet font-semibold
+                            text-sm text-white w-fit mt-2 px-4 py-2">Follow</button>
+                            <button id="btn-following" class=" hidden rounded-full bg-bittersweet hover:bg-darkbitterswwet font-semibold
+                            text-sm text-white w-fit mt-2 px-4 py-2">✓ Following</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="page-body" class="mb-20 flex flex-col gap-[24px] px-[30px] py-[8px]">
                 
-                <div id="jump-back-on" class="category">
-                    <div class="category-title">Jump back on</div>
+                <div id="your-playlists" class="category">
+                    <div class="category-title">Your playlists</div>
                     <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
                     <!-- js: addAdjHTML -->
                     <!-- animation: think about scrolling effect -->
@@ -207,34 +227,8 @@
                         </a>
                     </div>
                 </div>
-                <div id="popular-albums" class="category">
-                    <div class="category-title">Popular albums</div>
-                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
-                    <a href="Silverspoon">
-                        <div class="category-content">
-                            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                            <div class="category-content-name">Silver Spoon</div>
-                            <a href="BTS" class="category-content-description">Album - Jungkook</a>
-                        </div>
-                    </a>
-                </div>
-                <div id="playlists" class="category">
-                    <div class="category-title">Playlists</div>
-                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
-                    <a href="Silverspoon">
-                        <div class="category-content">
-                            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                            <div class="category-content-name">Suy</div>
-                            <a href="BTS" class="category-content-description">Playlist - 20 songs</a>
-                        </div>
-                    </a>
-                </div>
-                <div id="episodes-for-you" class="category">
-                    <div class="category-title">Episodes for you</div>
+                <div id="your-episodes" class="category">
+                    <div class="category-title">Your episodes</div>
                     <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
                     <!-- js: addAdjHTML -->
                     <!-- animation: think about scrolling effect -->
@@ -246,8 +240,8 @@
                         </div>
                     </a>
                 </div>
-                <div id="fav-artists" class="category">
-                    <div class="category-title">Fav artists</div>
+                <div id="your-fav-artists" class="category">
+                    <div class="category-title">Your fav artists</div>
                     <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
                     <!-- js: addAdjHTML -->
                     <!-- animation: think about scrolling effect -->
@@ -256,7 +250,7 @@
                         <div class="category-content-artist-name">Vũ.</div>
                     </a>
                 </div>
-                <div id="upcoming-event" class="banner-display">
+                <div id="your-upcoming-event" class="banner-display">
                     <!-- div (max 10): new release, world tour -->
                     <!-- js: addAdjHTML -->
                     <!-- animation: think about scrolling effect -->
@@ -299,6 +293,8 @@
             </footer>
         </div>
     </div>
+    <script type="module" src="home.js"></script>
+    <script type="module" src="other-user.js"></script>
 
 </body>
 </html>
