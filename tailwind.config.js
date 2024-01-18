@@ -6,7 +6,7 @@ module.exports = {
       colors: {
         'bittersweet': '#ff6176',
         'lightbittersweet': '#ffd3da',
-        'darkbitterswwet': '#ff3f5f',
+        'darkbittersweet': '#ff3f5f',
       }
     },
   },
