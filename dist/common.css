@@ -46,10 +46,16 @@ nav img, #noti img, #account img {
     font-size: 2rem;
     margin-bottom: 20px;
 }
+.category-carousel {
+    overflow: hidden;
+}
 .category-content { 
     display: inline-block;
-    height: 264px;
-    width: 186px;
+    min-height: 220px;
+    height: 220px;
+    min-width: 155px;
+    width: 155px;
+
     /* border: 1px solid black; */
     border-radius: 6%;
     background-color: rgb(255, 255, 255);
@@ -59,24 +65,32 @@ nav img, #noti img, #account img {
     /* 73 */
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
-.category-content img {
+.category-content img, .player-cover {
     border-radius: 6%;
     margin-bottom: 16px;
+    object-fit: cover;
 }
-.category-content-name {
+.category-content-name, .player-song {
     font-weight: 600;
+    line-height: 1.5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
-.category-content-description {
+.category-content-description, .player-artist {
     display: block;
-    width: fit-content;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
-.category-content-description:hover {
+.category-content-description:hover, .player-artist:hover {
     text-decoration: underline;
 }
 .category-content-artist {
     display: inline-block;
     height: fit-content;
-    width: 186px ;
+    width: 155px ;
+    min-width: 155px ;
     /* border: 1px solid black; */
     border-radius: 6%;
 
