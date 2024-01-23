@@ -9,6 +9,7 @@ for (let j = 0; j < btnPlay.length; j++) {
         }
     }
 }
+
 for (let j = 0; j < btnPlay.length; j++) {
     btnPause[j].onclick = () => {
         for (let i = 0; i < btnPlay.length; i++) {
@@ -17,3 +18,16 @@ for (let j = 0; j < btnPlay.length; j++) {
         }
     }
 }
+
+let hiddenMenu = document.getElementById("hidden-menu");
+
+document.getElementById("btn-hamburger").onclick = () => {
+    if (hiddenMenu.style.display == "none") {
+        hiddenMenu.style.position = "fixed";
+        hiddenMenu.style.display = "block";
+    } else {
+        hiddenMenu.style.display = "none";
+    }
+}
+
+// if logged: btnLogout appear, btnLogin hidden (viceversa)
