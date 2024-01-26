@@ -1,14 +1,22 @@
 TODO
-- wrap <a> round <div>
-- add the html to all nav options
-- fix the follow mechanism: how can i efficiently and systematically form the flw status (the connection between a user and a specific artist)
-- top-bar: add hamburger hidden menu
+- link firebase-config.js to all html
+- all HTML: 
++ html: left-bar, bottom-bar, nav-bar
++ js: firebase-config
+- add carousel
+
 
 DONE
 - Favicon
 - how to make the left menu stable and only the body roll
 - fix the flex abnormity with user and noti icon
+- add the html to all nav options
+- top-bar: add hamburger hidden menu
 
 ASK
 - Top-bar: Why sticky doesn't hide avatar but fixed does? 
 - Top-bar: justify-between hide the items but gap doesn't?
+
+DISMISSED
+- wrap <a> round <div>
+- fix the follow mechanism: how can i efficiently and systematically form the flw status (the connection between a user and a specific artist)
