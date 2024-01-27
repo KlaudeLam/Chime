@@ -18,3 +18,25 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+// Login, Register: Artist identification
+export const changeBtnStatus = (id, bgColor, textColor) => {
+  document.getElementById(id).style.backgroundColor = bgColor;
+  document.getElementById(id).style.color = textColor;
+}
+
+export const isArtist = () => {
+  localStorage.setItem("isArtist", false);
+
+  document.getElementById("asUser").onclick = () => {
+  changeBtnStatus("asUser", "#ff6176", "#ffffff");
+  changeBtnStatus("asArtist", "#ffd3da", "black");
+  localStorage.setItem("isArtist", false);
+  }
+
+  document.getElementById("asArtist").onclick = () => {
+  changeBtnStatus("asArtist", "#ff6176", "#ffffff");
+  changeBtnStatus("asUser", "#ffd3da", "black");
+  localStorage.setItem("isArtist", true);
+  }
+}

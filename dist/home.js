@@ -1,24 +1,7 @@
-let btnPlay = document.getElementsByClassName("btnPlay");
-let btnPause = document.getElementsByClassName("btnPause");
+import { signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
+import { auth } from './firebase-config.js';
 
-for (let j = 0; j < btnPlay.length; j++) {
-    btnPlay[j].onclick = () => {
-        for (let i = 0; i < btnPlay.length; i++) {
-            btnPause[i].style.display = 'block';
-            btnPlay[i].style.display = 'none';
-        }
-    }
-}
-
-for (let j = 0; j < btnPlay.length; j++) {
-    btnPause[j].onclick = () => {
-        for (let i = 0; i < btnPlay.length; i++) {
-            btnPause[i].style.display = 'none';
-            btnPlay[i].style.display = 'block';
-        }
-    }
-}
-
+// BURGER MENU---------------------------------
 let hiddenMenu = document.getElementById("hidden-menu");
 
 document.getElementById("btn-hamburger").onclick = () => {
@@ -28,6 +11,41 @@ document.getElementById("btn-hamburger").onclick = () => {
     } else {
         hiddenMenu.style.display = "none";
     }
+}
+
+// LOG OUT--------------------------------------
+const navBtnLogOut = document.getElementById("nav-btn-log-out");
+const navBtnLogIn = document.getElementById("nav-btn-log-in");
+
+const Logout = () => {
+    signOut(auth).then(() => {
+    // Sign-out successful.
+        alert("Sign out successful");
+        localStorage.removeItem("isArtist");
+        localStorage.removeItem("email");
+        window.location.href = "home.html";
+    }).catch((error) => {
+    // An error happened.
+        alert("Sign out fail");
+    });
+}
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.use
+      navBtnLogIn.style.display = "none";
+      navBtnLogOut.style.display = "block";
+      // ...
+    } else {
+      // User is signed out
+      navBtnLogIn.style.display = "block";
+      navBtnLogOut.style.display = "none";
+    }
+})
+
+navBtnLogOut.onclick =  () => {
+    Logout();
 }
 
 // if logged: btnLogout appear, btnLogin hidden (viceversa)

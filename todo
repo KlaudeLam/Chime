@@ -3,6 +3,10 @@ TODO
 - add the html to all nav options
 - fix the follow mechanism: how can i efficiently and systematically form the flw status (the connection between a user and a specific artist)
 - top-bar: add hamburger hidden menu
+- to open library: isArtist, auth
++ no auth: deny
++ auth, artist: publish
++ auth, no artist: add song to lib
 
 DONE
 - Favicon
