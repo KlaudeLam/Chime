@@ -172,150 +172,25 @@
                         </svg>
                 </div>
             </div>
-            <div class="w-full bg-white">
+            <div id="user-header" class="w-full bg-white">
                 <div class="h-[250px] overflow-hidden">
                     <img class="object-cover object-top w-full" src='https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Mountain'>
                 </div>
-                <div class="flex flex-col p-3 pb-5 gap-3 border-b">
-                    <div class="flex justify-between w-full h-30">
-                        <div class=" w-[18%] h-fit -mt-[9%] aspect-square relative border-4 border-white rounded-full overflow-hidden">
-                            <img id="avatar" class="object-cover object-center h-80" src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Woman looking front'>
-                        </div>
-                        <div class="flex flex-col justify-end w-[79%] text-left">
-                            <p class="text- font-semibold">Jane Doe</p>
-                            <div>
-                                <span class="text-gray-500">4 followers</span>
-                                <span>•</span>
-                                <span class="text-gray-500">13 following</span>
-                            </div>
-                            <button class=" block rounded-full bg-bittersweet hover:bg-darkbitterswwet font-semibold
-                            text-sm text-white w-fit mt-2 px-4 py-2">Edit profile</button>
+                <div class="flex justify-between w-full h-30 p-3 pb-5 gap-3 border-b">
+                    <div class=" w-[18%] h-fit -mt-[9%] aspect-square relative border-4 border-white rounded-full overflow-hidden">
+                        <img id="avatar" class="object-cover object-center h-80" src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Woman looking front'>
+                    </div>
+                    <div id="user-header-info" class="flex flex-col justify-end w-[79%] text-left">
+                        <p class="text- font-semibold w-fit">Jane Doe</p>
+                        <div>
+                            <span class="text-gray-500">4 followers</span>
+                            <span>•</span>
+                            <span class="text-gray-500">13 following</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="page-body" class="mb-20 flex flex-col gap-[24px] px-[30px] py-5">
-                <div class="flex gap-2 mb-5">
-                    <button id="btn-your-playlists" class="w-fit rounded-3xl bg-bittersweet text-white py-2 px-4 text-sm">Playlists</button>
-                    <button id="btn-your-episodes" class="w-fit rounded-3xl bg-[#ffd3da] text-black py-2 px-4 text-sm">Episodes</button>
-                    <button id="btn-your-artists" class="w-fit rounded-3xl bg-[#ffd3da] text-black py-2 px-4 text-sm">Artists</button>
-                </div>
-                <div id="your-playlists" class="category">
-                    <div class="category-title">Your playlists</div>
-                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
-                    <div class="flex gap-2">
-                        <a href="Silverspoon">
-                            <div class="category-content">
-                                <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                                <div class="category-content-name">Silver Spoon</div>
-                                <a href="BTS" class="category-content-description">BTS</a>
-                            </div>
-                        </a>
-                        <a href="Silverspoon">
-                            <div class="category-content">
-                                <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                                <div class="category-content-name">Silver Spoon</div>
-                                <a href="BTS" class="category-content-description">BTS</a>
-                            </div>
-                        </a>
-                        <a href="Silverspoon">
-                            <div class="category-content">
-                                <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                                <div class="category-content-name">Silver Spoon</div>
-                                <a href="BTS" class="category-content-description">BTS</a>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="pagination w-full flex justify-center items-center gap-4 mt-7">
-                        <button
-                          class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-full select-none active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                          type="button">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                            aria-hidden="true" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
-                          </svg>
-                        </button>
-                        <div class="flex items-center gap-2">
-                          <button
-                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50"
-                            type="button">
-                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                              1
-                            </span>
-                          </button>
-                          <button
-                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50"
-                            type="button">
-                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                              2
-                            </span>
-                          </button>
-                          <button
-                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-gray-900 text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            type="button">
-                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                              3
-                            </span>
-                          </button>
-                          <button
-                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50"
-                            type="button">
-                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                              4
-                            </span>
-                          </button>
-                          <button
-                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50"
-                            type="button">
-                            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                              5
-                            </span>
-                          </button>
-                        </div>
-                        <button
-                          class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-full select-none active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                          type="button">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                            aria-hidden="true" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
-                          </svg>
-                        </button>
-                    </div> 
-                </div>
-                <div id="your-episodes" class="category hidden">
-                    <div class="category-title">Your episodes</div>
-                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
-                    <a href="Silverspoon">
-                        <div class="category-content">
-                            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                            <div class="category-content-name">Silver Spoon</div>
-                            <a href="BTS" class="category-content-description">Have a sip - 42 mins</a>
-                        </div>
-                    </a>
-                </div>
-                <div id="your-artists" class="category hidden">
-                    <div class="category-title">Your fav artists</div>
-                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
-                    <a class="category-content-artist" href="Silverspoon">
-                        <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                        <div class="category-content-artist-name">Vũ.</div>
-                    </a>
-                </div>
-                <div id="your-upcoming-event" class="banner-display">
-                    <!-- div (max 10): new release, world tour -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
-                    <a href="songlink"><img src="https://phinf.wevpstatic.net/MjAyMjExMTNfMTIg/MDAxNjY4MzIwNjY1MzE1._NqU1ohf8ye8tENAlepfRkbSL5ffDVP--OUqDYRtdC8g.Y5DXfYhapx1mRlcuLb4m2iqjnjSvbA9CpzJ8plTudvIg.PNG/5fd17eb0-f99a-4955-a7ef-5aeb1fd089b0.png" alt=""></a>
-                    
-                    <!-- https://0.soompi.io/wp-content/uploads/2022/05/06090034/BTS-12.jpg -->
-                </div>
-            </div>
+            <div id="page-body" class="mb-20 flex flex-col gap-[24px] px-[30px] py-5"></div>
             <footer class="w-full flex justify-between px-[30px] py-[30px] mb-[60px] border-t-[1px] border-gray-400 leading-8">
                 <div class="flex lg:gap-50 gap-20 w-1/3">
                     <ul class="footer-menu">
@@ -350,7 +225,7 @@
             </footer>
         </div>
     </div>
-    <script type="module" src="home.js"></script>
+    <!-- <script type="module" src="home.js"></script> -->
     <script type="module" src="library.js"></script>
 
 </body>

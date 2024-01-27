@@ -1,10 +1,13 @@
 TODO
-- link firebase-config.js to all html
-- all HTML: 
+- link to all HTML: 
 + html: left-bar, bottom-bar, nav-bar
-+ js: firebase-config
++ js: home
 - add carousel
+- add pagination
 
+BUG
+- burgermenu: double click
+- publish-image input: double choose file
 
 DONE
 - Favicon

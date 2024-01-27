@@ -483,7 +483,6 @@
         <div
           id="page-body"
           class="mb-20 flex flex-col gap-[24px] px-[30px] py-[30px]" x-data="{ images: [] }">
-          <!-- component -->
             <div
               class="heading text-center font-bold text-2xl m-5 text-gray-800 bg-white"
             >
@@ -491,8 +490,9 @@
             </div>
             <div class="editor mx-auto w-[440px] md:w-[550px] lg:w-[800px] flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg">
               <div class="flex justify-between w-full h-fit mb-4">
+                <!-- Input: thumbnail -->
                 <div id="image-preview" class="w-40 aspect-square max-h-40 bg-gray-50 border-dashed border-2 border-gray-400 rounded-lg flex flex-col justify-center items-center text-center cursor-pointer overflow-hidden">
-                  <input id="upload" type="file" class="hidden" accept="image/*" />
+                  <input id="upload" type="file" class="hidden" accept="image/*" required/>
                   <label for="upload" class="cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-gray-700 mx-auto mb-2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
@@ -502,30 +502,26 @@
                     <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
                   </label>
                 </div>
-
+                <!-- Input: title, description, track -->
                 <div class="flex flex-col gap-1 w-[58%] md:w-[67%] lg:w-[73%]">
-                  <input
+                  <input id="input-title"
                     class="bg-white border border-gray-300 p-2 outline-none rounded-[4px]"
                     placeholder="Title"
-                    type="text"
+                    type="text" required
                   />
-                  <textarea
-                    class="bg-white min-h-[66px] p-2 border border-gray-300 outline-none rounded-[4px] overflow-hidden resize-none"
-                    placeholder="Describe your track"
-                    oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
-                  ></textarea>
-                  <input class="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 file:mr-5 file:border-0
+                  <textarea id="input-description" class="bg-white min-h-[66px] p-2 border border-gray-300 outline-none rounded-[4px] overflow-hidden resize-none" placeholder="Describe your track" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' required></textarea>
+                  <input id="input-track" class="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-white focus:outline-none file:mr-5 file:border-0
                   file:text-sm file:font-medium rounded-[4px]
                   file:bg-lightbittersweet file:text-black
                   hover:file:cursor-pointer hover:file:bg-bittersweet
-                  hover:file:text-white" id="track_input" type="file" accept=".mp3">
-                  <label for="track_input" class="text-xs">Upload your track above (.mp3)</label>
+                  hover:file:text-white"  type="file" accept=".mp3" required>
+                  <label for="input-track" class="text-xs">Upload your track above (.mp3)</label>
                 </div>
               </div>
 
               <!-- Buttons -->
               <div class="w-full flex justify-end">
-                <button type="submit" class="w-fit right-0 bg-bittersweet text-white hover:bg-[#ff3f5f] hover:text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">Publish</button>
+                <button id="btn-confirm-publish" type="button" class="w-fit right-0 bg-bittersweet text-white hover:bg-[#ff3f5f] hover:text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">Publish</button>
               </div>
             </div>
         </div>
@@ -579,66 +575,7 @@
         </footer>
       </div>
     </div>
-    <script>
-      function isImage(file) {
-        const acceptedImageTypes = ["jpg", "jpeg", "png", "gif"].includes(
-          file.name.split(".").pop().toLowerCase()
-        );
-        const extension = file.name.split(".").pop().toLowerCase();
-        return acceptedImageTypes.includes(extension);
-      }
-    </script>
-    <!-- Test code -->
-    <script>
-        const uploadInput = document.getElementById('upload');
-        const filenameLabel = document.getElementById('filename');
-        const imagePreview = document.getElementById('image-preview');
-      
-        // Check if the event listener has been added before
-        let isEventListenerAdded = false;
-      
-        uploadInput.addEventListener('change', (event) => {
-          const file = event.target.files[0];
-      
-          if (file) {
-            filenameLabel.textContent = file.name;
-      
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              imagePreview.innerHTML =
-                `<img src="${e.target.result}" class="max-h-48 rounded-lg mx-auto" alt="Image preview" />`;
-              imagePreview.classList.remove('border-dashed', 'border-2', 'border-gray-400');
-      
-              // Add event listener for image preview only once
-              if (!isEventListenerAdded) {
-                imagePreview.addEventListener('click', () => {
-                  uploadInput.click();
-                });
-      
-                isEventListenerAdded = true;
-              }
-            };
-            reader.readAsDataURL(file);
-          } else {
-            filenameLabel.textContent = '';
-            imagePreview.innerHTML =
-              `<div class="bg-gray-200 h-48 rounded-lg flex items-center justify-center text-gray-500">No image preview</div>`;
-            imagePreview.classList.add('border-dashed', 'border-2', 'border-gray-400');
-      
-            // Remove the event listener when there's no image
-            imagePreview.removeEventListener('click', () => {
-              uploadInput.click();
-            });
-      
-            isEventListenerAdded = false;
-          }
-        });
-      
-        uploadInput.addEventListener('click', (event) => {
-          event.stopPropagation();
-        });
-    </script>
-    <script type="module" src="home.js"></script>
-    <script type="module" src="other-user.js"></script>
+    <!-- <script type="module" src="home.js"></script> -->
+    <script type="module" src="publish.js"></script>
   </body>
 </html>
