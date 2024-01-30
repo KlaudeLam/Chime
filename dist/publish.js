@@ -3,14 +3,14 @@ import { app } from "./firebase-config.js";
 // import { } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 
 // PREVIEW THUMBNAIL-------------------------------
-const uploadInput = document.getElementById('upload');
+const thumbnailInput = document.getElementById('input-thumbnail');
 const filenameLabel = document.getElementById('filename');
 const imagePreview = document.getElementById('image-preview');
 
 // Check if the event listener has been added before
 let isEventListenerAdded = false;
 
-uploadInput.addEventListener('change', (event) => {
+thumbnailInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
 
     if (file) {
@@ -25,7 +25,7 @@ uploadInput.addEventListener('change', (event) => {
         // Add event listener for image preview only once
         if (!isEventListenerAdded) {
         imagePreview.addEventListener('click', () => {
-            uploadInput.click();
+            thumbnailInput.click();
         });
 
         isEventListenerAdded = true;
@@ -40,22 +40,21 @@ uploadInput.addEventListener('change', (event) => {
 
     // Remove the event listener when there's no image
     imagePreview.removeEventListener('click', () => {
-        uploadInput.click();
+        thumbnailInput.click();
     });
 
     isEventListenerAdded = false;
     }
 });
 
-uploadInput.addEventListener('click', (event) => {
+thumbnailInput.addEventListener('click', (event) => {
     event.stopPropagation();
 });
 
 // UPDATE CLOUDSTORE-------------------------------
 const title = document.getElementById("input-title").value,
 description = document.getElementById("input-description").value,
-track = document.getElementById("input-track").files[0];
-const btnConfirmPublish = document.getElementById("btn-confirm-publish");
+btnConfirmPublish = document.getElementById("btn-confirm-publish");
 
 // const storageRef = ref(storage, `${title}`);
 // await uploadBytes(storageRef, )
@@ -64,28 +63,66 @@ const btnConfirmPublish = document.getElementById("btn-confirm-publish");
 const storage = getStorage(app);
 
 // Đặt tên cho thư mục con (child folder) trong dịch vụ lưu trữ
-const folderName = 'audio-files';
-const storageRef = ref(storage, folderName);
+const audioFolder = 'audio';
+const thumbnailFolder = 'thumbnail';
+
+const storageRefAudio = ref(storage, audioFolder);
+const storageRefThumbnail = ref(storage, thumbnailFolder);
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Lắng nghe sự kiện click cho nút upload (giả sử nút có id là 'uploadButton')
+    // Lắng nghe sự kiện click cho nút upload
     btnConfirmPublish.addEventListener('click', function() {
-        // Chọn file mp3 từ người dùng (trong trường hợp này, giả sử có một input với type="file" và id="fileInput")
-        const fileInput = document.getElementById('input-track');
-        const selectedFile = fileInput.files[0];
-
-        // Kiểm tra xem người dùng đã chọn file hay chưa
-        if (selectedFile) {
+        // Chọn file mp3 từ người dùng
+        const trackFile = document.getElementById('input-track').files[0];
+        
+        // Check if track is uploaded
+        if (trackFile) {
             // Tạo một nhiệm vụ tải lên có khả năng tạm dừng
-            const uploadTask = uploadBytesResumable(ref(storageRef, selectedFile.name), selectedFile);
+            const uploadTask = uploadBytesResumable(ref(storageRefAudio, trackFile.name), trackFile);
 
             // Theo dõi sự kiện tải lên
             uploadTask.on('state_changed',
                 (snapshot) => {
                     // Thực hiện theo dõi tiến trình tải lên (nếu cần)
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
+                    console.log('Track uploading: ' + progress + '% done');
+                },
+                (error) => {
+                    // Xử lý lỗi
+                    console.error('Error uploading file:', error);
+                },
+                
+                () => {
+                    // Hoàn thành tải lên, lấy URL tải xuống
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        console.log('File uploaded successfully! Download URL:', downloadURL);
+                    });
+                }
+            );
+        } else {
+            console.error('No file selected.');
+        }
+
+        // Chọn file img từ người dùng
+
+        // CODE KHONG CHAY DUOC: Uncaught TypeError: Cannot read properties of null (reading 'files')
+        // const thumbnailFile = document.getElementById('input-thumbnail').files[0];
+
+        // CODE CHAY DUOC
+        const thumbnailFile = thumbnailInput.files[0];
+
+        // Check if thumbnail is uploaded
+        if (thumbnailFile) {
+            // Tạo một nhiệm vụ tải lên có khả năng tạm dừng
+            const uploadTask = uploadBytesResumable(ref(storageRefThumbnail, thumbnailFile.name), thumbnailFile);
+
+            // Theo dõi sự kiện tải lên
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    // Thực hiện theo dõi tiến trình tải lên (nếu cần)
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log('Thumbnail uploading: ' + progress + '% done');
                 },
                 (error) => {
                     // Xử lý lỗi
