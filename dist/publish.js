@@ -1,5 +1,5 @@
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js";
-import { app } from "./firebase-config.js";
+import { app, storage } from "./firebase-config.js";
 // import { } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 
 // PREVIEW THUMBNAIL-------------------------------
@@ -51,16 +51,11 @@ thumbnailInput.addEventListener('click', (event) => {
     event.stopPropagation();
 });
 
-// UPDATE CLOUDSTORE-------------------------------
-const title = document.getElementById("input-title").value,
-description = document.getElementById("input-description").value,
-btnConfirmPublish = document.getElementById("btn-confirm-publish");
+// UPDATE STORAGE-------------------------------
+const btnConfirmPublish = document.getElementById("btn-confirm-publish");
 
 // const storageRef = ref(storage, `${title}`);
 // await uploadBytes(storageRef, )
-
-// Lấy tham chiếu đến dịch vụ lưu trữ của Firebase
-const storage = getStorage(app);
 
 // Đặt tên cho thư mục con (child folder) trong dịch vụ lưu trữ
 const audioFolder = 'audio';
@@ -142,3 +137,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     }
 );
+
+// UPLOAD TO FIRESTORE DATABASE
+const title = document.getElementById("input-title").value,
+description = document.getElementById("input-description").value;
+
