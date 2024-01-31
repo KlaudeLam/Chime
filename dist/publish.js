@@ -1,11 +1,17 @@
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js";
-import { app, storage } from "./firebase-config.js";
+import { ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js";
+import {  } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+
+import { storage } from "./firebase-config.js";
 // import { } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 
 // PREVIEW THUMBNAIL-------------------------------
 const thumbnailInput = document.getElementById('input-thumbnail');
 const filenameLabel = document.getElementById('filename');
 const imagePreview = document.getElementById('image-preview');
+const thumbnailPreview = document.getElementById('thumbnail-preview');
+const thumbnailInputZone = document.getElementById('thumbnail-input-zone');
+
+
 
 // Check if the event listener has been added before
 let isEventListenerAdded = false;
@@ -14,29 +20,32 @@ thumbnailInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
 
     if (file) {
-    filenameLabel.textContent = file.name;
+        filenameLabel.textContent = file.name;
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        imagePreview.innerHTML =
-        `<img src="${e.target.result}" class="object-cover" alt="Image preview"/>`;
-        imagePreview.classList.remove('border-dashed', 'border-2', 'border-gray-400');
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            thumbnailPreview.innerHTML =
+            `<img src="${e.target.result}" class="object-cover" alt="Image preview"/>`;
+            imagePreview.classList.remove('border-dashed', 'border-2', 'border-gray-400');
+            thumbnailInputZone.style.display = "none";
 
-        // Add event listener for image preview only once
-        if (!isEventListenerAdded) {
-        imagePreview.addEventListener('click', () => {
-            thumbnailInput.click();
-        });
 
-        isEventListenerAdded = true;
-        }
-    };
-    reader.readAsDataURL(file);
+            // Add event listener for image preview only once
+            if (!isEventListenerAdded) {
+            imagePreview.addEventListener('click', () => {
+                thumbnailInput.click();
+            });
+
+            isEventListenerAdded = true;
+            }
+        };
+        reader.readAsDataURL(file);
     } else {
     filenameLabel.textContent = '';
-    imagePreview.innerHTML =
+    thumbnailPreview.innerHTML =
         `<div class="bg-gray-200 h-48 rounded-lg flex items-center justify-center text-gray-500">No image preview</div>`;
     imagePreview.classList.add('border-dashed', 'border-2', 'border-gray-400');
+    thumbnailInputZone.style.display = "none";
 
     // Remove the event listener when there's no image
     imagePreview.removeEventListener('click', () => {
@@ -100,12 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Chọn file img từ người dùng
-
-        // CODE KHONG CHAY DUOC: Uncaught TypeError: Cannot read properties of null (reading 'files')
-        // const thumbnailFile = document.getElementById('input-thumbnail').files[0];
-
-        // CODE CHAY DUOC
-        const thumbnailFile = thumbnailInput.files[0];
+        const thumbnailFile = document.getElementById('input-thumbnail').files[0];
 
         // Check if thumbnail is uploaded
         if (thumbnailFile) {
@@ -138,7 +142,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 );
 
-// UPLOAD TO FIRESTORE DATABASE
+// UPLOAD TO FIRESTORE DATABASE--------------------
 const title = document.getElementById("input-title").value,
 description = document.getElementById("input-description").value;
 
+const data = {
+    date: Date.now(),
+    title,
+    description,
+    // thumbnail: URL,
+    // track: URL,
+    // uid: auth.currentUser.uid,
+    // artist: auth.currentUser.displayName,
+    // research how to store thumbnail and tracck url
+}
