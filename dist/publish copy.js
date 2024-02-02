@@ -1,5 +1,5 @@
 import { ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js";
-import { collection, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+import {  } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
 import { storage, firestore } from "./firebase-config.js";
 // import { } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
@@ -59,47 +59,32 @@ thumbnailInput.addEventListener('click', (event) => {
 });
 
 // UPDATE STORAGE-------------------------------
+const btnConfirmPublish = document.getElementById("btn-confirm-publish");
+
+// const storageRef = ref(storage, `${title}`);
+// await uploadBytes(storageRef, )
+
+// Đặt tên cho thư mục con (child folder) trong dịch vụ lưu trữ
+const audioFolder = 'audio';
+const thumbnailFolder = 'thumbnail';
+
+const storageRefAudio = ref(storage, audioFolder);
+const storageRefThumbnail = ref(storage, thumbnailFolder);
+
 document.addEventListener('DOMContentLoaded', function() {
-    const btnConfirmPublish = document.getElementById("btn-confirm-publish");
 
-    // Lắng nghe sự kiện click cho nút publish
+    // Lắng nghe sự kiện click cho nút upload
     btnConfirmPublish.addEventListener('click', function() {
-
-        const title = document.getElementById("input-title").value;
-        const description = document.getElementById("input-description").value;
-
-        // Define object to be uploaded to Firestore
-        const data = {
-            date: Date.now(),
-            title,
-            description,
-            thumbnail: "",
-            track: "",
-            // uid: auth.currentUser.uid,
-            // artist: auth.currentUser.displayName,
-            // research how to store thumbnail and tracck url
-        }
-
-        // Đặt tên cho thư mục con (child folder) trong dịch vụ lưu trữ
-        const audioFolder = 'audio';
-        const thumbnailFolder = 'thumbnail';
-
-        // Ref to child folder
-        const storageRefAudio = ref(storage, audioFolder);
-        const storageRefThumbnail = ref(storage, thumbnailFolder);
-
-        // Chọn file mp3,v từ người dùng
+        // Chọn file mp3 từ người dùng
         const trackFile = document.getElementById('input-track').files[0];
-        const thumbnailFile = document.getElementById('input-thumbnail').files[0];
         
-        // Check if track and img is uploaded
-        if (trackFile && thumbnailFile) {
-            // Tạo một nhiệm vụ tải track, img lên có khả năng tạm dừng
-            const uploadTrackTask = uploadBytesResumable(ref(storageRefAudio, trackFile.name), trackFile);
-            const uploadThumbnailTask = uploadBytesResumable(ref(storageRefThumbnail, thumbnailFile.name), thumbnailFile)
+        // Check if track is uploaded
+        if (trackFile) {
+            // Tạo một nhiệm vụ tải lên có khả năng tạm dừng
+            const uploadTask = uploadBytesResumable(ref(storageRefAudio, trackFile.name), trackFile);
 
             // Theo dõi sự kiện tải lên
-            uploadTrackTask.on('state_changed',
+            uploadTask.on('state_changed',
                 (snapshot) => {
                     // Thực hiện theo dõi tiến trình tải lên (nếu cần)
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -112,15 +97,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 () => {
                     // Hoàn thành tải lên, lấy URL tải xuống
-                    getDownloadURL(uploadTrackTask.snapshot.ref).then((downloadURL) => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         console.log('File uploaded successfully! Download URL:', downloadURL);
-
-                        data["track"] = downloadURL;
                     });
                 }
             );
+        } else {
+            console.error('No file selected.');
+        }
 
-            uploadThumbnailTask.on('state_changed',
+        // Chọn file img từ người dùng
+        const thumbnailFile = document.getElementById('input-thumbnail').files[0];
+
+        // Check if thumbnail is uploaded
+        if (thumbnailFile) {
+            // Tạo một nhiệm vụ tải lên có khả năng tạm dừng
+            const uploadTask = uploadBytesResumable(ref(storageRefThumbnail, thumbnailFile.name), thumbnailFile);
+
+            // Theo dõi sự kiện tải lên
+            uploadTask.on('state_changed',
                 (snapshot) => {
                     // Thực hiện theo dõi tiến trình tải lên (nếu cần)
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -133,32 +128,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 () => {
                     // Hoàn thành tải lên, lấy URL tải xuống
-                    getDownloadURL(uploadThumbnailTask.snapshot.ref).then((downloadURL) => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         console.log('File uploaded successfully! Download URL:', downloadURL);
-
-                        data["thumbnail"] = downloadURL;
-
-                        console.log(data);
                     });
                 }
             );
         } else {
             console.error('No file selected.');
         }
-
-        // Upload to Firestore
-        const colRef = collection(firestore, "songs");
-        addDoc(colRef, data);
-
-        // Check Firestore
-        onSnapshot(colRef, (snapshot) => {
-            const output = [];
-            snapshot.docs.forEach((doc) => {
-                output.push({...doc.data()});
-            })
-            console.log(output);
-        })
     })
-});
+    }
+);
 
 // UPLOAD TO FIRESTORE DATABASE--------------------
+const title = document.getElementById("input-title").value,
+description = document.getElementById("input-description").value;
+
+const data = {
+    date: Date.now(),
+    title,
+    description,
+    // thumbnail: URL,
+    // track: URL,
+    // uid: auth.currentUser.uid,
+    // artist: auth.currentUser.displayName,
+    // research how to store thumbnail and tracck url
+}
