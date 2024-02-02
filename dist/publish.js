@@ -94,71 +94,83 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Check if track and img is uploaded
         if (trackFile && thumbnailFile) {
-            // Tạo một nhiệm vụ tải track, img lên có khả năng tạm dừng
-            const uploadTrackTask = uploadBytesResumable(ref(storageRefAudio, trackFile.name), trackFile);
-            const uploadThumbnailTask = uploadBytesResumable(ref(storageRefThumbnail, thumbnailFile.name), thumbnailFile)
-
-            // Theo dõi sự kiện tải lên
-            uploadTrackTask.on('state_changed',
-                (snapshot) => {
-                    // Thực hiện theo dõi tiến trình tải lên (nếu cần)
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Track uploading: ' + progress + '% done');
-                },
-                (error) => {
-                    // Xử lý lỗi
-                    console.error('Error uploading file:', error);
-                },
-                
-                () => {
-                    // Hoàn thành tải lên, lấy URL tải xuống
-                    getDownloadURL(uploadTrackTask.snapshot.ref).then((downloadURL) => {
-                        console.log('File uploaded successfully! Download URL:', downloadURL);
-
-                        data["track"] = downloadURL;
+            // Tạo một mảng các promises cho việc tải lên track và thumbnail
+            const uploadPromises = [];
+        
+            // Tạo một promise cho việc tải lên track
+            const trackUploadPromise = new Promise((resolve, reject) => {
+                const uploadTrackTask = uploadBytesResumable(ref(storageRefAudio, trackFile.name), trackFile);
+                uploadTrackTask.on(
+                    'state_changed',
+                    (snapshot) => {
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        console.log('Track uploading: ' + progress + '% done');
+                    },
+                    (error) => reject(error),
+                    () => {
+                        getDownloadURL(uploadTrackTask.snapshot.ref)
+                            .then((downloadURL) => {
+                                console.log('Track uploaded successfully! Download URL:', downloadURL);
+                                data["track"] = downloadURL;
+                                resolve();
+                            })
+                            .catch((error) => reject(error));
+                    }
+                );
+            });
+            uploadPromises.push(trackUploadPromise);
+        
+            // Tạo một promise cho việc tải lên thumbnail
+            const thumbnailUploadPromise = new Promise((resolve, reject) => {
+                const uploadThumbnailTask = uploadBytesResumable(ref(storageRefThumbnail, thumbnailFile.name), thumbnailFile);
+                uploadThumbnailTask.on(
+                    'state_changed',
+                    (snapshot) => {
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        console.log('Thumbnail uploading: ' + progress + '% done');
+                    },
+                    (error) => reject(error),
+                    () => {
+                        getDownloadURL(uploadThumbnailTask.snapshot.ref)
+                            .then((downloadURL) => {
+                                console.log('Thumbnail uploaded successfully! Download URL:', downloadURL);
+                                data["thumbnail"] = downloadURL;
+                                resolve();
+                            })
+                            .catch((error) => reject(error));
+                    }
+                );
+            });
+            uploadPromises.push(thumbnailUploadPromise);
+        
+            // Chờ cho cả hai tải lên hoàn thành r tải lên Firestore
+            Promise.all(uploadPromises)
+                .then(() => {
+                    // Sau khi cả hai tải lên hoàn thành, tiến hành upload vào Firestore
+                    const colRef = collection(firestore, "songs");
+                    addDoc(colRef, data)
+                        .then(() => {
+                            console.log("Data uploaded to Firestore successfully.");
+                        })
+                        .catch((error) => {
+                            console.error("Error uploading data to Firestore:", error);
+                        });
+        
+                    // Kiểm tra Firestore
+                    onSnapshot(colRef, (snapshot) => {
+                        const output = [];
+                        snapshot.docs.forEach((doc) => {
+                            output.push({...doc.data()});
+                        });
+                        console.log(output);
                     });
-                }
-            );
-
-            uploadThumbnailTask.on('state_changed',
-                (snapshot) => {
-                    // Thực hiện theo dõi tiến trình tải lên (nếu cần)
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Thumbnail uploading: ' + progress + '% done');
-                },
-                (error) => {
-                    // Xử lý lỗi
-                    console.error('Error uploading file:', error);
-                },
-                
-                () => {
-                    // Hoàn thành tải lên, lấy URL tải xuống
-                    getDownloadURL(uploadThumbnailTask.snapshot.ref).then((downloadURL) => {
-                        console.log('File uploaded successfully! Download URL:', downloadURL);
-
-                        data["thumbnail"] = downloadURL;
-
-                        console.log(data);
-                    });
-                }
-            );
+                })
+                .catch((error) => {
+                    console.error("Error uploading files:", error);
+                });
         } else {
             console.error('No file selected.');
         }
-
-        // Upload to Firestore
-        const colRef = collection(firestore, "songs");
-        addDoc(colRef, data);
-
-        // Check Firestore
-        onSnapshot(colRef, (snapshot) => {
-            const output = [];
-            snapshot.docs.forEach((doc) => {
-                output.push({...doc.data()});
-            })
-            console.log(output);
-        })
+        
     })
 });
-
-// UPLOAD TO FIRESTORE DATABASE--------------------
