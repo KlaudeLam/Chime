@@ -1,51 +1,29 @@
-import { signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
-import { auth } from './firebase-config.js';
+import { collection, query, orderBy, limit, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
+import { firestore } from './firebase-config.js';
+// CAROUSEL
 
-// BURGER MENU---------------------------------
-let hiddenMenu = document.getElementById("hidden-menu");
+// DISPLAY MUSIC
+const colRef = collection(firestore, "songs");
 
-document.getElementById("btn-hamburger").onclick = () => {
-    if (hiddenMenu.style.display == "none") {
-        hiddenMenu.style.position = "fixed";
-        hiddenMenu.style.display = "block";
-    } else {
-        hiddenMenu.style.display = "none";
-    }
-}
+// Order the documents by "date" in descending order - limit the result to 10 documents
+const songsQuery = query(colRef, orderBy("date", "desc"), limit(10));
 
-// LOG OUT--------------------------------------
-const navBtnLogOut = document.getElementById("nav-btn-log-out");
-const navBtnLogIn = document.getElementById("nav-btn-log-in");
-
-const Logout = () => {
-    signOut(auth).then(() => {
-    // Sign-out successful.
-        alert("Sign out successful");
-        localStorage.removeItem("isArtist");
-        localStorage.removeItem("email");
-        window.location.href = "home.html";
-    }).catch((error) => {
-    // An error happened.
-        alert("Sign out fail");
+// Execute the query
+getDocs(songsQuery)
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
+        const songInfo = doc.data();
+        // foreach: insert adjacent html
+        const recentlyReleased = document.getElementById("recently-released");
+        recentlyReleased.insertAdjacentHTML("beforeend", `
+            <div id='${doc.id}' class="category-content">
+                <img src="${songInfo.thumbnail}" alt="">
+                <div class="category-content-name">${songInfo.title}</div>
+                <a href="BTS" class="category-content-description">Artist</a>
+            </div>
+        `)
     });
-}
-
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.use
-      navBtnLogIn.style.display = "none";
-      navBtnLogOut.style.display = "block";
-      // ...
-    } else {
-      // User is signed out
-      navBtnLogIn.style.display = "block";
-      navBtnLogOut.style.display = "none";
-    }
-})
-
-navBtnLogOut.onclick =  () => {
-    Logout();
-}
-
-// if logged: btnLogout appear, btnLogin hidden (viceversa)
+  })
+  .catch((error) => {
+    console.error("Error getting documents: ", error);
+  });

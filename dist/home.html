@@ -249,7 +249,6 @@
                 
             </div>
             <div id="page-body" class="mb-20 flex flex-col gap-[24px] pl-[30px] py-[8px]">
-                
                 <div id="jump-back-on" class="category">
                     <div class="category-title">Jump back on</div>
                     <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
@@ -279,11 +278,16 @@
                         </a>
                     </div>
                 </div>
-                <div id="popular-albums" class="category">
-                    <div class="category-title">Popular albums</div>
+                <div class="category">
+                    <div class="category-title">Recently released</div>
                     <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
                     <!-- js: addAdjHTML -->
                     <!-- animation: think about scrolling effect -->
+                    <div id="recently-released" class="category-carousel flex gap-2">
+                    </div>
+                </div>
+                <!-- <div id="popular-albums" class="category">
+                    <div class="category-title">Popular albums</div>
                     <a href="Silverspoon">
                         <div class="category-content">
                             <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
@@ -294,9 +298,6 @@
                 </div>
                 <div id="playlists" class="category">
                     <div class="category-title">Playlists</div>
-                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
                     <a href="Silverspoon">
                         <div class="category-content">
                             <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
@@ -307,9 +308,6 @@
                 </div>
                 <div id="episodes-for-you" class="category">
                     <div class="category-title">Episodes for you</div>
-                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
                     <a href="Silverspoon">
                         <div class="category-content">
                             <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
@@ -320,14 +318,11 @@
                 </div>
                 <div id="fav-artists" class="category">
                     <div class="category-title">Fav artists</div>
-                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
                     <a class="category-content-artist" href="other-artist.html">
                         <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
                         <div class="category-content-artist-name">Vũ.</div>
                     </a>
-                </div>
+                </div> -->
                 <div id="upcoming-event" class="banner-display">
                     <!-- div (max 10): new release, world tour -->
                     <!-- js: addAdjHTML -->
@@ -371,7 +366,9 @@
             </footer>
         </div>
     </div>
+    <script type="module" src="common.js"></script>
     <script type="module" src="home.js"></script>
+
     <script type="module" src="musicplaying.js"></script>
     <script type="module" src="firebase-config.js"></script>
 </body>
