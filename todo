@@ -4,6 +4,7 @@ TODO
 + js: home
 - add carousel
 - add pagination
+- Home, lib: fix hover effect of songs
 
 BUG
 - burgermenu: double click
