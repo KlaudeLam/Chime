@@ -11,8 +11,10 @@ const imagePreview = document.getElementById('image-preview');
 const thumbnailPreview = document.getElementById('thumbnail-preview');
 const thumbnailInputZone = document.getElementById('thumbnail-input-zone');
 
-// Check if the event listener has been added before
-let isEventListenerAdded = false;
+imagePreview.onclick = (e) => {
+    e.preventDefault();
+    thumbnailInput.click();
+}
 
 thumbnailInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
@@ -26,16 +28,6 @@ thumbnailInput.addEventListener('change', (event) => {
             `<img src="${e.target.result}" class="object-cover" alt="Image preview"/>`;
             imagePreview.classList.remove('border-dashed', 'border-2', 'border-gray-400');
             thumbnailInputZone.style.display = "none";
-
-
-            // Add event listener for image preview only once
-            if (!isEventListenerAdded) {
-            imagePreview.addEventListener('click', () => {
-                thumbnailInput.click();
-            });
-
-            isEventListenerAdded = true;
-            }
         };
         reader.readAsDataURL(file);
     } else {
@@ -44,13 +36,6 @@ thumbnailInput.addEventListener('change', (event) => {
         `<div class="bg-gray-200 h-48 rounded-lg flex items-center justify-center text-gray-500">No image preview</div>`;
     imagePreview.classList.add('border-dashed', 'border-2', 'border-gray-400');
     thumbnailInputZone.style.display = "none";
-
-    // Remove the event listener when there's no image
-    imagePreview.removeEventListener('click', () => {
-        thumbnailInput.click();
-    });
-
-    isEventListenerAdded = false;
     }
 });
 
@@ -99,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             // Tạo một promise cho việc tải lên track
             const trackUploadPromise = new Promise((resolve, reject) => {
-                const uploadTrackTask = uploadBytesResumable(ref(storageRefAudio, trackFile.name), trackFile);
+                const uploadTrackTask = uploadBytesResumable(ref(storageRefAudio, `${title}.mp3`), trackFile);
                 uploadTrackTask.on(
                     'state_changed',
                     (snapshot) => {
@@ -150,10 +135,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     const colRef = collection(firestore, "songs");
                     addDoc(colRef, data)
                         .then(() => {
-                            console.log("Data uploaded to Firestore successfully.");
+                            alert("Data uploaded to Firestore successfully.");
                         })
                         .catch((error) => {
-                            console.error("Error uploading data to Firestore:", error);
+                            alert("Error uploading data to Firestore:", error);
                         });
         
                     // Kiểm tra Firestore
@@ -171,6 +156,5 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             console.error('No file selected.');
         }
-        
     })
 });
