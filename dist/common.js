@@ -21,8 +21,7 @@ const Logout = () => {
     signOut(auth).then(() => {
     // Sign-out successful.
         alert("Sign out successful");
-        localStorage.removeItem("isArtist");
-        localStorage.removeItem("email");
+        localStorage.clear();
         window.location.href = "home.html";
     }).catch((error) => {
     // An error happened.
