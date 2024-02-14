@@ -5,10 +5,10 @@ TODO
 - add carousel
 - add pagination
 - Home, lib: fix hover effect of songs
+- Publish: save track + thumbnail name as "title-artist.mp3/png"
+- Register: Console.log(account), alert("updated to firestore") after done updating
 
 BUG
-- burgermenu: double click
-- publish-image input: double choose file
 
 DONE
 - Favicon
@@ -16,6 +16,7 @@ DONE
 - fix the flex abnormity with user and noti icon
 - add the html to all nav options
 - top-bar: add hamburger hidden menu
+- publish-image input: double choose file
 
 ASK
 - Top-bar: Why sticky doesn't hide avatar but fixed does? 

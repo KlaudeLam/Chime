@@ -1,3 +1,61 @@
+<!-- Publish: img preview -->
+
+imagePreview.onclick = (e) => {
+    e.preventDefault();
+    thumbnailInput.click();
+}
+
+// Check if the event listener has been added before
+let isEventListenerAdded = false;
+
+thumbnailInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+        filenameLabel.textContent = file.name;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            thumbnailPreview.innerHTML =
+            `<img src="${e.target.result}" class="object-cover" alt="Image preview"/>`;
+            imagePreview.classList.remove('border-dashed', 'border-2', 'border-gray-400');
+            thumbnailInputZone.style.display = "none";
+
+
+            // Add event listener for image preview only once
+            if (!isEventListenerAdded) {
+            imagePreview.addEventListener('click', () => {
+                thumbnailInput.click();
+            });
+
+            isEventListenerAdded = true;
+            }
+        };
+        reader.readAsDataURL(file);
+    } else {
+    filenameLabel.textContent = '';
+    thumbnailPreview.innerHTML =
+        `<div class="bg-gray-200 h-48 rounded-lg flex items-center justify-center text-gray-500">No image preview</div>`;
+    imagePreview.classList.add('border-dashed', 'border-2', 'border-gray-400');
+    thumbnailInputZone.style.display = "none";
+
+    // Remove the event listener when there's no image
+    imagePreview.removeEventListener('click', () => {
+        thumbnailInput.click();
+    });
+
+    isEventListenerAdded = false;
+    }
+});
+
+thumbnailInput.addEventListener('click', (event) => {
+    event.stopPropagation();
+});
+
+
+
+
+
 *NAVBAR*
 <div class="min-w-[30%] w-[30%] flex items-center px-[24px] gap-6">
                         <div id="noti">
