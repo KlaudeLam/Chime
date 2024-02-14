@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
+import { collection, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
-import { auth, isArtist } from "./firebase-config.js";
+import { auth, isArtist, firestore } from "./firebase-config.js";
 
 // if isArtist: profile(publish, no playlist)
 // if !isArtist: profile(no publish, playlist)
@@ -26,13 +27,42 @@ const RegisterPage = () => {
     document.getElementById("btn-register").onclick = async () => {
         let email = document.getElementById('email-register').value;
         let password = document.getElementById('password-register').value;
+        let username = document.getElementById('username-register').value;
+        let isArtist = localStorage.getItem("isArtist");
+        // let user = userCredential.user;
+
         const isSuccess = await Register(auth, email, password);
         // Inheritance of OOP: isChecked is a local variable of Register
         // After assigning Register to isSuccess -> isSuccess can use isChecked
         if (isSuccess.isChecked) {
-            alert("Register successful");
-            localStorage.setItem("email", email);
-            window.location.href = "home.html";
+            // Compile acc info
+            const data = {
+              dateRegistration: Date.now(),
+              // userID: user.uid,
+              email,
+              username,
+              isArtist,
+            };
+            // Upload acc info to Firestore
+            const colRef = collection(firestore, "accounts");
+            addDoc(colRef, data)
+              .then(() => {
+                // Kiểm tra Firestore
+                onSnapshot(colRef, (snapshot) => {
+                  const output = [];
+                  snapshot.docs.forEach((doc) => {
+                      output.push({...doc.data()});
+                  });
+                  console.log(output);
+                });
+
+                alert("Register successful");
+                localStorage.setItem("email", email);
+                window.location.href = "home.html";
+              })
+              .catch((error) => {
+                alert("Error uploading data to Firestore:", error);
+              })  
         } else {
             alert("Register fail");
         }
