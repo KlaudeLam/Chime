@@ -1,10 +1,7 @@
 import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
+import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
-import { auth, isArtist } from "./firebase-config.js";
-
-// if isArtist: profile(publish, no playlist)
-// if !isArtist: profile(no publish, playlist)
-isArtist();
+import { auth, firestore } from "./firebase-config.js";
 
 const Login = async (auth, email, password) => {
   let isChecked;
@@ -30,8 +27,21 @@ const LoginPage = () => {
   // Inheritance of OOP: isChecked is a local variable of Login
   // After assigning Login to isSuccess -> isSuccess can use isChecked
   if (isSuccess.isChecked) {
+      // fetch info from "accounts" collection on Firebase Firestore
+      const colRef = collection(firestore, "accounts");
+      const querySnapshot = await getDocs(query(colRef, where("email", "==", email)));
+      querySnapshot.forEach(doc => {
+        // Get data from the document
+        const data = doc.data();
+        // Loop through the keys in the document data
+        for (const key in data) {
+          if (data.hasOwnProperty(key)) {
+            // Set each key-value pair to local storage
+            localStorage.setItem(key, data[key]);
+          }
+        }
+      });
       alert("Log in successful");
-      localStorage.setItem("email", email);
       window.location.href = "home.html";
   } else {
       alert("Log in fail");

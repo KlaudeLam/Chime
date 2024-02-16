@@ -43,6 +43,12 @@ const RegisterPage = () => {
               username,
               isArtist,
             };
+            // Upload acc info to localStorage
+            for (const key in data) {
+              if (data.hasOwnProperty(key)) {
+                localStorage.setItem(key, data[key]);
+              }
+            }
             // Upload acc info to Firestore
             const colRef = collection(firestore, "accounts");
             addDoc(colRef, data)
@@ -56,8 +62,8 @@ const RegisterPage = () => {
                   console.log(output);
                 });
 
-                alert("Register successful");
                 localStorage.setItem("email", email);
+                alert("Register successful");
                 window.location.href = "home.html";
               })
               .catch((error) => {
