@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const title = document.getElementById("input-title").value;
         const description = document.getElementById("input-description").value;
+        const artist = localStorage.getItem("username");
 
         // Define object to be uploaded to Firestore
         const data = {
@@ -61,8 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             thumbnail: "",
             track: "",
             // uid: auth.currentUser.uid,
-            // artist: auth.currentUser.displayName,
-            // research how to store thumbnail and tracck url
+            artist,
         }
 
         // Đặt tên cho thư mục con (child folder) trong dịch vụ lưu trữ
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             // Tạo một promise cho việc tải lên track
             const trackUploadPromise = new Promise((resolve, reject) => {
-                const uploadTrackTask = uploadBytesResumable(ref(storageRefAudio, `${title}.mp3`), trackFile);
+                const uploadTrackTask = uploadBytesResumable(ref(storageRefAudio, `${title} - ${artist}.mp3`), trackFile);
                 uploadTrackTask.on(
                     'state_changed',
                     (snapshot) => {
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             // Tạo một promise cho việc tải lên thumbnail
             const thumbnailUploadPromise = new Promise((resolve, reject) => {
-                const uploadThumbnailTask = uploadBytesResumable(ref(storageRefThumbnail, thumbnailFile.name), thumbnailFile);
+                const uploadThumbnailTask = uploadBytesResumable(ref(storageRefThumbnail, `${title} - ${artist}.jpg`), thumbnailFile);
                 uploadThumbnailTask.on(
                     'state_changed',
                     (snapshot) => {
