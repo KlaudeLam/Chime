@@ -2,11 +2,28 @@ import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebase
 import { collection, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
 import { auth, isArtist, firestore } from "./firebase-config.js";
+import { changeBtnStatus } from './common.js';
 
-// if isArtist: profile(publish, no playlist)
-// if !isArtist: profile(no publish, playlist)
+// Function: Artist Validation-------------------
+export const isArtist = () => {
+  localStorage.setItem("isArtist", false);
+
+  document.getElementById("asUser").onclick = () => {
+  changeBtnStatus("asUser", "#ff6176", "#ffffff");
+  changeBtnStatus("asArtist", "#ffd3da", "black");
+  localStorage.setItem("isArtist", false);
+  }
+
+  document.getElementById("asArtist").onclick = () => {
+  changeBtnStatus("asArtist", "#ff6176", "#ffffff");
+  changeBtnStatus("asUser", "#ffd3da", "black");
+  localStorage.setItem("isArtist", true);
+  }
+}
+
 isArtist();
 
+// Function: Register------------------------------
 const Register = async (auth, email, password) => {
   let isChecked;
   let info;
