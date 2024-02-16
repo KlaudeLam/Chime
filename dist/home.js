@@ -12,14 +12,14 @@ const songsQuery = query(colRef, orderBy("date", "desc"), limit(10));
 getDocs(songsQuery)
   .then((snapshot) => {
     snapshot.forEach((doc) => {
-        const songInfo = doc.data();
+        const data = doc.data();
         // foreach: insert adjacent html
         const recentlyReleased = document.getElementById("recently-released");
         recentlyReleased.insertAdjacentHTML("beforeend", `
             <div id='${doc.id}' class="category-content">
-                <img src="${songInfo.thumbnail}" alt="">
-                <div class="category-content-name">${songInfo.title}</div>
-                <a href="BTS" class="category-content-description">Artist</a>
+                <img src="${data.thumbnail}" alt="">
+                <div class="category-content-name">${data.title}</div>
+                <a href="BTS" class="category-content-description">${data.artist}</a>
             </div>
         `)
     });

@@ -1,13 +1,4 @@
-import { firestore } from "./firebase-config.js";
-import { collection, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
-
-// delete button appear on each song (red circle with white X)
-
-// noti: "u rlly wanna delete?"
-// yes: del doc from "songs"
-// no: nothing happen
-
-import { changeBtnStatus } from "./common.js";
+import { changeBtnStatus } from './common.js';
 
 // ARTIST/USER PAGE-BODY DISPLAY-------------------------------
 const isArtist = localStorage.getItem("isArtist");
@@ -18,18 +9,44 @@ const username = localStorage.getItem("username");
 
 usernameDisplay.innerHTML = `${username}`;
 
-if (isArtist == "true") {
-    // change button to "publish"
-    userHeaderInfo.insertAdjacentHTML("beforeend", `<a href="publish.html" class="w-fit"><button id="btn-publish" class="block rounded-full bg-bittersweet hover:bg-darkbitterswwet font-semibold text-sm text-white w-fit mt-2 px-4 py-2">Publish</button></a>`);
-    // show published tracks
+if (isArtist == "false") {
+    // change button to "Add playlist"
+    userHeaderInfo.insertAdjacentHTML("beforeend", `<button id="btn-add-playlist" class="block rounded-full bg-bittersweet hover:bg-darkbitterswwet font-semibold text-sm text-white w-fit mt-2 px-4 py-2">Add playlist</button>`);
+    // show saved tracks
     pageBody.innerHTML = `
     <div class="flex gap-2 mb-5">
-        <button id="btn-your-tracks" class="w-fit rounded-3xl bg-bittersweet text-white py-2 px-4 text-sm">Tracks</button>
+        <button id="btn-your-playlists" class="w-fit rounded-3xl bg-bittersweet text-white py-2 px-4 text-sm">Playlists</button>
         <button id="btn-your-episodes" class="w-fit rounded-3xl bg-[#ffd3da] text-black py-2 px-4 text-sm">Episodes</button>
+        <button id="btn-your-artists" class="w-fit rounded-3xl bg-[#ffd3da] text-black py-2 px-4 text-sm">Artists</button>
     </div>
-    <div id="your-tracks" class="category">
-        <div class="category-title">Your tracks</div>
-        <div id="your-tracks-content" class="category-carousel flex gap-2"></div>
+    <div id="your-playlists" class="category">
+        <div class="category-title">Your playlists</div>
+        <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
+        <!-- js: addAdjHTML -->
+        <!-- animation: think about scrolling effect -->
+        <div class="flex gap-2">
+            <a href="Silverspoon">
+                <div class="category-content">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                    <div class="category-content-name">Silver Spoon</div>
+                    <a href="BTS" class="category-content-description">BTS</a>
+                </div>
+            </a>
+            <a href="Silverspoon">
+                <div class="category-content">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                    <div class="category-content-name">Silver Spoon</div>
+                    <a href="BTS" class="category-content-description">BTS</a>
+                </div>
+            </a>
+            <a href="Silverspoon">
+                <div class="category-content">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                    <div class="category-content-name">Silver Spoon</div>
+                    <a href="BTS" class="category-content-description">BTS</a>
+                </div>
+            </a>
+        </div>
         <div class="pagination w-full flex justify-center items-center gap-4 mt-7">
             <button
                 class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-full select-none active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -99,39 +116,54 @@ if (isArtist == "true") {
             </div>
         </a>
     </div>
+    <div id="your-artists" class="category hidden">
+        <div class="category-title">Your fav artists</div>
+        <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
+        <!-- js: addAdjHTML -->
+        <!-- animation: think about scrolling effect -->
+        <a class="category-content-artist" href="Silverspoon">
+            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+            <div class="category-content-artist-name">Vũ.</div>
+        </a>
+    </div>
+    <div id="your-upcoming-event" class="banner-display">
+        <!-- div (max 10): new release, world tour -->
+        <!-- js: addAdjHTML -->
+        <!-- animation: think about scrolling effect -->
+        <a href="songlink"><img src="https://phinf.wevpstatic.net/MjAyMjExMTNfMTIg/MDAxNjY4MzIwNjY1MzE1._NqU1ohf8ye8tENAlepfRkbSL5ffDVP--OUqDYRtdC8g.Y5DXfYhapx1mRlcuLb4m2iqjnjSvbA9CpzJ8plTudvIg.PNG/5fd17eb0-f99a-4955-a7ef-5aeb1fd089b0.png" alt=""></a>
+        
+        <!-- https://0.soompi.io/wp-content/uploads/2022/05/06090034/BTS-12.jpg -->
+    </div>
     `
 
     // BUTTONS-------------------------------------
-    document.getElementById("btn-your-tracks").onclick = () => {
-        changeBtnStatus("btn-your-tracks", "#ff6176", "#ffffff");
+    document.getElementById("btn-your-playlists").onclick = () => {
+        changeBtnStatus("btn-your-playlists", "#ff6176", "#ffffff");
         changeBtnStatus("btn-your-episodes", "#ffd3da", "black");
+        changeBtnStatus("btn-your-artists", "#ffd3da", "black");
 
-        document.getElementById('your-tracks').style.display = "block";
+        document.getElementById('your-playlists').style.display = "block";
         document.getElementById('your-episodes').style.display = "none";
+        document.getElementById('your-artists').style.display = "none";
     }
 
     document.getElementById("btn-your-episodes").onclick = () => {
         changeBtnStatus("btn-your-episodes", "#ff6176", "#ffffff");
-        changeBtnStatus("btn-your-tracks", "#ffd3da", "black");
+        changeBtnStatus("btn-your-playlists", "#ffd3da", "black");
+        changeBtnStatus("btn-your-artists", "#ffd3da", "black");
 
         document.getElementById('your-episodes').style.display = "block";
-        document.getElementById('your-tracks').style.display = "none";
+        document.getElementById('your-playlists').style.display = "none";
+        document.getElementById('your-artists').style.display = "none";
     }
 
-    // 
-    const yourTracksContent = document.getElementById("your-tracks-content");
-    const colRef = collection(firestore, "songs");
+    document.getElementById("btn-your-artists").onclick = () => {
+        changeBtnStatus("btn-your-artists", "#ff6176", "#ffffff");
+        changeBtnStatus("btn-your-episodes", "#ffd3da", "black");
+        changeBtnStatus("btn-your-playlists", "#ffd3da", "black");
 
-    const querySnapshot = await getDocs(query(colRef, where("artist", "==", username)));
-
-    querySnapshot.forEach(doc => {
-        const data = doc.data();
-        yourTracksContent.insertAdjacentHTML("beforeend", `
-            <div id='${doc.id}' class="category-content">
-                <img src="${data.thumbnail}" alt="">
-                <div class="category-content-name">${data.title}</div>
-                <a href="BTS" class="category-content-description">${data.artist}</a>
-            </div>
-        `)
-    })
+        document.getElementById('your-artists').style.display = "block";
+        document.getElementById('your-episodes').style.display = "none";
+        document.getElementById('your-playlists').style.display = "none";
+    }
 }

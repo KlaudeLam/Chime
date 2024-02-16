@@ -1,13 +1,12 @@
 TODO
 - link to all HTML: 
 + html: left-bar, bottom-bar, nav-bar
-+ js: home
++ js: common (call all the functions in script tag)
 - add carousel
 - add pagination
 - Home, lib: fix hover effect of songs
-- Publish: save track + thumbnail name as "title-artistname.mp3/png"
-
-
+- lke ra nhung path ko dc vao (clicked --> alert(please log in first --> href.login))
+- Lib (artist): Delete tracks
 
 BUG
 
@@ -19,6 +18,8 @@ DONE
 - top-bar: add hamburger hidden menu
 - publish-image input: double choose file
 - Register, login: set login info to localSotrage, Console.log(account), alert("updated to firestore") after done updating
+- Publish: save track + thumbnail name as "title-artistname.mp3/png"
+- Lib: Display username
 
 ASK
 - Top-bar: Why sticky doesn't hide avatar but fixed does? 
