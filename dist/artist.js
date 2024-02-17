@@ -1,5 +1,5 @@
 import { firestore } from "./firebase-config.js";
-import { collection, query, where, getDocs, orderBy, limit } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
+import { collection, query, where, getDocs, orderBy, limit, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 
 // delete button appear on each song (red circle with white X)
 
@@ -146,6 +146,18 @@ if (isArtist == "true") {
         btnDel.addEventListener("click", () => {
             const idDel = btnDel.id.slice(4);
             
+            const modal = document.getElementById("modal");
+            modal.classList.remove("hidden");
+
+            document.getElementById("btnYes").addEventListener("click", async () => {
+                await deleteDoc(doc(firestore, "songs", idDel))
+                modal.classList.add("hidden");
+                location.reload();
+            })
+
+            document.getElementById("btnNo").addEventListener("click", () => {
+                modal.classList.add("hidden");
+            })
             
         })
     })
