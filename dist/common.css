@@ -47,6 +47,7 @@ nav img, #noti img, #account img {
     margin-bottom: 20px;
 }
 .category-carousel {
+    padding: 1rem 0;
     overflow: hidden;
 }
 .category-content { 
@@ -69,6 +70,8 @@ nav img, #noti img, #account img {
     border-radius: 6%;
     margin-bottom: 16px;
     object-fit: cover;
+    width: 100%;
+    aspect-ratio: 1/1;
 }
 .category-content-name, .player-song {
     font-weight: 600;

@@ -14,6 +14,7 @@ export const burgermenu = () =>  {
         }
     }
 }
+
 // LOG OUT--------------------------------------
 export const logout = () => {
     const navBtnLogOut = document.getElementById("nav-btn-log-out");
