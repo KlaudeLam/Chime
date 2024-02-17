@@ -1,11 +1,7 @@
 import { firestore } from "./firebase-config.js";
-import { collection, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
+import { collection, query, where, getDocs, orderBy, limit } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 
 // delete button appear on each song (red circle with white X)
-
-// noti: "u rlly wanna delete?"
-// yes: del doc from "songs"
-// no: nothing happen
 
 import { changeBtnStatus } from "./common.js";
 
@@ -100,7 +96,6 @@ if (isArtist == "true") {
         </a>
     </div>
     `
-
     // BUTTONS-------------------------------------
     document.getElementById("btn-your-tracks").onclick = () => {
         changeBtnStatus("btn-your-tracks", "#ff6176", "#ffffff");
@@ -118,20 +113,40 @@ if (isArtist == "true") {
         document.getElementById('your-tracks').style.display = "none";
     }
 
-    // 
+    // DISPLAY PUBLICATION----------------------------
     const yourTracksContent = document.getElementById("your-tracks-content");
     const colRef = collection(firestore, "songs");
 
-    const querySnapshot = await getDocs(query(colRef, where("artist", "==", username)));
+    const querySnapshot = await getDocs(query(colRef, where("artist", "==", username), orderBy("date", "desc"), limit(10)));
 
     querySnapshot.forEach(doc => {
         const data = doc.data();
         yourTracksContent.insertAdjacentHTML("beforeend", `
-            <div id='${doc.id}' class="category-content">
+            <div id='${doc.id}' class="category-content relative">
                 <img src="${data.thumbnail}" alt="">
                 <div class="category-content-name">${data.title}</div>
                 <a href="BTS" class="category-content-description">${data.artist}</a>
+                <span id='del-${doc.id}' class="absolute top-0 right-0 cursor-pointer -translate-y-1/2  rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 122.88 122.879" enable-background="new 0 0 122.88 122.879" xml:space="preserve">
+                    <title>Delete track</title>
+                    <g><path fill="#ff3f5f" d="M61.44,0c16.96,0,32.328,6.882,43.453,17.986c11.104,11.125,17.986,26.494,17.986,43.453 c0,16.961-6.883,32.328-17.986,43.453C93.769,115.998,78.4,122.879,61.44,122.879c-16.96,0-32.329-6.881-43.454-17.986 C6.882,93.768,0,78.4,0,61.439C0,44.48,6.882,29.111,17.986,17.986C29.112,6.882,44.48,0,61.44,0L61.44,0z M73.452,39.152 c2.75-2.792,7.221-2.805,9.986-0.026c2.764,2.776,2.775,7.292,0.027,10.083L71.4,61.445l12.077,12.25 c2.728,2.77,2.689,7.256-0.081,10.021c-2.772,2.766-7.229,2.758-9.954-0.012L61.445,71.541L49.428,83.729 c-2.75,2.793-7.22,2.805-9.985,0.025c-2.763-2.775-2.776-7.291-0.026-10.082L51.48,61.435l-12.078-12.25 c-2.726-2.769-2.689-7.256,0.082-10.022c2.772-2.765,7.229-2.758,9.954,0.013L61.435,51.34L73.452,39.152L73.452,39.152z M96.899,25.98C87.826,16.907,75.29,11.296,61.44,11.296c-13.851,0-26.387,5.611-35.46,14.685 c-9.073,9.073-14.684,21.609-14.684,35.459s5.611,26.387,14.684,35.459c9.073,9.074,21.609,14.686,35.46,14.686 c13.85,0,26.386-5.611,35.459-14.686c9.073-9.072,14.684-21.609,14.684-35.459S105.973,35.054,96.899,25.98L96.899,25.98z"/></g></svg>
+                </span>
             </div>
         `)
+    })
+    // DELETE BUTTON-------------------------
+    // delete button on click: store ID to LS
+    // noti: "u rlly wanna delete?", body: overflow-hidden to prevent scrolling
+        // yes: del doc from "songs" -> delete LS -> hide modal
+        // no: delete LS -> hide modal
+
+    const btnDels = document.querySelectorAll('[id^="del-"]');
+
+    btnDels.forEach(btnDel => {
+        btnDel.addEventListener("click", () => {
+            const idDel = btnDel.id.slice(4);
+            
+            
+        })
     })
 }
