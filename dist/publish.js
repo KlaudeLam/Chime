@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Lắng nghe sự kiện click cho nút publish
     btnConfirmPublish.addEventListener('click', function() {
+        alert("Publication may take some seconds.");
 
         const title = document.getElementById("input-title").value;
         const description = document.getElementById("input-description").value;
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Tạo một mảng các promises cho việc tải lên track và thumbnail
             const uploadPromises = [];
         
-            // Tạo một promise cho việc tải lên track
+            // Tạo một promise cho việc tải track
             const trackUploadPromise = new Promise((resolve, reject) => {
                 const uploadTrackTask = uploadBytesResumable(ref(storageRefAudio, `${title} - ${artist}.mp3`), trackFile);
                 uploadTrackTask.on(
@@ -129,32 +130,47 @@ document.addEventListener('DOMContentLoaded', function() {
             uploadPromises.push(thumbnailUploadPromise);
         
             // Chờ cho cả hai tải lên hoàn thành r tải lên Firestore
-            Promise.all(uploadPromises)
-                .then(() => {
-                    // Sau khi cả hai tải lên hoàn thành, tiến hành upload vào Firestore
-                    const colRef = collection(firestore, "songs");
-                    addDoc(colRef, data)
-                        .then(() => {
-                            alert("Data uploaded to Firestore successfully.");
-                        })
-                        .catch((error) => {
-                            alert("Error uploading data to Firestore:", error);
+            const upload = new Promise((resolve, reject) => {
+                Promise.all(uploadPromises)
+                    .then(() => {
+                        // Sau khi cả hai tải lên hoàn thành, tiến hành upload vào Firestore
+                        const colRef = collection(firestore, "songs");
+                        addDoc(colRef, data)
+                            .then(() => {
+                                alert("Data uploaded to Firestore successfully.");
+                                resolve();
+                            })
+                            .catch((error) => {
+                                alert("Error uploading data to Firestore:", error);
+                                reject();
+                            });
+            
+                        // Kiểm tra Firestore
+                        onSnapshot(colRef, (snapshot) => {
+                            const output = [];
+                            snapshot.docs.forEach((doc) => {
+                                output.push({...doc.data()});
+                            });
+                            console.log(output);
                         });
-        
-                    // Kiểm tra Firestore
-                    onSnapshot(colRef, (snapshot) => {
-                        const output = [];
-                        snapshot.docs.forEach((doc) => {
-                            output.push({...doc.data()});
-                        });
-                        console.log(output);
+                        
+                    })
+                    .catch((error) => {
+                        console.error("Error uploading files:", error);
+                        reject();
                     });
-                })
-                .catch((error) => {
-                    console.error("Error uploading files:", error);
-                });
+            })
+
+            upload.then(() => {
+                // Redirect
+                window.location.href = "home.html";
+            })
+        
         } else {
             console.error('No file selected.');
         }
+        
+        
+        
     })
 });
