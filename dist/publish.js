@@ -169,8 +169,5 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             alert('Please fill in all fields.');
         }
-        
-        
-        
     })
 });

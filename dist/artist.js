@@ -207,8 +207,7 @@ if (isArtist == "true") {
 
             document.getElementById("btnNo").addEventListener("click", () => {
                 modal.classList.add("hidden");
-            })
-            
+            })  
         })
     })
 }

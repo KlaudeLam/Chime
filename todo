@@ -1,16 +1,18 @@
 TODO
 - link to all HTML: 
-+ html: left-bar, bottom-bar, nav-bar
++ html: favicon, left-bar, bottom-bar, nav-bar
 + js: common (call all the functions in script tag)
 - add carousel
 - add pagination
 - Home, lib: fix hover effect of songs
 - lke ra nhung path ko dc vao (clicked --> alert(please log in first --> href.login))
 - LS: forbid user from changing data
-- Lib: If there is no data -->print "nothing yet"
+- Lib: For class category --> If there is no data --> print "nothing yet"
+- Rearrange all files, change import ref (../filename)
 
 BUG
 - artist.js - display publication: Why do I have to create index??????
+- Bottom bar: progressing bar can't be tua
 
 DONE
 - Favicon
