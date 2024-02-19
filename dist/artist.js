@@ -1,7 +1,6 @@
-import { firestore } from "./firebase-config.js";
-import { collection, query, where, getDocs, orderBy, limit, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
-
-// delete button appear on each song (red circle with white X)
+import { firestore, storage } from "./firebase-config.js";
+import { collection, query, where, getDocs, getDoc, orderBy, limit, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
+import { ref, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js';
 
 import { changeBtnStatus } from "./common.js";
 
@@ -16,7 +15,7 @@ usernameDisplay.innerHTML = `${username}`;
 
 if (isArtist == "true") {
     // change button to "publish"
-    userHeaderInfo.insertAdjacentHTML("beforeend", `<a href="publish.html" class="w-fit"><button id="btn-publish" class="block rounded-full bg-bittersweet hover:bg-darkbitterswwet font-semibold text-sm text-white w-fit mt-2 px-4 py-2">Publish</button></a>`);
+    userHeaderInfo.insertAdjacentHTML("beforeend", `<a href="publish.html" class="w-fit"><button id="btn-publish" class="block rounded-full bg-bittersweet hover:bg-darkbitterswwet hover:font-semibold text-sm text-white w-fit mt-2 px-4 py-2">Publish</button></a>`);
     // show published tracks
     pageBody.innerHTML = `
     <div class="flex gap-2 mb-5">
@@ -96,7 +95,7 @@ if (isArtist == "true") {
         </a>
     </div>
     `
-    // BUTTONS-------------------------------------
+    // TOP PAGE BUTTONS-------------------------------------
     document.getElementById("btn-your-tracks").onclick = () => {
         changeBtnStatus("btn-your-tracks", "#ff6176", "#ffffff");
         changeBtnStatus("btn-your-episodes", "#ffd3da", "black");
@@ -123,9 +122,11 @@ if (isArtist == "true") {
         const data = doc.data();
         yourTracksContent.insertAdjacentHTML("beforeend", `
             <div id='${doc.id}' class="category-content relative">
+            
                 <img src="${data.thumbnail}" alt="">
                 <div class="category-content-name">${data.title}</div>
-                <a href="BTS" class="category-content-description">${data.artist}</a>
+                <a class="category-content-description">${data.artist}</a>
+
                 <span id='del-${doc.id}' class="absolute top-0 right-0 cursor-pointer -translate-y-1/2  rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 122.88 122.879" enable-background="new 0 0 122.88 122.879" xml:space="preserve">
                     <title>Delete track</title>
@@ -134,25 +135,74 @@ if (isArtist == "true") {
             </div>
         `)
     })
-    // DELETE BUTTON-------------------------
-    // delete button on click: store ID to LS
-    // noti: "u rlly wanna delete?", body: overflow-hidden to prevent scrolling
-        // yes: del doc from "songs" -> delete LS -> hide modal
-        // no: delete LS -> hide modal
 
+    if (querySnapshot.empty) {
+        document.getElementById("your-tracks").innerHTML = `
+            <div class="flex flex-col justify-center items-center gap-[24px]">
+                <img class="w-1/3 max-sm:w-1/2" src="./img/empty-box.png">
+                <div>It's empty. Let's publish some tracks!</div>
+            </div>
+        `
+    }
+
+    // DELETE BUTTON-------------------------
     const btnDels = document.querySelectorAll('[id^="del-"]');
 
     btnDels.forEach(btnDel => {
-        btnDel.addEventListener("click", () => {
+        btnDel.addEventListener("click", async () => {
             const idDel = btnDel.id.slice(4);
+            const snapshot = await getDoc(doc(firestore, "songs", idDel));
+            const data = snapshot.data();
             
             const modal = document.getElementById("modal");
             modal.classList.remove("hidden");
 
             document.getElementById("btnYes").addEventListener("click", async () => {
-                await deleteDoc(doc(firestore, "songs", idDel))
-                modal.classList.add("hidden");
-                location.reload();
+                alert("Delete may take some seconds. Click OK to proceed.");
+
+                // Tạo một mảng các promises cho việc tải lên track và thumbnail
+                const allPromises = [];
+
+                // Delete doc on Firestore
+                await deleteDoc(doc(firestore, "songs", idDel));
+                console.log("done delete from firestore");
+
+                // Promise: Delete track on Storage
+                const deleteTrackPromise = new Promise((resolve, reject) => {
+                    const trackRef = ref(storage, `audio/${data.title} - ${data.artist}.mp3`);
+
+                    deleteObject(trackRef).then(() => {
+                        console.log("Track deleted successfully");
+                        resolve();
+                    }).catch((error) => {
+                        console.log(error);
+                        reject(error);
+                    });
+                });
+
+                allPromises.push(deleteTrackPromise);
+
+                // Promise: Delete thumbnail on Storage
+                const deleteThumbnailPromise = new Promise((resolve, reject) => {
+                    const thumbnailRef = ref(storage, `thumbnail/${data.title} - ${data.artist}.jpg`);
+
+                    deleteObject(thumbnailRef).then(() => {
+                        console.log("Thumbnail deleted successfully");
+                        resolve();
+                    }).catch((error) => {
+                        console.log(error);
+                        reject(error);
+                    });
+                });
+
+                allPromises.push(deleteThumbnailPromise);
+
+                // If all promise resolve: close modal and reload page
+                Promise.all(allPromises)
+                .then(() => {
+                    modal.classList.add("hidden");
+                    location.reload();
+                })
             })
 
             document.getElementById("btnNo").addEventListener("click", () => {

@@ -136,7 +136,7 @@ if (isArtist == "false") {
     </div>
     `
 
-    // BUTTONS-------------------------------------
+    // TOP PAGE BUTTONS-------------------------------------
     document.getElementById("btn-your-playlists").onclick = () => {
         changeBtnStatus("btn-your-playlists", "#ff6176", "#ffffff");
         changeBtnStatus("btn-your-episodes", "#ffd3da", "black");
