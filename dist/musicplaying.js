@@ -1,38 +1,22 @@
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+
+import { firestore } from "./firebase-config.js";
+
 const thumbnail = document.getElementById("player-cover"),
 title = document.getElementById('player-song'),
 artist = document.getElementById('player-artist'),
-currentTimeEl = document.getElementById('current-time'),
-durationEl = document.getElementById('duration'),
-playerProgress = document.getElementById('player-progress'),
-progress = document.getElementById('progress'),
+currentTimeEl = document.querySelectorAll('.current-time'),
+durationEl = document.querySelectorAll('.duration'),
+playerProgress = document.querySelectorAll('.player-progress'),
+progress = document.querySelectorAll('.progress'),
 btnPrev = document.getElementById('btn-prev'),
 btnNext = document.getElementById('btn-next'),
-btnPlay = document.getElementById('btn-play'),
-btnPause = document.getElementById('btn-pause'),
+btnPlay = document.querySelectorAll('.btn-play'),
+btnPause = document.querySelectorAll('.btn-pause'),
 btnLoop = document.getElementById('btn-loop'),
 btnShuffle = document.getElementById('btn-shuffle');
 
 const music = new Audio();
-const songs = [
-    {
-        path: 'testmp3/Hizamazuke Butadomo Ga_No Name (Levi, Hange, Miike)_-5913017.mp3',
-        songName: 'Hizamazuke',
-        cover: 'img/bts slick poster.jpg',
-        artist: 'artist 1',
-    },
-    {
-        path: 'testmp3/Mahoutsukai no Yome OP-Opening Full 「Here - JUNNA」- Cover by Kami (192  kbps) (imp3juices.com).mp3',
-        songName: 'Mahoutsukai',
-        cover: 'img/le sserafim poster.jpg',
-        artist: 'artist 2',
-    },
-    {
-        path: 'testmp3/Shelter Porter Robinson_Porter Robinson_-6288842.mp3',
-        songName: 'Shelter',
-        cover: 'img/chime-logo.jpg',
-        artist: 'artist 3',
-    },
-];
 
 let musicIndex = 0;
 let isPlaying = false;
@@ -48,24 +32,32 @@ const togglePlay = () => {
 const playMusic = () => {
     isPlaying = true;
     // change play button icon - set button hover title
-    btnPause.style.display = 'block';
-    btnPlay.style.display = 'none';
+    btnPause.forEach(btn => {
+        btn.style.display = 'block';
+    });
+    btnPlay.forEach(btn => {
+        btn.style.display = 'none';
+    });
     music.play();
 }
 
 const pauseMusic = () => {
     isPlaying = false;
     // change play button icon - set button hover title
-    btnPause.style.display = 'none';
-    btnPlay.style.display = 'block';
+    btnPause.forEach(btn => {
+        btn.style.display = 'none';
+    });
+    btnPlay.forEach(btn => {
+        btn.style.display = 'block';
+    });
     music.pause();
 }
 
 const loadMusic = (song) => {
-    music.src = song.path;
-    title.textContent = song.songName;
+    music.src = song.track;
+    title.textContent = song.title;
     artist.textContent = song.artist;
-    thumbnail.src = song.cover;
+    thumbnail.src = song.thumbnail;
 }
 
 const changeMusic = (direction) => {
@@ -77,26 +69,75 @@ const changeMusic = (direction) => {
 const updateProgressBar = () => {
     const { duration, currentTime } = music;
     const progressPercent = (currentTime / duration) * 100;
-    progress.style.width = `${progressPercent}%`;
-
+    progress.forEach(ele => {
+        ele.style.width = `${progressPercent}%`;
+    })
     const formatTime = (time) => String(Math.floor(time)).padStart(2,'0');
-    durationEl.textContent = `${formatTime(duration / 60)}:${formatTime(duration % 60)}`;
-    currentTimeEl.textContent = `${formatTime(currentTime / 60)}:${formatTime(currentTime % 60)}`;
+    durationEl.forEach(ele => {
+        ele.textContent = `${formatTime(duration / 60)}:${formatTime(duration % 60)}`;
+    });
+    currentTimeEl.forEach(ele => {
+        ele.textContent = `${formatTime(currentTime / 60)}:${formatTime(currentTime % 60)}`;
+    });
 }
 
 const setProgressBar = (e) => {
-    const width = playerProgress.clientWidth;
-    const clickX = e.offsetX;
-    music.currentTime = (clickX / width) * music.duration;
+    playerProgress.forEach(ele => {
+        const width = ele.clientWidth;
+        const clickX = e.offsetX;
+        music.currentTime = (clickX / width) * music.duration;
+    });
 }
 
-btnPlay.addEventListener('click', togglePlay);
-btnPause.addEventListener('click', togglePlay);
+// Click -> Check if class contains "category-content" 
+// Cons: hard to click + run
+// document.addEventListener("click", async (event) => {
+//     const clickedElement = event.target;
+//     if (clickedElement.classList.contains("category-content")) {
+//         const id = clickedElement.id;
+//         console.log(id);
+
+//         const snapshot = await getDoc(doc(firestore, "songs", id));
+//         const data = snapshot.data();
+//         console.log(data);
+
+//         loadMusic(data);
+//     }
+// })
+
+// If element with class contains "category-content" onclick
+// Con muốn mã chạy sau khi các bài hát được lấy từ Firebase Firestore và hiển thị trên màn hình
+document.addEventListener("DOMContentLoaded", (e) => {
+    e.preventDefault();
+    const clickable = document.querySelectorAll('.category-content');
+    console.log(clickable);
+    clickable.forEach(track => {
+        track.addEventListener("click", async () => {
+            const id = track.id;
+            console.log(id);
+
+            const snapshot = await getDoc(doc(firestore, "songs", id));
+            const data = snapshot.data();
+            console.log(data);
+
+            loadMusic(data);
+        });
+    });
+});
+
+btnPause.forEach(btn => {
+    btn.addEventListener('click', togglePlay);
+});
+btnPlay.forEach(btn => {
+    btn.addEventListener('click', togglePlay);
+});
+// btnPlay.addEventListener('click', togglePlay);
+// btnPause.addEventListener('click', togglePlay);
 btnPrev.addEventListener('click', () => changeMusic(-1));
 btnNext.addEventListener('click', () => changeMusic(1));
 music.addEventListener('ended', () => changeMusic(1));
 music.addEventListener('timeupdate', updateProgressBar);
-// chua tua dc nhac
-playerProgress.addEventListener('click', setProgressBar);
 
-loadMusic(songs[musicIndex]);
+playerProgress.forEach(ele => {
+    ele.addEventListener('click', setProgressBar);
+});
