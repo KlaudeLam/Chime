@@ -5,13 +5,13 @@ import { storage, firestore } from "./firebase-config.js";
 // import { } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 
 // PREVIEW THUMBNAIL-------------------------------
+const thumbnailPreviewSection = document.getElementById('thumbnail-preview-section');
+const thumbnailInputZone = document.getElementById('thumbnail-input-zone');
 const thumbnailInput = document.getElementById('input-thumbnail');
 const filenameLabel = document.getElementById('filename');
-const imagePreview = document.getElementById('image-preview');
-const thumbnailPreview = document.getElementById('thumbnail-preview');
-const thumbnailInputZone = document.getElementById('thumbnail-input-zone');
+const thumbnailContainer = document.getElementById('thumbnail-container');
 
-imagePreview.onclick = (e) => {
+thumbnailPreviewSection.onclick = (e) => {
     e.preventDefault();
     thumbnailInput.click();
 }
@@ -24,17 +24,17 @@ thumbnailInput.addEventListener('change', (event) => {
 
         const reader = new FileReader();
         reader.onload = (e) => {
-            thumbnailPreview.innerHTML =
+            thumbnailContainer.innerHTML =
             `<img src="${e.target.result}" class="object-cover" alt="Image preview"/>`;
-            imagePreview.classList.remove('border-dashed', 'border-2', 'border-gray-400');
+            thumbnailPreviewSection.classList.remove('border-dashed', 'border-2', 'border-gray-400');
             thumbnailInputZone.style.display = "none";
         };
         reader.readAsDataURL(file);
     } else {
     filenameLabel.textContent = '';
-    thumbnailPreview.innerHTML =
+    thumbnailContainer.innerHTML =
         `<div class="bg-gray-200 h-48 rounded-lg flex items-center justify-center text-gray-500">No image preview</div>`;
-    imagePreview.classList.add('border-dashed', 'border-2', 'border-gray-400');
+    thumbnailPreviewSection.classList.add('border-dashed', 'border-2', 'border-gray-400');
     thumbnailInputZone.style.display = "none";
     }
 });
@@ -49,8 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Lắng nghe sự kiện click cho nút publish
     btnConfirmPublish.addEventListener('click', function() {
-        alert("Publication may take some seconds.");
-
         const title = document.getElementById("input-title").value;
         const description = document.getElementById("input-description").value;
         const artist = localStorage.getItem("username");
@@ -79,7 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const thumbnailFile = document.getElementById('input-thumbnail').files[0];
         
         // Check if track and img is uploaded
-        if (trackFile && thumbnailFile) {
+        if (trackFile && thumbnailFile && title && description) {
+            alert("Publication may take some seconds. Click OK to proceed.");
+
             // Tạo một mảng các promises cho việc tải lên track và thumbnail
             const uploadPromises = [];
         
@@ -163,11 +163,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             upload.then(() => {
                 // Redirect
-                window.location.href = "home.html";
+                window.location.href = "library.html";
             })
         
         } else {
-            console.error('No file selected.');
+            alert('Please fill in all fields.');
         }
         
         

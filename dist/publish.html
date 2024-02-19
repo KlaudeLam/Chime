@@ -491,7 +491,7 @@
             <div class="editor mx-auto w-[440px] md:w-[550px] lg:w-[800px] flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg">
               <div class="flex justify-between w-full h-fit mb-4">
                 <!-- Input: thumbnail -->
-                <div id="image-preview" class="w-40 aspect-square max-h-40 bg-gray-50 border-dashed border-2 border-gray-400 rounded-lg flex flex-col justify-center items-center text-center cursor-pointer overflow-hidden">
+                <div id="thumbnail-preview-section" class="w-40 aspect-square max-h-40 bg-gray-50 border-dashed border-2 border-gray-400 rounded-lg flex flex-col justify-center items-center text-center cursor-pointer overflow-hidden">
                   <div id="thumbnail-input-zone">
                     <input id="input-thumbnail" type="file" class="hidden" accept=".jpg" required/>
                     <label for="input-thumbnail" class="cursor-pointer">
@@ -503,7 +503,7 @@
                       <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
                     </label>
                   </div>
-                  <div id="thumbnail-preview"></div>
+                  <div id="thumbnail-container"></div>
                 </div>
                 <!-- Input: title, description, track -->
                 <div class="flex flex-col gap-1 w-[58%] md:w-[67%] lg:w-[73%]">
