@@ -1,11 +1,11 @@
 import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
 import { collection, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
-import { auth, isArtist, firestore } from "./firebase-config.js";
+import { auth, firestore } from "./firebase-config.js";
 import { changeBtnStatus } from './common.js';
 
 // Function: Artist Validation-------------------
-export const isArtist = () => {
+export const artistValidation = () => {
   localStorage.setItem("isArtist", false);
 
   document.getElementById("asUser").onclick = () => {
@@ -21,7 +21,7 @@ export const isArtist = () => {
   }
 }
 
-isArtist();
+artistValidation();
 
 // Function: Register------------------------------
 const Register = async (auth, email, password) => {
