@@ -25,7 +25,7 @@ getDocs(songsQuery)
             <div id='${doc.id}' class="category-content">
                 <img src="${data.thumbnail}" alt="">
                 <div class="category-content-name">${data.title}</div>
-                <a href="BTS" class="category-content-description">${data.artist}</a>
+                <a class="category-content-description">${data.artist}</a>
             </div>
         `)
     });
