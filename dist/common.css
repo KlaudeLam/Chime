@@ -67,27 +67,27 @@ nav img, #noti img, #account img {
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
     cursor: pointer;
 }
-.category-content img, .player-cover, #thumbnail-container img {
+.category-content img, #thumbnail-container img {
     border-radius: 6%;
     margin-bottom: 16px;
     object-fit: cover;
     width: 100%;
     aspect-ratio: 1/1;
 }
-.category-content-name, .player-song {
+.category-content-name {
     font-weight: 600;
     line-height: 1.5em;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.category-content-description, .player-artist {
+.category-content-description {
     display: block;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.category-content-description:hover, .player-artist:hover {
+.category-content-description:hover {
     text-decoration: underline;
 }
 .category-content-artist {

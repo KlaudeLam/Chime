@@ -38,7 +38,7 @@
                                 <!--src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png"-->
                             </li>
                         </a>
-                        <a href="library.html">
+                        <a id="library" href="library.html">
                             <li class="w-full flex items-center gap-6 h-8 text-[15px]  hover:font-semibold">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                                     <path d="M21 7V19C21 20.1046 20.1046 21 19 21H7M9 8.5V11.5L12 10L9 8.5ZM17 15V5C17 3.89543 16.1046 3 15 3H5C3.89543 3 3 3.89543 3 5V15C3 16.1046 3.89543 17 5 17H15C16.1046 17 17 16.1046 17 15Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -73,9 +73,9 @@
             </div>
             <div id="music-player" class="music-player">
                 <div class="mb-4">
-                    <img id="player-cover" class="player-cover" src="" alt="">
-                    <div id="player-song" class="player-song font-semibold cursor-pointer"></div>
-                    <div id="player-artist" class="player-artist w-fit cursor-pointer text-sm"><a href=""></a></div>
+                    <img id="player-cover" class="player-cover rounded-[6%] mb-[16px] object-cover w-full aspect-square" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR152EC4L2BOKRIx5y2mUbFaslRtFdQ9St9w8hGNfeQww&s" alt="">
+                    <div id="player-song" class="player-song font-semibold leading-[1.5em] whitespace-nowrap text-ellipsis overflow-hidden">Not playing</div>
+                    <div id="player-artist" class="player-artist w-fit cursor-pointer text-sm block whitespace-nowrap text-ellipsis overflow-hidden hover:underline"></div>
                 </div>
                 <div id="player-progress" class="player-progress w-full bg-lightbittersweet rounded-sm cursor-pointer h-1 mt-2 mb-6">
                     <div id="progress" class="progress bg-bittersweet rounded-sm h-full w-0 transition-[width] duration-[0.01s] ease-linear"></div>
@@ -204,10 +204,10 @@
            
             <div id="bottom-bar" class="fixed bottom-0 z-40 w-full h-[64px] flex items-center justify-between lg:hidden">
                 <div class="flex flex-wrap items-center pl-2 gap-4">
-                    <img class="w-11 h-w-11" src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
+                    <img class="w-11 h-11 player-cover rounded-[6%]" src="https://img.freepik.com/premium-vector/diagonal-cross-line-grid-square-seamless-pattern_80590-13921.jpg" alt="">
                     <div>
-                        <div class="category-content-name">Silver Spoon</div>
-                        <a href="BTS" class="category-content-description">BTS</a>
+                        <div class="player-song category-content-name">Not playing</div>
+                        <div class="player-artist category-content-description"></div>
                     </div>
                 </div>
                 <div id="player-progress" class="player-progress hidden md:block md:w-1/2 bg-white rounded-sm cursor-pointer h-1">
@@ -252,27 +252,6 @@
                 <!-- <div id="jump-back-on" class="category">
                     <div class="category-title">Jump back on</div>
                     <div class="category-carousel flex gap-2">
-                        <a href="Silverspoon">
-                            <div class="category-content">
-                                <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                                <div class="category-content-name">Silver Spoon</div>
-                                <a href="BTS" class="category-content-description">BTS</a>
-                            </div>
-                        </a>
-                        <a href="Silverspoon">
-                            <div class="category-content">
-                                <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                                <div class="category-content-name">Silver Spoon</div>
-                                <a href="BTS" class="category-content-description">BTS</a>
-                            </div>
-                        </a>
-                        <a href="Silverspoon">
-                            <div class="category-content">
-                                <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                                <div class="category-content-name">Silver Spoon</div>
-                                <a href="BTS" class="category-content-description">BTS</a>
-                            </div>
-                        </a>
                     </div>
                 </div> -->
                 <div class="category">
@@ -280,13 +259,7 @@
                     <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
                     <!-- js: addAdjHTML -->
                     <!-- animation: think about scrolling effect -->
-                    <div id="recently-released" class="category-carousel flex gap-2">
-                        <div id="UKXwPqjIlIkqqNjRZT8d" class="category-content">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/chime-27321.appspot.com/o/thumbnail%2Fhany%20-%20mlee.jpg?alt=media&amp;token=461aa64e-3bcf-4218-89c8-90ae07f66d26" alt="">
-                            <div class="category-content-name">hany</div>
-                            <a class="category-content-description">mlee</a>
-                        </div>
-                    </div>
+                    <div id="recently-released" class="category-carousel flex gap-2"></div>
                 </div>
                 <!-- <div id="popular-albums" class="category">
                     <div class="category-title">Popular albums</div>

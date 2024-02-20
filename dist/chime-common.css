@@ -812,6 +812,14 @@ video {
   margin-top: 64px;
 }
 
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.mb-\[16px\] {
+  margin-bottom: 16px;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -968,6 +976,10 @@ video {
   height: 100vh;
 }
 
+.h-11 {
+  height: 2.75rem;
+}
+
 .max-h-40 {
   max-height: 10rem;
 }
@@ -1063,6 +1075,26 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-1 {
+  width: 0.25rem;
+}
+
+.w-\[11px\] {
+  width: 11px;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-\[\[1\/10\]\] {
+  width: [1/10];
+}
+
+.w-\[1\/10\] {
+  width: 1/10;
 }
 
 .max-w-2xl {
@@ -1965,6 +1997,14 @@ video {
   border-radius: 0.125rem;
 }
 
+.rounded-\[6\] {
+  border-radius: 6;
+}
+
+.rounded-\[6\%\] {
+  border-radius: 6%;
+}
+
 .rounded-b {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -2635,6 +2675,10 @@ video {
   line-height: 1.25;
 }
 
+.leading-\[1\.5em\] {
+  line-height: 1.5em;
+}
+
 .tracking-tight {
   letter-spacing: -0.025em;
 }
@@ -3191,6 +3235,10 @@ video {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
 }
 
 .hover\:file\:cursor-pointer::file-selector-button:hover {

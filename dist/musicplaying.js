@@ -2,9 +2,9 @@ import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-
 
 import { firestore } from "./firebase-config.js";
 
-const thumbnail = document.getElementById("player-cover"),
-title = document.getElementById('player-song'),
-artist = document.getElementById('player-artist'),
+const thumbnail = document.querySelectorAll(".player-cover"),
+title = document.querySelectorAll('.player-song'),
+artist = document.querySelectorAll('.player-artist'),
 currentTimeEl = document.querySelectorAll('.current-time'),
 durationEl = document.querySelectorAll('.duration'),
 playerProgress = document.querySelectorAll('.player-progress'),
@@ -17,7 +17,6 @@ btnLoop = document.getElementById('btn-loop'),
 btnShuffle = document.getElementById('btn-shuffle');
 
 const music = new Audio();
-
 let musicIndex = 0;
 let isPlaying = false;
 
@@ -55,9 +54,16 @@ const pauseMusic = () => {
 
 const loadMusic = (song) => {
     music.src = song.track;
-    title.textContent = song.title;
-    artist.textContent = song.artist;
-    thumbnail.src = song.thumbnail;
+    thumbnail.forEach(ele => {
+        ele.src = song.thumbnail;
+    });
+    title.forEach(ele => {
+        ele.textContent = song.title;
+    });
+    artist.forEach(ele => {
+        ele.textContent = song.artist; 
+    });
+    
 }
 
 const changeMusic = (direction) => {
@@ -89,40 +95,30 @@ const setProgressBar = (e) => {
     });
 }
 
-// Click -> Check if class contains "category-content" 
-// Cons: hard to click + run
-// document.addEventListener("click", async (event) => {
-//     const clickedElement = event.target;
-//     if (clickedElement.classList.contains("category-content")) {
-//         const id = clickedElement.id;
-//         console.log(id);
+// CHOOSE MUSIC---------------------------
+// Only apply to elements with class contains "category-content"
 
-//         const snapshot = await getDoc(doc(firestore, "songs", id));
-//         const data = snapshot.data();
-//         console.log(data);
-
-//         loadMusic(data);
-//     }
-// })
-
-// If element with class contains "category-content" onclick
-// Con muốn mã chạy sau khi các bài hát được lấy từ Firebase Firestore và hiển thị trên màn hình
 document.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault();
-    const clickable = document.querySelectorAll('.category-content');
-    console.log(clickable);
-    clickable.forEach(track => {
-        track.addEventListener("click", async () => {
-            const id = track.id;
-            console.log(id);
+    // Waiting 4s for the songs to load from Firestore
+    setTimeout(() => {
 
-            const snapshot = await getDoc(doc(firestore, "songs", id));
-            const data = snapshot.data();
-            console.log(data);
+        const clickable = document.querySelectorAll('.category-content');
+        console.log(clickable);
 
-            loadMusic(data);
-        });
-    });
+        clickable.forEach(track => {
+            track.addEventListener("click", async () => {
+                // Get doc's ID
+                const id = track.id;
+                // Get data from Firestore 
+                const snapshot = await getDoc(doc(firestore, "songs", id));
+                const data = snapshot.data();
+                // Load music, artist, title from data
+                loadMusic(data);
+                playMusic();
+            });
+        }); 
+    }, 4000);
 });
 
 btnPause.forEach(btn => {
@@ -131,10 +127,10 @@ btnPause.forEach(btn => {
 btnPlay.forEach(btn => {
     btn.addEventListener('click', togglePlay);
 });
-// btnPlay.addEventListener('click', togglePlay);
-// btnPause.addEventListener('click', togglePlay);
-btnPrev.addEventListener('click', () => changeMusic(-1));
-btnNext.addEventListener('click', () => changeMusic(1));
+
+// btnPrev.addEventListener('click', () => changeMusic(-1));
+// btnNext.addEventListener('click', () => changeMusic(1));
+
 music.addEventListener('ended', () => changeMusic(1));
 music.addEventListener('timeupdate', updateProgressBar);
 
