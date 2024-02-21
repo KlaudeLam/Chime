@@ -1,4 +1,4 @@
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
 import { firestore } from "./firebase-config.js";
 
@@ -20,6 +20,7 @@ const music = new Audio();
 let musicIndex = 0;
 let isPlaying = false;
 
+// MUSIC PLAYING FUNCTIONS------------------------ 
 const togglePlay = () => {
     if(isPlaying) {
         pauseMusic();
@@ -95,28 +96,93 @@ const setProgressBar = (e) => {
     });
 }
 
-// CHOOSE MUSIC---------------------------
-// Only apply to elements with class contains "category-content"
+// CONTEXT MENU FUNCTIONS-------------------
+const contextMenu = document.getElementById("context-menu");
+const addToLibrary = document.getElementById("add-to-library");
+const isArtist = localStorage.getItem("isArtist");
 
+const showContextMenu = (e) => {
+    e.preventDefault();
+
+    contextMenu.style.left = `${e.clientX}px`;
+    contextMenu.style.top = `${e.clientY}px`;
+
+    if (!contextMenu.classList.contains("fixed")) {
+        contextMenu.classList.add("fixed");
+    }
+
+    if (contextMenu.classList.contains("hidden")) {
+        contextMenu.classList.remove("hidden");
+    }
+}
+
+const closeContextMenu = () => {
+    contextMenu.classList.add("hidden");
+    contextMenu.classList.remove("fixed");
+}
+
+// CHOOSE MUSIC---------------------------
 document.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault();
     // Waiting 4s for the songs to load from Firestore
     setTimeout(() => {
-
+        // Only apply to elements with class contains "category-content"
         const clickable = document.querySelectorAll('.category-content');
         console.log(clickable);
 
         clickable.forEach(track => {
+            // LOAD, PLAY MUSIC
             track.addEventListener("click", async () => {
                 // Get doc's ID
                 const id = track.id;
                 // Get data from Firestore 
                 const snapshot = await getDoc(doc(firestore, "songs", id));
                 const data = snapshot.data();
-                // Load music, artist, title from data
+
                 loadMusic(data);
                 playMusic();
             });
+            
+            // (User only) ADD MUSIC TO LIBRARY
+            if (isArtist == "false") {
+                // Right click: Open context menu
+                track.addEventListener("contextmenu", (e) => {
+                    showContextMenu(e);
+                    console.log(track.id);
+                    
+                    addToLibrary.onclick = async () => {
+                        closeContextMenu();
+                        const id = track.id;
+
+                        // Firestore: Check if doc exist
+                        const username = localStorage.getItem("username");
+                        const addRef = doc(firestore, "user-playlists", username);
+                        const addSnapshot = await getDoc(addRef);
+                        
+                        if (addSnapshot.exists()) {
+                        // Doc: Check if song is already added
+                            const songIDs = addSnapshot.data().songIDs;
+                            console.log(id);
+
+                            if (songIDs.includes(id)) {
+                                alert("This track is already added.");
+                            } else {
+                                await updateDoc(addRef, {songIDs: arrayUnion(id)});
+                                alert("Track added successfully");
+                            } 
+                        } else {
+                            await setDoc(addRef, {songIDs: []});
+                            await updateDoc(addRef, {songIDs: arrayUnion(id)});
+                            alert("Playlist created and track added successfully");
+                        }
+                    }
+                });
+
+                // Click outside menu: Close menu
+                document.addEventListener("click", (e) => {
+                    if (!contextMenu.contains(e.target)) closeContextMenu();
+                });
+            }  
         }); 
     }, 4000);
 });
