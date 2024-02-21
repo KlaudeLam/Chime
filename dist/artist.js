@@ -136,6 +136,7 @@ if (isArtist == "true") {
         `)
     })
 
+    // If there's nothing to display
     if (querySnapshot.empty) {
         document.getElementById("your-tracks").innerHTML = `
             <div class="flex flex-col justify-center items-center gap-[24px]">
@@ -202,12 +203,12 @@ if (isArtist == "true") {
                 .then(() => {
                     modal.classList.add("hidden");
                     location.reload();
-                })
-            })
+                });
+            });
 
             document.getElementById("btnNo").addEventListener("click", () => {
                 modal.classList.add("hidden");
-            })  
+            });  
         })
-    })
+    });
 }
