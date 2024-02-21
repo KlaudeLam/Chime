@@ -1,6 +1,75 @@
 import { signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
 import { auth } from './firebase-config.js';
 
+// REDIRECTION--------------------------------
+const routeMeta = [
+    {
+        route: "/dist/download.html",
+        requireAuth: false, 
+        requireGuest: false, 
+    },
+    {
+        route: "/dist/premium.html",
+        requireAuth: false, 
+        requireGuest: false, 
+    },
+    {
+        route: "/dist/home.html",
+        requireAuth: false, 
+        requireGuest: false, 
+    },
+    {
+        route: "/dist/login.html",
+        requireAuth: false, 
+        requireGuest: true, 
+    },
+    {
+        route: "/dist/register.html",
+        requireAuth: false, 
+        requireGuest: true, 
+    },
+    {
+        route: "/dist/library.html",
+        requireAuth: true, 
+        requireGuest: false, 
+    },
+    {
+        route: "/dist/publish.html",
+        requireAuth: true, 
+        requireGuest: false, 
+    },
+];
+  
+function getRouteMeta() {
+    const path = window.location.pathname;
+    console.log(path);
+    return routeMeta.find((r) => r.route == path);
+}
+
+onAuthStateChanged(auth, (user) => {
+    const meta = getRouteMeta();
+    if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        if (meta?.requireGuest) {
+            window.location.href = "home.html";
+        }
+    } else {
+    // User is signed out
+        if (meta?.requireAuth) {
+            alert("Please log in first");
+            window.location.href = "login.html";
+        }
+    }
+    // stopLoading();
+});
+
+// function stopLoading() {
+//     document.getElementById("loading").remove();
+
+//     document.body.classList.remove("is-loading");
+// }
+
 // BURGER MENU---------------------------------
 export const burgermenu = () =>  {
     let hiddenMenu = document.getElementById("hidden-menu");
@@ -14,7 +83,6 @@ export const burgermenu = () =>  {
         }
     }
 }
-
 // LOG OUT--------------------------------------
 export const logout = () => {
     const navBtnLogOut = document.getElementById("nav-btn-log-out");
