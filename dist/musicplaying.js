@@ -89,11 +89,17 @@ const updateProgressBar = () => {
 }
 
 const setProgressBar = (e) => {
-    playerProgress.forEach(ele => {
-        const width = ele.clientWidth;
-        const clickX = e.offsetX;
-        music.currentTime = (clickX / width) * music.duration;
-    });
+    const clickedProgressBar = e.target;
+    const width = clickedProgressBar.clientWidth;
+    const clickX = e.offsetX;
+
+    // Bottom bar: Click in the same spot - Why does the width change?
+    console.log(clickX);
+    console.log(width);
+    console.log(clickX/width);
+    console.log((clickX / width) * music.duration);
+
+    music.currentTime = (clickX / width) * music.duration;
 }
 
 // CONTEXT MENU FUNCTIONS-------------------
@@ -121,7 +127,7 @@ const closeContextMenu = () => {
     contextMenu.classList.remove("fixed");
 }
 
-// CHOOSE MUSIC---------------------------
+// CHOOSE, PLAY, ADD MUSIC TO LIBRARY (For user) ---------------------------
 document.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault();
     // Waiting 4s for the songs to load from Firestore
