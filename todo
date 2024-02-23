@@ -2,15 +2,12 @@ TODO
 - link to all HTML: 
 + html: favicon, left-bar, bottom-bar, nav-bar, burger-menu
 + js: common (call all the functions in script tag)
-- home: add carousel
-- lib: add pagination
 - Rearrange all files, change import ref (../filename)
-- add loading screen
+- Refresh firestore, update thumbnail
 
 BUG
 - artist.js - display publication: Why do I have to create index??????
-- Bottom bar: progressing bar can't be tua
-- Botbar: overflow in title
+- Bottom bar: WHY PROGRESS BAR WIDTH CHANGE AS IT TUA????????
 
 DONE
 - Favicon
@@ -26,6 +23,10 @@ DONE
 - user: add song
 - user: delete song
 - common.js: check if routemeta run
+- Bottom bar: progressing bar can't be tua
+- Botbar: overflow in title
+- Fix pagination color
+- artist: add pagination
 
 ASK
 - Top-bar: Why sticky doesn't hide avatar but fixed does? 
@@ -37,3 +38,6 @@ SAVE FOR LATER
 - LS: forbid user from changing data
 - Home, lib: fix hover effect of songs
 - Lib: For class category --> If there is no data --> print "nothing yet"
+- home: add carousel
+- add loading screen
+- allow pagination to work on other section
