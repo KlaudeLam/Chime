@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <title>Download</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icons/logo.png"> 
 
     <!-- Galada: https://fonts.google.com/specimen/Galada?preview.text=Chime!&classification=Handwriting -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,56 +17,56 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="chime-common.css">
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="/src/css/chime-common.css">
+    <link rel="stylesheet" href="/src/css/common.css">
 </head>
 <body>
-    <!-- MODAL -->
-    <div id="modal" class="hidden fixed z-50 w-full h-full overflow-auto bg-[rgba(0,0,0,0.4)] left-0 top-0;
-    ">
-        <div class="bg-[#fefefe] border w-4/5 mx-auto my-[15%] p-5 border-solid border-[#888] rounded-xl">
-            <p class="text-lg mb-4">Do you want to delete this item?</p>
-            <button id="btnYes" class="bg-bittersweet hover:bg-darkbittersweet text-white font-bold py-2 px-4 rounded mr-2">Yes</button>
-            <button id="btnNo" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">No</button>
-        </div>
-    </div>
-
+    <!-- WEBPAGE -->
     <div class="flex flex-wrap">
-        <div id="left-bar" class="px-6 w-1/2 md:w-1/3 lg:w-64 fixed md:top-0 md:left-0 h-screen lg:flex lg:flex-col lg:justify-between py-7 z-30 hidden bg-white">
-            <div class="flex flex-col gap-5 mb-5">
+        <!-- LEFT-BAR -->
+        <div id="left-bar" class="px-6 w-1/2 md:w-1/3 lg:w-64 fixed md:top-0 md:left-0 h-screen lg:flex lg:flex-col lg:justify-between pt-7 pb-5 z-30 hidden bg-white">
+            <!-- NAVBAR -->
+            <div class="flex flex-col gap-5 mb-6">
                 <div id="logo" class="w-full text-5xl flex items-center">
                     <a href="home.html">Chime!</a>
                 </div>
                 <nav class="">
                     <ul class="flex flex-col gap-3">
                         <a href="home.html">
-                            <li id="home" class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
-                                <!-- https://www.flaticon.com/free-icon/home_1946488?term=home&page=1&position=2&origin=search&related_id=1946488 -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png " alt="home">
+                            <li class="w-full flex items-center gap-6 h-8 text-[15px] font-semibold">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.18753 11.3788C4.03002 11.759 4 11.9533 4 12V20.0018C4 20.5529 4.44652 21 5 21H8V15C8 13.8954 8.89543 13 10 13H14C15.1046 13 16 13.8954 16 15V21H19C19.5535 21 20 20.5529 20 20.0018V12C20 11.9533 19.97 11.759 19.8125 11.3788C19.6662 11.0256 19.4443 10.5926 19.1547 10.1025C18.5764 9.1238 17.765 7.97999 16.8568 6.89018C15.9465 5.79788 14.9639 4.78969 14.0502 4.06454C13.5935 3.70204 13.1736 3.42608 12.8055 3.2444C12.429 3.05862 12.1641 3 12 3C11.8359 3 11.571 3.05862 11.1945 3.2444C10.8264 3.42608 10.4065 3.70204 9.94978 4.06454C9.03609 4.78969 8.05348 5.79788 7.14322 6.89018C6.23505 7.97999 5.42361 9.1238 4.8453 10.1025C4.55568 10.5926 4.33385 11.0256 4.18753 11.3788ZM10.3094 1.45091C10.8353 1.19138 11.4141 1 12 1C12.5859 1 13.1647 1.19138 13.6906 1.45091C14.2248 1.71454 14.7659 2.07921 15.2935 2.49796C16.3486 3.33531 17.4285 4.45212 18.3932 5.60982C19.3601 6.77001 20.2361 8.0012 20.8766 9.08502C21.1963 9.62614 21.4667 10.1462 21.6602 10.6134C21.8425 11.0535 22 11.5467 22 12V20.0018C22 21.6599 20.6557 23 19 23H16C14.8954 23 14 22.1046 14 21V15H10V21C10 22.1046 9.10457 23 8 23H5C3.34434 23 2 21.6599 2 20.0018V12C2 11.5467 2.15748 11.0535 2.33982 10.6134C2.53334 10.1462 2.80369 9.62614 3.12345 9.08502C3.76389 8.0012 4.63995 6.77001 5.60678 5.60982C6.57152 4.45212 7.65141 3.33531 8.70647 2.49796C9.2341 2.07921 9.77521 1.71454 10.3094 1.45091Z" fill="#0F0F0F"/>
+                                    </svg>
                                 Home
                                 <!--src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png"-->
                             </li>
                         </a>
-                        <a href="library.html">
-                            <li id="lib" class="w-full flex items-center gap-6 h-8 text-[15px]  font-semibold">
-                                <!-- https://www.flaticon.com/free-icon/music-album_2404718?term=playlist&related_id=2404718 -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/2404/2404474.png" alt="lib">
+                        <a id="library" href="library.html">
+                            <li class="w-full flex items-center gap-6 h-8 text-[15px]  hover:font-semibold">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 7V19C21 20.1046 20.1046 21 19 21H7M9 8.5V11.5L12 10L9 8.5ZM17 15V5C17 3.89543 16.1046 3 15 3H5C3.89543 3 3 3.89543 3 5V15C3 16.1046 3.89543 17 5 17H15C16.1046 17 17 16.1046 17 15Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
                                 Library
                                 <!-- src="https://cdn-icons-png.flaticon.com/512/2404/2404718.png"-->
                             </li>
                         </a>
                         <a href="premium.html">
-                            <li id="premium" class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
-                                <!-- https://www.flaticon.com/free-icon/premium_9720867?term=premium&related_id=9720867 -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/9720/9720867.png" alt="premium">
+                            <li class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 19L18 19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.5585 16H7.44152C6.58066 16 5.81638 15.4491 5.54415 14.6325L3.70711 9.12132C3.44617 8.3385 4.26195 7.63098 5 8L5.71067 8.35533C6.48064 8.74032 7.41059 8.58941 8.01931 7.98069L10.5858 5.41421C11.3668 4.63317 12.6332 4.63316 13.4142 5.41421L15.9807 7.98069C16.5894 8.58941 17.5194 8.74032 18.2893 8.35533L19 8C19.7381 7.63098 20.5538 8.3385 20.2929 9.12132L18.4558 14.6325C18.1836 15.4491 17.4193 16 16.5585 16Z" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+                                    </svg>
                                 Premium
                                 <!-- src="https://cdn-icons-png.flaticon.com/512/9720/9720918.png" -->
                             </li>
                         </a>
                         <a href="download.html">
-                            <li id="download" class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
-                                <!-- https://www.flaticon.com/free-icon/downloading_2381971?term=download&related_id=2381971 -->
-                                <img src="https://cdn-icons-png.flaticon.com/512/2381/2381971.png" alt="download">
+                            <li class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                                    <g id="File / Download_Package">
+                                    <path id="Vector" d="M4 8V16.8C4 17.9201 4 18.4798 4.21799 18.9076C4.40973 19.2839 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2839 19.7822 18.9076C20 18.4802 20 17.921 20 16.8031V8M4 8H20M4 8L5.36518 5.61089C5.7002 5.0246 5.86768 4.73151 6.10325 4.51807C6.31184 4.32907 6.55859 4.18605 6.82617 4.09871C7.12861 4 7.46623 4 8.14258 4H15.8571C16.5334 4 16.8723 4 17.1747 4.09871C17.4423 4.18605 17.6879 4.32907 17.8965 4.51807C18.1322 4.73168 18.3002 5.02507 18.6357 5.6123L20 8M12 11V17M12 17L15 15M12 17L9 15" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    </svg>
                                 Download
                                 <!-- src="https://cdn-icons-png.flaticon.com/512/2382/2382067.png" -->
                             </li>
@@ -74,45 +74,105 @@
                     </ul>
                 </nav>
             </div>
-            <div id="music-player">
-                <div>
-                    <img class="" src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                    <div class="category-content-name">Silver Spoon</div>
-                    <a href="BTS" class="category-content-description">BTS</a>
+            <!-- MUSICPLAYER -->
+            <div id="music-player" class="music-player">
+                <div class="mb-4">
+                    <img id="player-cover" class="player-cover rounded-[6%] mb-[16px] object-cover w-full aspect-square" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR152EC4L2BOKRIx5y2mUbFaslRtFdQ9St9w8hGNfeQww&s" alt="">
+                    <div id="player-song" class="player-song font-semibold leading-[1.5em] whitespace-nowrap text-ellipsis overflow-hidden">Not playing</div>
+                    <div id="player-artist" class="player-artist w-fit cursor-pointer text-sm block whitespace-nowrap text-ellipsis overflow-hidden hover:underline"></div>
                 </div>
-                <div id="music-bar">
-                    --------------------------
+                <div id="player-progress" class="player-progress w-full bg-lightbittersweet rounded-sm cursor-pointer h-1 mt-2 mb-6">
+                    <div id="progress" class="progress bg-bittersweet rounded-sm h-full w-0 transition-[width] duration-[0.01s] ease-linear"></div>
+                    <div class="music-duration w-full flex justify-between text-xs">
+                        <span id="current-time" class="current-time">00:00</span>
+                        <span id="duration" class="duration">00:00</span>
+                    </div>
                 </div>
-                <div class="flex flex-wrap w-full justify-between">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                <div class="player-controls flex flex-wrap w-full justify-between">
+                    <svg id="btn-shuffle" class="btn-shuffle cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                        <title>Shuffle</title>
                         <g id="SVGRepo_bgCarrier" stroke-width="0"/>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
                         <g id="SVGRepo_iconCarrier"> <path d="M2 16.25C1.58579 16.25 1.25 16.5858 1.25 17C1.25 17.4142 1.58579 17.75 2 17.75V16.25ZM10.7478 14.087L10.1047 13.7011L10.7478 14.087ZM13.2522 9.91303L13.8953 10.2989L13.2522 9.91303ZM22 7L22.5303 7.53033C22.8232 7.23744 22.8232 6.76256 22.5303 6.46967L22 7ZM19.4697 8.46967C19.1768 8.76256 19.1768 9.23744 19.4697 9.53033C19.7626 9.82322 20.2374 9.82322 20.5303 9.53033L19.4697 8.46967ZM20.5303 4.46967C20.2374 4.17678 19.7626 4.17678 19.4697 4.46967C19.1768 4.76256 19.1768 5.23744 19.4697 5.53033L20.5303 4.46967ZM15.2205 7.3894L14.851 6.73675V6.73675L15.2205 7.3894ZM2 17.75H5.60286V16.25H2V17.75ZM11.3909 14.4728L13.8953 10.2989L12.6091 9.52716L10.1047 13.7011L11.3909 14.4728ZM18.3971 7.75H22V6.25H18.3971V7.75ZM21.4697 6.46967L19.4697 8.46967L20.5303 9.53033L22.5303 7.53033L21.4697 6.46967ZM22.5303 6.46967L20.5303 4.46967L19.4697 5.53033L21.4697 7.53033L22.5303 6.46967ZM13.8953 10.2989C14.3295 9.57518 14.6286 9.07834 14.9013 8.70996C15.1644 8.35464 15.3692 8.16707 15.59 8.04205L14.851 6.73675C14.384 7.00113 14.0315 7.36397 13.6958 7.8174C13.3697 8.25778 13.0285 8.82806 12.6091 9.52716L13.8953 10.2989ZM18.3971 6.25C17.5819 6.25 16.9173 6.24918 16.3719 6.30219C15.8104 6.35677 15.3179 6.47237 14.851 6.73675L15.59 8.04205C15.8108 7.91703 16.077 7.83793 16.517 7.79516C16.9733 7.75082 17.5531 7.75 18.3971 7.75V6.25ZM5.60286 17.75C6.41814 17.75 7.0827 17.7508 7.62807 17.6978C8.18961 17.6432 8.6821 17.5276 9.14905 17.2632L8.41 15.9579C8.18919 16.083 7.92299 16.1621 7.48296 16.2048C7.02675 16.2492 6.44685 16.25 5.60286 16.25V17.75ZM10.1047 13.7011C9.67046 14.4248 9.37141 14.9217 9.09867 15.29C8.8356 15.6454 8.63081 15.8329 8.41 15.9579L9.14905 17.2632C9.616 16.9989 9.96851 16.636 10.3042 16.1826C10.6303 15.7422 10.9715 15.1719 11.3909 14.4728L10.1047 13.7011Z" fill="#000000"/> <path d="M2 6.25C1.58579 6.25 1.25 6.58579 1.25 7C1.25 7.41421 1.58579 7.75 2 7.75V6.25ZM22 17L22.5303 17.5303C22.8232 17.2374 22.8232 16.7626 22.5303 16.4697L22 17ZM20.5303 14.4697C20.2374 14.1768 19.7626 14.1768 19.4697 14.4697C19.1768 14.7626 19.1768 15.2374 19.4697 15.5303L20.5303 14.4697ZM19.4697 18.4697C19.1768 18.7626 19.1768 19.2374 19.4697 19.5303C19.7626 19.8232 20.2374 19.8232 20.5303 19.5303L19.4697 18.4697ZM16.1254 16.9447L16.2687 16.2086H16.2687L16.1254 16.9447ZM14.4431 14.6141C14.23 14.2589 13.7693 14.1438 13.4141 14.3569C13.0589 14.57 12.9438 15.0307 13.1569 15.3859L14.4431 14.6141ZM14.4684 16.0065L15.0259 15.5049V15.5049L14.4684 16.0065ZM7.8746 7.05526L8.01789 6.31908L7.8746 7.05526ZM9.55688 9.38587C9.76999 9.74106 10.2307 9.85623 10.5859 9.64312C10.9411 9.43001 11.0562 8.96931 10.8431 8.61413L9.55688 9.38587ZM9.53163 7.99346L8.97408 8.49509L8.97408 8.49509L9.53163 7.99346ZM2 7.75H6.66762V6.25H2V7.75ZM17.3324 17.75H22V16.25H17.3324V17.75ZM22.5303 16.4697L20.5303 14.4697L19.4697 15.5303L21.4697 17.5303L22.5303 16.4697ZM21.4697 16.4697L19.4697 18.4697L20.5303 19.5303L22.5303 17.5303L21.4697 16.4697ZM17.3324 16.25C16.6867 16.25 16.4648 16.2467 16.2687 16.2086L15.9821 17.6809C16.3538 17.7533 16.7473 17.75 17.3324 17.75V16.25ZM13.1569 15.3859C13.4579 15.8875 13.6575 16.2267 13.9108 16.5082L15.0259 15.5049C14.8923 15.3564 14.7753 15.1678 14.4431 14.6141L13.1569 15.3859ZM16.2687 16.2086C15.789 16.1152 15.3528 15.8682 15.0259 15.5049L13.9108 16.5082C14.4556 17.1137 15.1826 17.5253 15.9821 17.6809L16.2687 16.2086ZM6.66762 7.75C7.31332 7.75 7.53519 7.75328 7.73131 7.79145L8.01789 6.31908C7.64616 6.24672 7.25267 6.25 6.66762 6.25V7.75ZM10.8431 8.61413C10.5421 8.11245 10.3425 7.77335 10.0892 7.49182L8.97408 8.49509C9.10771 8.64362 9.22467 8.83219 9.55688 9.38587L10.8431 8.61413ZM7.73131 7.79145C8.21098 7.88481 8.64722 8.13181 8.97408 8.49509L10.0892 7.49182C9.54442 6.88635 8.81735 6.47469 8.01789 6.31908L7.73131 7.79145Z" fill="#000000"/> </g>
                         </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <svg id="btn-prev" class="btn-prev cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                        <title>Previous</title>
                         <path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5.5v13m3.48-5.636 9.016 5.259A1 1 0 0 0 19 17.259V6.741a1 1 0 0 0-1.504-.864l-9.015 5.26a1 1 0 0 0 0 1.727Z"/>
                         </svg>
-                    <svg class="btnPlay cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <svg id="btn-play" class="btn-play cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                        <title>Play</title>
                         <path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
                         </svg>
                     <!-- pause icon -->
-                    <svg class="btnPause hidden cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <svg id="btn-pause" class="btn-pause hidden cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                        <title>Pause</title>
                         <path d="M8 5V19M16 5V19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <svg id="btn-next" class="btn-next cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                        <title>Next</title>
                         <path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 5.5v13m-3.48-5.636-9.016 5.259A1 1 0 0 1 5 17.259V6.741a1 1 0 0 1 1.504-.864l9.015 5.26a1 1 0 0 1 0 1.727Z"/>
                         </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <svg id="btn-loop" class="btn-loop cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                        <title>Loop</title>
                         <path d="M18 4L21 7M21 7L18 10M21 7H7C4.79086 7 3 8.79086 3 11M6 20L3 17M3 17L6 14M3 17H17C19.2091 17 21 15.2091 21 13" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                 </div>
             </div>
         </div>
+        
+        <!-- BURGERMENU -->
+        <div id="hidden-menu" class="w-full mt-[64px] bg-white py-4 px-6 rounded-b-lg lg:h-0 lg:p-0 hidden shadow-sm">
+            <ul class="flex flex-col gap-3">
+                <a href="home.html">
+                    <li class="w-full flex items-center gap-6 h-8 text-[15px] font-semibold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.18753 11.3788C4.03002 11.759 4 11.9533 4 12V20.0018C4 20.5529 4.44652 21 5 21H8V15C8 13.8954 8.89543 13 10 13H14C15.1046 13 16 13.8954 16 15V21H19C19.5535 21 20 20.5529 20 20.0018V12C20 11.9533 19.97 11.759 19.8125 11.3788C19.6662 11.0256 19.4443 10.5926 19.1547 10.1025C18.5764 9.1238 17.765 7.97999 16.8568 6.89018C15.9465 5.79788 14.9639 4.78969 14.0502 4.06454C13.5935 3.70204 13.1736 3.42608 12.8055 3.2444C12.429 3.05862 12.1641 3 12 3C11.8359 3 11.571 3.05862 11.1945 3.2444C10.8264 3.42608 10.4065 3.70204 9.94978 4.06454C9.03609 4.78969 8.05348 5.79788 7.14322 6.89018C6.23505 7.97999 5.42361 9.1238 4.8453 10.1025C4.55568 10.5926 4.33385 11.0256 4.18753 11.3788ZM10.3094 1.45091C10.8353 1.19138 11.4141 1 12 1C12.5859 1 13.1647 1.19138 13.6906 1.45091C14.2248 1.71454 14.7659 2.07921 15.2935 2.49796C16.3486 3.33531 17.4285 4.45212 18.3932 5.60982C19.3601 6.77001 20.2361 8.0012 20.8766 9.08502C21.1963 9.62614 21.4667 10.1462 21.6602 10.6134C21.8425 11.0535 22 11.5467 22 12V20.0018C22 21.6599 20.6557 23 19 23H16C14.8954 23 14 22.1046 14 21V15H10V21C10 22.1046 9.10457 23 8 23H5C3.34434 23 2 21.6599 2 20.0018V12C2 11.5467 2.15748 11.0535 2.33982 10.6134C2.53334 10.1462 2.80369 9.62614 3.12345 9.08502C3.76389 8.0012 4.63995 6.77001 5.60678 5.60982C6.57152 4.45212 7.65141 3.33531 8.70647 2.49796C9.2341 2.07921 9.77521 1.71454 10.3094 1.45091Z" fill="#0F0F0F"/>
+                            </svg>
+                        Home
+                        <!--src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png"-->
+                    </li>
+                </a>
+                <a href="library.html">
+                    <li class="w-full flex items-center gap-6 h-8 text-[15px]  hover:font-semibold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 7V19C21 20.1046 20.1046 21 19 21H7M9 8.5V11.5L12 10L9 8.5ZM17 15V5C17 3.89543 16.1046 3 15 3H5C3.89543 3 3 3.89543 3 5V15C3 16.1046 3.89543 17 5 17H15C16.1046 17 17 16.1046 17 15Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        Library
+                        <!-- src="https://cdn-icons-png.flaticon.com/512/2404/2404718.png"-->
+                    </li>
+                </a>
+                <a href="premium.html">
+                    <li class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 19L18 19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16.5585 16H7.44152C6.58066 16 5.81638 15.4491 5.54415 14.6325L3.70711 9.12132C3.44617 8.3385 4.26195 7.63098 5 8L5.71067 8.35533C6.48064 8.74032 7.41059 8.58941 8.01931 7.98069L10.5858 5.41421C11.3668 4.63317 12.6332 4.63316 13.4142 5.41421L15.9807 7.98069C16.5894 8.58941 17.5194 8.74032 18.2893 8.35533L19 8C19.7381 7.63098 20.5538 8.3385 20.2929 9.12132L18.4558 14.6325C18.1836 15.4491 17.4193 16 16.5585 16Z" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+                            </svg>
+                        Premium
+                        <!-- src="https://cdn-icons-png.flaticon.com/512/9720/9720918.png" -->
+                    </li>
+                </a>
+                <a href="download.html">
+                    <li class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                            <g id="File / Download_Package">
+                            <path id="Vector" d="M4 8V16.8C4 17.9201 4 18.4798 4.21799 18.9076C4.40973 19.2839 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2839 19.7822 18.9076C20 18.4802 20 17.921 20 16.8031V8M4 8H20M4 8L5.36518 5.61089C5.7002 5.0246 5.86768 4.73151 6.10325 4.51807C6.31184 4.32907 6.55859 4.18605 6.82617 4.09871C7.12861 4 7.46623 4 8.14258 4H15.8571C16.5334 4 16.8723 4 17.1747 4.09871C17.4423 4.18605 17.6879 4.32907 17.8965 4.51807C18.1322 4.73168 18.3002 5.02507 18.6357 5.6123L20 8M12 11V17M12 17L15 15M12 17L9 15" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            </svg>
+                        Download
+                        <!-- src="https://cdn-icons-png.flaticon.com/512/2382/2382067.png" -->
+                    </li>
+                </a>
+            </ul>
+        </div>
+
+        <!-- RIGHT-BODY -->
         <div id="right-body" class="w-full pl-0 lg:pl-64 min-h-screen">
+
+            <!-- TOP-BAR -->
             <div id="top-bar" class="sticky top-0 z-40 w-full h-[64px] px-6 flex items-center justify-between">
                 <div class="flex">
                     <div class="lg:hidden flex items-center mr-4">
-                        <button class="hover:text-blue-500 hover:border-white focus:outline-none navbar-burger">
+                        <button id="btn-hamburger">
                             <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" style="fill: white;">
                                 <title>Menu</title>
                                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
@@ -146,19 +206,29 @@
                             </g>  
                             </svg>
                     </a>
-                    <a href="login.html"><span class="w-fit rounded-3xl bg-white py-2 px-4 text-sm max-sm:hidden text-bittersweet hover:font-semibold">Login</span></a>
-                    <a href=""><img src="https://www.1999.co.jp/itbig61/10614483.jpg" class="w-8 h-8 rounded-full shadow-lg"></a>
+                    <a id="nav-btn-log-in" href="login.html"><span  class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap">Log in</span></a>
+                    <span id="nav-btn-log-out" class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap hidden">Log out</span>
+                    
                 </div>
             </div>
-            <div id="bottom-bar" class="fixed bottom-0 z-40 w-full h-[64px] flex items-center justify-between lg:hidden">
-                <div class="flex flex-wrap items-center pl-2 gap-4">
-                    <img class="w-11 h-w-11" src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                    <div>
-                        <div class="category-content-name">Silver Spoon</div>
-                        <a href="BTS" class="category-content-description">BTS</a>
+
+            <!-- BOTTOM-BAR -->
+            <div id="bottom-bar" class="fixed bottom-0 z-40 w-full h-[64px] flex items-center justify-between py-2 px-2 lg:hidden">
+                <div class="h-full flex items-center gap-3 w-1/5">
+                    <img class="h-full aspect-square player-cover rounded-[6%]" src="https://img.freepik.com/premium-vector/diagonal-cross-line-grid-square-seamless-pattern_80590-13921.jpg" alt="">
+                    <div class="w-2/3">
+                        <div class="w-full player-song category-content-name">Not playing</div>
+                        <div class="w-full player-artist category-content-description"></div>
                     </div>
                 </div>
-                <div class="w-fit flex flex-wrap items-center pr-2 gap-[6px]">
+                <div id="player-progress" class="player-progress hidden md:block md:w-1/2 bg-white rounded-sm cursor-pointer h-1">
+                    <div id="progress" class="progress bg-lightbittersweet rounded-sm h-full w-0 transition-[width] duration-[0.01s] ease-linear"></div>
+                    <div class="music-duration w-full flex justify-between text-xs text-white">
+                        <span class="current-time">00:00</span>
+                        <span class="duration">00:00</span>
+                    </div>
+                </div>
+                <div class="w-fit justify-self-end flex items-center gap-[6px]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"/>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
@@ -167,11 +237,11 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5.5v13m3.48-5.636 9.016 5.259A1 1 0 0 0 19 17.259V6.741a1 1 0 0 0-1.504-.864l-9.015 5.26a1 1 0 0 0 0 1.727Z"/>
                       </svg>
-                    <svg class="btnPlay cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <svg class="btn-play cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
                         </svg>
                     <!-- pause icon -->
-                    <svg class="btnPause hidden cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <svg class="btn-pause hidden cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                         <path d="M8 5V19M16 5V19" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
@@ -182,25 +252,19 @@
                         </svg>
                 </div>
             </div>
-            <div id="user-header" class="w-full bg-white">
-                <div class="h-[250px] overflow-hidden">
-                    <img class="object-cover object-top w-full" src='https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Mountain'>
-                </div>
-                <div class="flex justify-between w-full h-30 p-3 pb-5 gap-3 border-b">
-                    <div class=" w-[18%] h-fit -mt-[9%] aspect-square relative border-4 border-white rounded-full overflow-hidden">
-                        <img id="avatar" class="object-cover object-center h-80" src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Woman looking front'>
-                    </div>
-                    <div id="user-header-info" class="flex flex-col justify-end w-[79%] text-left">
-                        <p id="user-header-username" class="font-semibold w-fit"></p>
-                        <div>
-                            <span class="text-gray-500">0 followers</span>
-                            <span>•</span>
-                            <span class="text-gray-500">0 following</span>
-                        </div>
-                    </div>
-                </div>
+
+            <!-- PAGE-BODY -->
+            <div id="page-body" class="flex flex-col justify-center items-center gap-[24px] px-[30px] py-[30px]">
+                <img class="w-1/3 max-sm:w-1/2" src="https://static.vecteezy.com/system/resources/previews/025/772/999/original/gadgets-doodle-set-keyboard-headphones-computer-mouse-watch-in-sketch-style-hand-drawn-illustration-isolated-on-white-background-vector.jpg" alt="">
+                <div class="text-center mb-4 md:text-4xl text-3xl font-extrabold text-gray-900">Enjoy&nbsp;music&nbsp;with&nbsp;no&nbsp;limits. <br> Download the Chime! app for&nbsp;your&nbsp;computer.</div>
+                <button
+                  class="items-center justify-center w-fit px-6 py-2 mb-3 text-base font-medium text-center text-white bg-bittersweet hover:bg-darkbittersweet rounded-full md:mr-5"
+                >
+                  Download Chime! for free</button
+                >
             </div>
-            <div id="page-body" class="mb-20 flex flex-col gap-[24px] px-[30px] py-5"></div>
+            
+            <!-- FOOTER -->
             <footer class="w-full flex justify-between px-[30px] py-[30px] mb-[60px] border-t-[1px] border-gray-400 leading-8">
                 <div class="flex lg:gap-50 gap-20 w-1/3">
                     <ul class="footer-menu">
@@ -234,10 +298,7 @@
                 </ul>
             </footer>
         </div>
-
     </div>
-    <script type="module" src="common.js"></script>
-    <script type="module" src="user.js"></script>
-    <script type="module" src="artist.js"></script>
+    <script type="module" src="home.js"></script>
 </body>
 </html>
