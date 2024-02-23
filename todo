@@ -1,13 +1,9 @@
 TODO
-- link to all HTML: 
-+ html: favicon, left-bar, bottom-bar, nav-bar, burger-menu
-+ js: common (call all the functions in script tag)
-- Rearrange all files, change import ref (../filename)
-- Refresh firestore, update thumbnail
-
+- Refresh firestore, update thumbnail, UI
+- Render artist icon, footer (small window)
+- Prepare 4 sets of (mp3 and album cover) to demo
 BUG
-- artist.js - display publication: Why do I have to create index??????
-- Bottom bar: WHY PROGRESS BAR WIDTH CHANGE AS IT TUA????????
+- Library: press delete but the music play?
 
 DONE
 - Favicon
@@ -27,6 +23,12 @@ DONE
 - Botbar: overflow in title
 - Fix pagination color
 - artist: add pagination
+- Bottom bar: WHY PROGRESS BAR WIDTH CHANGE AS IT TUA????????
+- link to all HTML: 
++ html: favicon, left-bar, bottom-bar, nav-bar, burger-menu
++ js: common (call all the functions in script tag)
+- Rearrange all files, change import ref (../filename)
+- Recheck functionality of common.js (you call burgermenu and logout)
 
 ASK
 - Top-bar: Why sticky doesn't hide avatar but fixed does? 
@@ -41,3 +43,6 @@ SAVE FOR LATER
 - home: add carousel
 - add loading screen
 - allow pagination to work on other section
+
+DEBUNK
+- artist.js - display publication: Why do I have to create index??????
