@@ -1,7 +1,9 @@
 TODO
 - Refresh firestore, update thumbnail, UI
+- Render home page
 - Render artist icon, footer (small window)
 - Prepare 4 sets of (mp3 and album cover) to demo
+- Host web
 BUG
 - Library: press delete but the music play?
 
