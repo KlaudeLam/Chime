@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         const colRef = collection(firestore, "songs");
                         addDoc(colRef, data)
                             .then(() => {
-                                alert("Data uploaded to Firestore successfully.");
+                                alert("Publish new work successfully.");
                                 resolve();
                             })
                             .catch((error) => {

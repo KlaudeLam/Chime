@@ -1,10 +1,9 @@
-import { firestore, storage } from "./firebase-config.js";
+import { firestore, storage, changeBtnStatus } from "./firebase-config.js";
 import { collection, query, where, getDocs, getDoc, orderBy, 
     deleteDoc, doc, updateDoc, arrayRemove 
 } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 import { ref, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js';
 
-import { changeBtnStatus } from "./common.js";
 
 // ARTIST/USER PAGE-BODY DISPLAY-------------------------------
 const isArtist = localStorage.getItem("isArtist");
@@ -24,7 +23,7 @@ const totalItems = querySnapshot.size;
 const displayNothing = (categoryID) => {
     document.getElementById(categoryID).innerHTML = `
         <div class="flex flex-col justify-center items-center gap-[24px]">
-            <img class="w-1/3 max-sm:w-1/2" src="./img/empty-box.png">
+            <img class="w-1/3 max-sm:w-1/2" src="/assets/images/empty-box.png">
             <div>It's empty. Let's explore more on Chime!</div>
         </div>
     `
@@ -237,7 +236,7 @@ if (isArtist == "true") {
     </div>
     <div id="your-tracks" class="category">
         <div class="category-title">Your tracks</div>
-        <div id="your-tracks-content" class="category-carousel flex flex-wrap gap-[5%] justify-start"></div>
+        <div id="your-tracks-content" class="category-carousel flex flex-wrap gap-[5%] gap-y-9 justify-start"></div>
         <div id="pagination" class="w-full flex justify-center items-center gap-4 mt-7"></div> 
     </div>
     <div id="your-episodes" class="category hidden">

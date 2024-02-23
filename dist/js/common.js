@@ -4,43 +4,43 @@ import { auth } from './firebase-config.js';
 // REDIRECTION--------------------------------
 const routeMeta = [
     {
-        route: "/dist/download.html",
+        route: "/dist/html/download.html",
         requireAuth: false, 
         requireGuest: false, 
     },
     {
-        route: "/dist/premium.html",
+        route: "/dist/html/premium.html",
         requireAuth: false, 
         requireGuest: false, 
     },
     {
-        route: "/dist/home.html",
+        route: "/dist/html/home.html",
         requireAuth: false, 
         requireGuest: false, 
     },
     {
-        route: "/dist/login.html",
+        route: "/dist/html/login.html",
         requireAuth: false, 
         requireGuest: true, 
     },
     {
-        route: "/dist/register.html",
+        route: "/dist/html/register.html",
         requireAuth: false, 
         requireGuest: true, 
     },
     {
-        route: "/dist/library.html",
+        route: "/dist/html/library.html",
         requireAuth: true, 
         requireGuest: false, 
     },
     {
-        route: "/dist/publish.html",
+        route: "/dist/html/publish.html",
         requireAuth: true, 
         requireGuest: false, 
     },
 ];
   
-function getRouteMeta() {
+const getRouteMeta = () => {
     const path = window.location.pathname;
     console.log(path);
     return routeMeta.find((r) => r.route == path);
@@ -52,23 +52,18 @@ onAuthStateChanged(auth, (user) => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         if (meta?.requireGuest) {
+            // alert("You have already logged in");
             window.location.href = "home.html";
         }
     } else {
     // User is signed out
         if (meta?.requireAuth) {
-            alert("Please log in first");
+            // alert("Please log in first");
             window.location.href = "login.html";
         }
     }
     // stopLoading();
 });
-
-// function stopLoading() {
-//     document.getElementById("loading").remove();
-
-//     document.body.classList.remove("is-loading");
-// }
 
 // BURGER MENU---------------------------------
 export const burgermenu = () =>  {
@@ -118,9 +113,6 @@ export const logout = () => {
         Logout();
     }
 }
-// MISCELLANEOUS
-// Change Button Color
-export const changeBtnStatus = (id, bgColor, textColor) => {
-    document.getElementById(id).style.backgroundColor = bgColor;
-    document.getElementById(id).style.color = textColor;
-  }
+
+burgermenu();
+logout();

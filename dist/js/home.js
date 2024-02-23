@@ -1,10 +1,5 @@
 import { collection, query, orderBy, limit, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 import { firestore } from './firebase-config.js';
-import { burgermenu, logout } from './common.js';
-
-// COMMON
-burgermenu();
-logout();
 
 // CAROUSEL
 

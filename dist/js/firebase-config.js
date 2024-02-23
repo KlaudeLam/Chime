@@ -22,3 +22,10 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const firestore = getFirestore(app);
+
+// MISCELLANEOUS
+// Change Button Color
+export const changeBtnStatus = (id, bgColor, textColor) => {
+  document.getElementById(id).style.backgroundColor = bgColor;
+  document.getElementById(id).style.color = textColor;
+}

@@ -1,8 +1,7 @@
 import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
 import { collection, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
-import { auth, firestore } from "./firebase-config.js";
-import { changeBtnStatus } from './common.js';
+import { auth, firestore, changeBtnStatus } from "./firebase-config.js";
 
 // Function: Artist Validation-------------------
 export const artistValidation = () => {
@@ -94,23 +93,3 @@ const RegisterPage = () => {
 
 RegisterPage();
 
-// Click Register----------------------------
-// upload to Firestore "accounts" Collection: mail, name, userID, isArtist
-// register
-
-// Click Login-------------------------------
-// check isArtist: from Firestore "accounts" Collection (with "mail" == mailLogin), fetch "isArtist" and assign to const isArtist 
-// localStorage.setItem("isArtist", isArtist)
-
-// Lib/profile display-----------------------
-
-// check isArtist: from Firestore Collection "accounts" (with "mail" == mailLogin), fetch "isArtist" and assign to const isArtist 
-// if another user isArtist = true: display "Published tracks", "btnPublish"
-// if another user isArtist = false: display "Saved tracks", "btnSaveTrack"
-
-// check userID: from Firestore Collection "accounts" (with "mail" == mailLogin), fetch "userID" and assign to const currentUserID 
-// fetch clicked "userID" and assign to const anotherUserID 
-// if anotherUserID !== currentUserID: display "btnFollow"
-
-// fetch tracks from "songs"
-// display 10 latest tracks with userid==currentUserID (order(time, dsc))
