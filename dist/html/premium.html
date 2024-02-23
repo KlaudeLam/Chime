@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Publish</title>
+    <title>Premium</title>
     <link rel="icon" type="image/x-icon" href="/assets/icons/logo.png"> 
 
     <!-- Galada: https://fonts.google.com/specimen/Galada?preview.text=Chime!&classification=Handwriting -->
@@ -17,8 +17,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/src/css/chime-common.css">
-    <link rel="stylesheet" href="/src/css/common.css">
+    <link rel="stylesheet" href="/dist/chime-common.css">
+    <link rel="stylesheet" href="/dist/common.css">
   </head>
   <body>
     <!-- WEBPAGE -->
@@ -34,7 +34,7 @@
               <nav class="">
                   <ul class="flex flex-col gap-3">
                       <a href="home.html">
-                          <li class="w-full flex items-center gap-6 h-8 text-[15px] font-semibold">
+                          <li class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
                               <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M4.18753 11.3788C4.03002 11.759 4 11.9533 4 12V20.0018C4 20.5529 4.44652 21 5 21H8V15C8 13.8954 8.89543 13 10 13H14C15.1046 13 16 13.8954 16 15V21H19C19.5535 21 20 20.5529 20 20.0018V12C20 11.9533 19.97 11.759 19.8125 11.3788C19.6662 11.0256 19.4443 10.5926 19.1547 10.1025C18.5764 9.1238 17.765 7.97999 16.8568 6.89018C15.9465 5.79788 14.9639 4.78969 14.0502 4.06454C13.5935 3.70204 13.1736 3.42608 12.8055 3.2444C12.429 3.05862 12.1641 3 12 3C11.8359 3 11.571 3.05862 11.1945 3.2444C10.8264 3.42608 10.4065 3.70204 9.94978 4.06454C9.03609 4.78969 8.05348 5.79788 7.14322 6.89018C6.23505 7.97999 5.42361 9.1238 4.8453 10.1025C4.55568 10.5926 4.33385 11.0256 4.18753 11.3788ZM10.3094 1.45091C10.8353 1.19138 11.4141 1 12 1C12.5859 1 13.1647 1.19138 13.6906 1.45091C14.2248 1.71454 14.7659 2.07921 15.2935 2.49796C16.3486 3.33531 17.4285 4.45212 18.3932 5.60982C19.3601 6.77001 20.2361 8.0012 20.8766 9.08502C21.1963 9.62614 21.4667 10.1462 21.6602 10.6134C21.8425 11.0535 22 11.5467 22 12V20.0018C22 21.6599 20.6557 23 19 23H16C14.8954 23 14 22.1046 14 21V15H10V21C10 22.1046 9.10457 23 8 23H5C3.34434 23 2 21.6599 2 20.0018V12C2 11.5467 2.15748 11.0535 2.33982 10.6134C2.53334 10.1462 2.80369 9.62614 3.12345 9.08502C3.76389 8.0012 4.63995 6.77001 5.60678 5.60982C6.57152 4.45212 7.65141 3.33531 8.70647 2.49796C9.2341 2.07921 9.77521 1.71454 10.3094 1.45091Z" fill="#0F0F0F"/>
                                   </svg>
@@ -52,7 +52,7 @@
                           </li>
                       </a>
                       <a href="premium.html">
-                          <li class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
+                          <li class="w-full flex items-center gap-6 h-8 text-[15px] font-semibold">
                               <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                                   <path d="M6 19L18 19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                   <path d="M16.5585 16H7.44152C6.58066 16 5.81638 15.4491 5.54415 14.6325L3.70711 9.12132C3.44617 8.3385 4.26195 7.63098 5 8L5.71067 8.35533C6.48064 8.74032 7.41059 8.58941 8.01931 7.98069L10.5858 5.41421C11.3668 4.63317 12.6332 4.63316 13.4142 5.41421L15.9807 7.98069C16.5894 8.58941 17.5194 8.74032 18.2893 8.35533L19 8C19.7381 7.63098 20.5538 8.3385 20.2929 9.12132L18.4558 14.6325C18.1836 15.4491 17.4193 16 16.5585 16Z" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
@@ -122,10 +122,10 @@
       </div>
       
       <!-- BURGERMENU -->
-      <div id="hidden-menu" class="w-full mt-[64px] bg-white py-4 px-6 rounded-b-lg lg:h-0 lg:p-0 hidden shadow-sm">
+      <div id="hidden-menu" class="w-full mt-[64px] bg-white py-4 px-6 rounded-b-lg lg:h-0 lg:p-0 hidden shadow-sm z-40">
           <ul class="flex flex-col gap-3">
               <a href="home.html">
-                  <li class="w-full flex items-center gap-6 h-8 text-[15px] font-semibold">
+                  <li class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M4.18753 11.3788C4.03002 11.759 4 11.9533 4 12V20.0018C4 20.5529 4.44652 21 5 21H8V15C8 13.8954 8.89543 13 10 13H14C15.1046 13 16 13.8954 16 15V21H19C19.5535 21 20 20.5529 20 20.0018V12C20 11.9533 19.97 11.759 19.8125 11.3788C19.6662 11.0256 19.4443 10.5926 19.1547 10.1025C18.5764 9.1238 17.765 7.97999 16.8568 6.89018C15.9465 5.79788 14.9639 4.78969 14.0502 4.06454C13.5935 3.70204 13.1736 3.42608 12.8055 3.2444C12.429 3.05862 12.1641 3 12 3C11.8359 3 11.571 3.05862 11.1945 3.2444C10.8264 3.42608 10.4065 3.70204 9.94978 4.06454C9.03609 4.78969 8.05348 5.79788 7.14322 6.89018C6.23505 7.97999 5.42361 9.1238 4.8453 10.1025C4.55568 10.5926 4.33385 11.0256 4.18753 11.3788ZM10.3094 1.45091C10.8353 1.19138 11.4141 1 12 1C12.5859 1 13.1647 1.19138 13.6906 1.45091C14.2248 1.71454 14.7659 2.07921 15.2935 2.49796C16.3486 3.33531 17.4285 4.45212 18.3932 5.60982C19.3601 6.77001 20.2361 8.0012 20.8766 9.08502C21.1963 9.62614 21.4667 10.1462 21.6602 10.6134C21.8425 11.0535 22 11.5467 22 12V20.0018C22 21.6599 20.6557 23 19 23H16C14.8954 23 14 22.1046 14 21V15H10V21C10 22.1046 9.10457 23 8 23H5C3.34434 23 2 21.6599 2 20.0018V12C2 11.5467 2.15748 11.0535 2.33982 10.6134C2.53334 10.1462 2.80369 9.62614 3.12345 9.08502C3.76389 8.0012 4.63995 6.77001 5.60678 5.60982C6.57152 4.45212 7.65141 3.33531 8.70647 2.49796C9.2341 2.07921 9.77521 1.71454 10.3094 1.45091Z" fill="#0F0F0F"/>
                           </svg>
@@ -143,7 +143,7 @@
                   </li>
               </a>
               <a href="premium.html">
-                  <li class="w-full flex items-center gap-6 h-8 text-[15px] hover:font-semibold">
+                  <li class="w-full flex items-center gap-6 h-8 text-[15px] font-semibold">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                           <path d="M6 19L18 19" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                           <path d="M16.5585 16H7.44152C6.58066 16 5.81638 15.4491 5.54415 14.6325L3.70711 9.12132C3.44617 8.3385 4.26195 7.63098 5 8L5.71067 8.35533C6.48064 8.74032 7.41059 8.58941 8.01931 7.98069L10.5858 5.41421C11.3668 4.63317 12.6332 4.63316 13.4142 5.41421L15.9807 7.98069C16.5894 8.58941 17.5194 8.74032 18.2893 8.35533L19 8C19.7381 7.63098 20.5538 8.3385 20.2929 9.12132L18.4558 14.6325C18.1836 15.4491 17.4193 16 16.5585 16Z" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
@@ -207,9 +207,8 @@
                         </g>  
                         </svg>
                 </a>
-                <a id="nav-btn-log-in" href="login.html"><span  class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap">Log in</span></a>
-                <span id="nav-btn-log-out" class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap hidden">Log out</span>
-                
+                <a id="nav-btn-log-in" href="login.html"><span  class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap hidden">Log in</span></a>
+                <span id="nav-btn-log-out" class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap hidden cursor-pointer select-none">Log out</span>
             </div>
         </div>
 
@@ -237,7 +236,7 @@
                     </svg>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                     <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5.5v13m3.48-5.636 9.016 5.259A1 1 0 0 0 19 17.259V6.741a1 1 0 0 0-1.504-.864l-9.015 5.26a1 1 0 0 0 0 1.727Z"/>
-                </svg>
+                  </svg>
                 <svg class="btn-play cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
                     <path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
                     </svg>
@@ -253,109 +252,173 @@
                     </svg>
             </div>
         </div>
+        
+        <div class="w-full bg-white mb-12"></div>
 
         <!-- PAGE-BODY -->
         <div
-        id="page-body"
-        class="mb-20 flex flex-col gap-[24px] px-[30px] py-[30px]" x-data="{ images: [] }">
-            <div
-            class="heading text-center font-bold text-2xl m-5 text-gray-800 bg-white"
+          id="page-body"
+          class="mb-20 flex flex-col gap-[24px] px-[30px] py-[8px]"
+        >
+          <div class="px-4 mx-auto max-w-8xl lg:px-4">
+            <h2
+              class="mb-4 text-3xl font-bold text-gray-900 lg:font-extrabold lg:text-4xl lg:leading-snug dark:text-white lg:text-center 2xl:px-48"
             >
-            Publish New Track
-            </div>
-            <div class="editor mx-auto w-[440px] md:w-[550px] lg:w-[800px] flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg">
-            <div class="flex justify-between w-full h-fit mb-4">
-                <!-- Input: thumbnail -->
-                <div id="thumbnail-preview-section" class="w-40 aspect-square max-h-40 bg-gray-50 border-dashed border-2 border-gray-400 rounded-lg flex flex-col justify-center items-center text-center cursor-pointer overflow-hidden">
-                <div id="thumbnail-input-zone">
-                    <input id="input-thumbnail" type="file" class="hidden" accept=".jpg" required/>
-                    <label for="input-thumbnail" class="cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-gray-700 mx-auto mb-2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-                    </svg>
-                    <h5 class="mb-1 first-line:font-bold tracking-tight text-gray-700 text-center">Thumbnail</h5>
-                    <p class="font-normal text-xs text-gray-400 md:px-6"><b class="text-gray-600">Only JPG format</b></p>
-                    <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
-                    </label>
-                </div>
-                <div id="thumbnail-container"></div>
-                </div>
-                <!-- Input: title, description, track -->
-                <div class="flex flex-col gap-1 w-[58%] md:w-[67%] lg:w-[73%]">
-                <input id="input-title"
-                    class="bg-white border border-gray-300 p-2 outline-none rounded-[4px]"
-                    placeholder="Title"
-                    type="text" required
-                />
-                <textarea id="input-description" class="bg-white min-h-[66px] p-2 border border-gray-300 outline-none rounded-[4px] overflow-hidden resize-none" placeholder="Describe your track" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' required></textarea>
-                <input id="input-track" class="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-white focus:outline-none file:mr-5 file:border-0
-                file:text-sm file:font-medium rounded-[4px]
-                file:bg-lightbittersweet file:text-black
-                hover:file:cursor-pointer hover:file:bg-bittersweet
-                hover:file:text-white"  type="file" accept=".mp3" required>
-                <label for="input-track" class="text-xs">Upload your track above (.mp3)</label>
-                </div>
-            </div>
+              Choose Your Premium
+            </h2>
+            <p
+              class="mb-10 text-lg font-normal text-gray-500 dark:text-gray-400 lg:text-center lg:text-xl lg:mb-16"
+            >
+              Listen without limits with customized plan just for you
+            </p>
+            <div
+              class="flex justify-between max-md:flex-col gap-16 bg-gray-50 dark:bg-gray-800 p-8 rounded-lg"
+            >
+              <div class="mb-8 md:mb-0 w-full">
+                <h3
+                  class="mb-1 text-lg font-bold text-gray-900 dark:text-white"
+                >
+                  Community edition
+                </h3>
+                <span
+                  class="block mb-4 text-4xl font-extrabold text-gray-900 dark:text-white"
+                  >Free</span
+                >
+                <ul class="mb-4 text-sm text-gray-500">
+                    <li class="before:content-['\2714\0020']">Limited music library access</li>
+                    <li class="before:content-['\2714\0020']">Ad-supported</li>
+                    <li class="before:content-['\2714\0020']">No offline listening</li>
+                    <li class="before:content-['\2714\0020']">No high-quality audio</li>
+                </ul>
+                <button
+                  class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-bittersweet hover:bg-darkbittersweet rounded-full md:mr-5"
+                >
+                  Get started</button
+                >
+                <p class="text-sm"><a href="" class="underline">Terms and conditions apply</a>.</p>
+              </div>
+              <div class="mb-8 md:mb-0 w-full">
+                <h3
+                  class="mb-1 text-lg font-bold text-gray-900 dark:text-white"
+                >
+                  Let's solo!
+                </h3>
+                <span
+                  class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white"
+                  >$9.99</span
+                >
+                <ul class="my-4 text-sm text-gray-500 dark:text-gray-400">
+                    <li class="before:content-['\2714\0020']">Unlimited music library access</li>
+                    <li class="before:content-['\2714\0020']">Ad-free</li>
+                    <li class="before:content-['\2714\0020']">High-quality audio streaming</li>
+                    <li class="before:content-['\2714\0020']">Offline listening</li>
+                    <li class="before:content-['\2714\0020']">Unlimited skips</li>
+                    <li class="before:content-['\2714\0020']">Personalized recommendations</li>
+                    <li class="before:content-['\2714\0020']">Exclusive releases and content</li>
+                    <li class="before:content-['\2714\0020']">Cross-platform compatibility</li>
+                </ul>
+                <button
+                  class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-bittersweet bg-white hover:bg-white ring-1 ring-bittersweet rounded-full md:mr-5"
+                >
+                  1-month free trial</button
+                >
+                <button
+                  class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-bittersweet hover:bg-darkbittersweet rounded-full md:mr-5"
+                >
+                  Buy now</button
+                >
+                <p class="text-sm"><a href="" class="underline">Terms and conditions apply</a>. 1 month free not available for users who have already tried this package.</p>
+              </div>
+              <div class="mb-3 md:mb-0 w-full">
+                <h3
+                  class="mb-1 text-lg font-bold text-gray-900 dark:text-white"
+                >
+                  Vibe together
+                </h3>
+                <span
+                  class="block mb-4 text-4xl font-extrabold text-gray-900 dark:text-white"
+                  >$14.99</span
+                >
+                <ul class="mb-4 text-sm text-gray-500 dark:text-gray-400">
+                  <li class="before:content-['\2714\0020']">Premium benefits for up to six members</li>
+                  <li class="before:content-['\2714\0020']">Personalized accounts</li>
+                  <li class="before:content-['\2714\0020']">Cost-effective pricing</li>
+                  <li class="before:content-['\2714\0020']">Family playlists</li>
+                  <li class="before:content-['\2714\0020']">Parental controls</li>
+                  <li class="before:content-['\2714\0020']">Synced playback</li>
+                  <li class="before:content-['\2714\0020']">Simplified billing</li>
+                  <li class="before:content-['\2714\0020']">Exclusive family content</li>
+                  <li class="before:content-['\2714\0020']">Enhanced customer support</li>
+                </ul>
+                <button
+                  class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-bittersweet bg-white ring-1 ring-bittersweet rounded-full md:mr-5"
+                >
+                  1-month free trial</button
+                >
+                <button
+                  class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-bittersweet hover:bg-darkbittersweet rounded-full md:mr-5"
+                >
+                  Buy now</button
+                >
+                <p class="text-sm"><a href="" class="underline">Terms and conditions apply</a>. 1 month free not available for users who have already tried this package.</p>
 
-            <!-- Buttons -->
-            <div class="w-full flex justify-end">
-                <button id="btn-confirm-publish" type="button" class="w-fit right-0 bg-bittersweet text-white hover:bg-[#ff3f5f] hover:text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">Publish</button>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
-        
+
         <!-- FOOTER -->
         <footer
-        class="w-full flex justify-between px-[30px] py-[30px] mb-[60px] border-t-[1px] border-gray-400 leading-8"
+          class="w-full flex justify-between px-[30px] py-[30px] mb-[60px] border-t-[1px] border-gray-400 leading-8"
         >
-        <div class="flex lg:gap-50 gap-20 w-1/3">
+          <div class="flex lg:gap-50 gap-20 w-1/3">
             <ul class="footer-menu">
-            <li id="company" class="footer-header font-semibold">Company</li>
-            <li id="about"><a href="">About</a></li>
-            <li id="jobs"><a href="">Jobs</a></li>
-            <li id="support"><a href="">Support</a></li>
+              <li id="company" class="footer-header font-semibold">Company</li>
+              <li id="about"><a href="">About</a></li>
+              <li id="jobs"><a href="">Jobs</a></li>
+              <li id="support"><a href="">Support</a></li>
             </ul>
             <ul class="footer-menu">
-            <li id="communities" class="footer-header font-semibold">
+              <li id="communities" class="footer-header font-semibold">
                 Communities
-            </li>
-            <li id="artists"><a href="">Artists</a></li>
-            <li id="developers"><a href="">Developers</a></li>
-            <li id="advertising"><a href="">Advertising</a></li>
-            <li id="investors"><a href="">Investors</a></li>
-            <li id="vendors"><a href="">Vendors</a></li>
+              </li>
+              <li id="artists"><a href="">Artists</a></li>
+              <li id="developers"><a href="">Developers</a></li>
+              <li id="advertising"><a href="">Advertising</a></li>
+              <li id="investors"><a href="">Investors</a></li>
+              <li id="vendors"><a href="">Vendors</a></li>
             </ul>
-        </div>
-        <ul class="flex gap-3">
+          </div>
+          <ul class="flex gap-3">
             <li id="email">
-            <!-- https://www.flaticon.com/free-icon/email_3178158?term=email&page=1&position=2&origin=search&related_id=3178158 -->
-            <a href=""
+              <!-- https://www.flaticon.com/free-icon/email_3178158?term=email&page=1&position=2&origin=search&related_id=3178158 -->
+              <a href=""
                 ><img
-                src="https://cdn-icons-png.flaticon.com/512/3178/3178158.png "
-                alt="email"
-            /></a>
+                  src="https://cdn-icons-png.flaticon.com/512/3178/3178158.png "
+                  alt="email"
+              /></a>
             </li>
             <li id="instagram">
-            <!-- https://www.flaticon.com/free-icon/instagram_1384015?term=instagram&page=1&position=6&origin=search&related_id=1384015 -->
-            <a href=""
+              <!-- https://www.flaticon.com/free-icon/instagram_1384015?term=instagram&page=1&position=6&origin=search&related_id=1384015 -->
+              <a href=""
                 ><img
-                src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png "
-                alt="instagram"
-            /></a>
+                  src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png "
+                  alt="instagram"
+              /></a>
             </li>
             <li id="facebook">
-            <!-- https://www.flaticon.com/free-icon/facebook_1384005?term=facebook&page=1&position=2&origin=search&related_id=1384005 -->
-            <a href=""
+              <!-- https://www.flaticon.com/free-icon/facebook_1384005?term=facebook&page=1&position=2&origin=search&related_id=1384005 -->
+              <a href=""
                 ><img
-                src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png "
-                alt="facebook"
-            /></a>
+                  src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png "
+                  alt="facebook"
+              /></a>
             </li>
-        </ul>
+          </ul>
         </footer>
       </div>
     </div>
-    <!-- <script type="module" src="home.js"></script> -->
-    <script type="module" src="publish.js"></script>
+    <script type="module" src="/dist/js/common.js"></script>
+    <script type="module" src="/dist/js/musicplaying.js"></script>
   </body>
 </html>

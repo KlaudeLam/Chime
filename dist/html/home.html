@@ -17,8 +17,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/src/css/chime-common.css">
-    <link rel="stylesheet" href="/src/css/common.css">
+    <link rel="stylesheet" href="/dist/chime-common.css">
+    <link rel="stylesheet" href="/dist/common.css">
 </head>
 <body>
     <!-- CONTEXT MENU -->
@@ -127,7 +127,7 @@
         </div>
         
         <!-- BURGERMENU -->
-        <div id="hidden-menu" class="w-full mt-[64px] bg-white py-4 px-6 rounded-b-lg lg:h-0 lg:p-0 hidden shadow-sm">
+        <div id="hidden-menu" class="w-full mt-[64px] bg-white py-4 px-6 rounded-b-lg lg:h-0 lg:p-0 hidden shadow-sm z-40">
             <ul class="flex flex-col gap-3">
                 <a href="home.html">
                     <li class="w-full flex items-center gap-6 h-8 text-[15px] font-semibold">
@@ -212,9 +212,8 @@
                             </g>  
                             </svg>
                     </a>
-                    <a id="nav-btn-log-in" href="login.html"><span  class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap">Log in</span></a>
-                    <span id="nav-btn-log-out" class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap hidden">Log out</span>
-                    
+                    <a id="nav-btn-log-in" href="login.html"><span  class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap hidden">Log in</span></a>
+                    <span id="nav-btn-log-out" class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap hidden cursor-pointer select-none">Log out</span>
                 </div>
             </div>
 
@@ -364,8 +363,8 @@
             </footer>
         </div>
     </div>
-    <script type="module" src="/src/js/common.js"></script>
-    <script type="module" src="/src/js/home.js"></script>
-    <script type="module" src="/src/js/musicplaying.js"></script>
+    <script type="module" src="/dist/js/common.js"></script>
+    <script type="module" src="/dist/js/musicplaying.js"></script>
+    <script type="module" src="/dist/js/home.js"></script>
 </body>
 </html>
