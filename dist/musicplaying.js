@@ -89,8 +89,7 @@ const updateProgressBar = () => {
 }
 
 const setProgressBar = (e) => {
-    const clickedProgressBar = e.target;
-    const width = clickedProgressBar.clientWidth;
+    const width = e.currentTarget.clientWidth;
     const clickX = e.offsetX;
 
     // Bottom bar: Click in the same spot - Why does the width change?
