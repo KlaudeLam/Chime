@@ -92,12 +92,6 @@ const setProgressBar = (e) => {
     const width = e.currentTarget.clientWidth;
     const clickX = e.offsetX;
 
-    // Bottom bar: Click in the same spot - Why does the width change?
-    console.log(clickX);
-    console.log(width);
-    console.log(clickX/width);
-    console.log((clickX / width) * music.duration);
-
     music.currentTime = (clickX / width) * music.duration;
 }
 
