@@ -124,10 +124,10 @@ const closeContextMenu = () => {
 document.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault();
     // Waiting 4s for the songs to load from Firestore
-    setTimeout(() => {
+    setInterval(() => {
         // Only apply to elements with class contains "category-content"
         const clickable = document.querySelectorAll('.category-content');
-        console.log(clickable);
+        console.log("haha", clickable);
 
         clickable.forEach(track => {
             // LOAD, PLAY MUSIC
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
                 });
             }  
         }); 
-    }, 4000);
+    }, 2000);
 });
 
 btnPause.forEach(btn => {
