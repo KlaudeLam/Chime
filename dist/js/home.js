@@ -17,7 +17,7 @@ getDocs(songsQuery)
         // foreach: insert adjacent html
         const recentlyReleased = document.getElementById("recently-released");
         recentlyReleased.insertAdjacentHTML("beforeend", `
-            <div id='${doc.id}' class="category-content">
+            <div id='${doc.id}' class="category-content" title="${data.title} - ${data.artist}">
                 <img src="${data.thumbnail}" alt="">
                 <div class="category-content-name">${data.title}</div>
                 <a class="category-content-description">${data.artist}</a>
