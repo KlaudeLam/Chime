@@ -212,7 +212,7 @@
                             </g>  
                             </svg>
                     </a>
-                    <a id="nav-btn-log-in" href="login.html"><span  class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap hidden">Log in</span></a>
+                    <a id="nav-btn-log-in" class="hidden" href="login.html"><span  class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap">Log in</span></a>
                     <span id="nav-btn-log-out" class="w-fit rounded-3xl bg-white py-2 px-4 text-sm text-bittersweet hover:font-semibold whitespace-nowrap hidden cursor-pointer select-none">Log out</span>
                 </div>
             </div>
@@ -276,47 +276,23 @@
                 </div> -->
                 <div class="category">
                     <div class="category-title">Recently released</div>
-                    <!-- div (max 20 -> see more -> href: page of that category): playlist, songs, etc -->
-                    <!-- js: addAdjHTML -->
-                    <!-- animation: think about scrolling effect -->
                     <div id="recently-released" class="category-carousel flex gap-2"></div>
                 </div>
-                <div id="popular-albums" class="category">
+                <div class="category">
                     <div class="category-title">Popular albums</div>
-                    <a href="Silverspoon">
-                        <div class="category-content">
-                            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                            <div class="category-content-name">Silver Spoon</div>
-                            <a href="BTS" class="category-content-description">Album - Jungkookk</a>
-                        </div>
-                    </a>
+                    <div id="popular-albums" class="category-carousel flex gap-2"></div>
                 </div>
-                <div id="playlists" class="category">
+                <div class="category">
                     <div class="category-title">Playlists</div>
-                    <a href="Silverspoon">
-                        <div class="category-content">
-                            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                            <div class="category-content-name">Suy</div>
-                            <a href="BTS" class="category-content-description">Playlist - 20 songs</a>
-                        </div>
-                    </a>
+                    <div id="playlists" class="category-carousel flex gap-2"></div>
                 </div>
-                <div id="episodes-for-you" class="category">
+                <div class="category">
                     <div class="category-title">Episodes for you</div>
-                    <a href="Silverspoon">
-                        <div class="category-content">
-                            <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                            <div class="category-content-name">Silver Spoon</div>
-                            <a href="BTS" class="category-content-description">Have a sip - 42 mins</a>
-                        </div>
-                    </a>
+                    <div id="episodes-for-you" class="category-carousel flex gap-2"></div>
                 </div>
-                <div id="fav-artists" class="category">
+                <div class="category">
                     <div class="category-title">Fav artists</div>
-                    <a class="category-content-artist" href="other-artist.html">
-                        <img src="https://i.scdn.co/image/ab67616d0000b2734b5186cf9433dcc16b11db5c" alt="">
-                        <div class="category-content-artist-name">Vũ.</div>
-                    </a>
+                    <div id="fav-artists" class="category-carousel flex gap-2"></div>
                 </div>
                 <div id="upcoming-event" class="banner-display">
                     <!-- div (max 10): new release, world tour -->
@@ -366,5 +342,6 @@
     <script type="module" src="/dist/js/common.js"></script>
     <script type="module" src="/dist/js/musicplaying.js"></script>
     <script type="module" src="/dist/js/home.js"></script>
+    <script type="module" src="/dist/js/demo-home.js"></script>
 </body>
 </html>
