@@ -178,10 +178,11 @@ if (isArtist == "false") {
     <div id="your-artists" class="category hidden">
         <div class="category-title">Your fav artists</div>
         <div id="your-artists-content" class="category-carousel flex gap-2">
-            <a class="category-content-artist" href="#">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Vu_monsoon2019.jpg/1200px-Vu_monsoon2019.jpg" alt="">
-                <div class="category-content-artist-name">Vũ.</div>
-            </a>
+            <div class="category-content-artist" title="Vũ.">
+                <img src="https://nld.mediacdn.vn/291774122806476800/2022/9/17/anh-chup-man-hinh-2022-09-17-luc-141150-1663399106583640943036.png" alt="">
+                <div class="category-content-name">Vũ.</div>
+                <a href="" class="category-content-description">Singer</a>
+             </div>
         </div>
     </div>
     `
