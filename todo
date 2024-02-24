@@ -1,11 +1,4 @@
 TODO
-- Refresh firestore, update thumbnail, UI
-- Render home page
-- Render artist icon, footer (small window)
-- Prepare 4 sets of (mp3 and album cover) to demo
-- Host web
-BUG
-- Library: press delete but the music play?
 
 DONE
 - Favicon
@@ -31,6 +24,11 @@ DONE
 + js: common (call all the functions in script tag)
 - Rearrange all files, change import ref (../filename)
 - Recheck functionality of common.js (you call burgermenu and logout)
+- Render home page
+- Render artist icon, footer (small window)
+- Host web
+- Prepare 5 sets of (mp3 and album cover) to demo
+- Refresh firestore, update thumbnail, UI
 
 ASK
 - Top-bar: Why sticky doesn't hide avatar but fixed does? 
@@ -45,6 +43,9 @@ SAVE FOR LATER
 - home: add carousel
 - add loading screen
 - allow pagination to work on other section
+- Add admin role (who will maintain the web and monitor wwhat users and artist are doing)
+- Lib: trigger musicplay to identify clickable whenever pagination change (not using set interval)
 
 DEBUNK
 - artist.js - display publication: Why do I have to create index??????
+- Library: press delete but the music play?
