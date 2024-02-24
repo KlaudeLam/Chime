@@ -45,7 +45,7 @@ const displayData = async (playlist, page) => {
         if (data != undefined) {
             // Display songs
             yourTracksContent.insertAdjacentHTML("beforeend", `
-                <div id='${id}' class="category-content relative">
+                <div id='${id}' class="category-content relative title="${data.title} - ${data.artist}"">
                 
                     <img src="${data.thumbnail}" alt="">
                     <div class="category-content-name">${data.title}</div>
