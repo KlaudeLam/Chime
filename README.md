@@ -1,20 +1,31 @@
 # Chime!
-A music streaming platform
+A music streaming platform encouraging interactions amongst fans and artists beyond listening: comments on fanblogs, direct message with idols, livestream, and merchandise. (https://chime-omega.vercel.app/)
 
 ## Purpose
+-  Foster and strengthen admirers and artists relationship through realtime interactions
+-  Create social, cutural, and economic impacts through multi-functional platform (blogosphere, multimedia streaming, marketplace)
 
 ## Technology
 - HTML
-- CSS
+- CSS/Tailwind
 - Javascript
 - Firebase
 
 ## Features
+Available
+-  Authentication with email and password
+-  Listen to music uploaded by other artists
+-  For artist: publish and delete tracks
+-  For fan: add and remove tracks from library
+-  Responsive design (for PC)
+
 To be updated
--  Log in/out, Sign up using Google account
--  Sign up for newsletter
--  Switching between pages
--  Responsive design
+-  Authentication with Google account
+-  Add admin role: manage web flow, monitor both all users, supervise cyber inappropriation
+-  For artist: upload podcast, videos
+-  For users: follow other users and artists
+-  Marketplace, Blogs and Livestream section
+-  Responsive design (for Mobile)
 
 ## Setup
 1. Clone this repo to your computer
@@ -23,4 +34,4 @@ To be updated
 ## Inspirations
 - Spotify
 - Naver Webtoon
-- Webtoon
+- Weverse
