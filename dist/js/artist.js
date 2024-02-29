@@ -50,7 +50,7 @@ const displayData = async (page) => {
             const data = snapshot.docs[i].data();
             const id = snapshot.docs[i].id;
             yourTracksContent.insertAdjacentHTML("beforeend", `
-                <div id='${id}' class="category-content relative" title="${data.title} - ${data.artist}">
+                <div id='${id}' class="category-content relative" title='hello'>
                 
                     <img src="${data.thumbnail}" alt="">
                     <div class="category-content-name">${data.title}</div>

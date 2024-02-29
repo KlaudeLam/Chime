@@ -34,7 +34,7 @@ const albums = [
 
 albums.forEach(album => {
     const albumTemplate= 
-    `<div class="category-content" title='${album.title}'>
+    `<div class="category-content" title='${album.title} - ${album.artist}'>
         <img src=${album.thumbnail} alt="">
         <div class="category-content-name">${album.title}</div>
         <a href="BTS" class="category-content-description">Album - ${album.artist}</a>
