@@ -1,5 +1,6 @@
 # Chime!
-A music streaming platform encouraging interactions amongst fans and artists beyond listening: comments on fanblogs, direct message with idols, livestream, and merchandise. (https://chime-omega.vercel.app/)
+(Site currently under maintenance to switch to a newer provider. Official link will be reattached soon. Thanks for your patience.
+A music streaming platform encouraging interactions amongst fans and artists beyond listening: comments on fanblogs, direct message with idols, livestream, and merchandise.
 
 ## Purpose
 -  Foster and strengthen admirers and artists relationship through realtime interactions
