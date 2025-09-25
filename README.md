@@ -1,5 +1,6 @@
 # Chime!
-(Site currently under maintenance to switch to a newer provider. Official link will be reattached soon. Thanks for your patience.
+_Site currently under maintenance to switch to a newer provider. Official link will be reattached soon. Thanks for your patience._
+
 A music streaming platform encouraging interactions amongst fans and artists beyond listening: comments on fanblogs, direct message with idols, livestream, and merchandise.
 
 ## Purpose
