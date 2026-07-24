@@ -31,6 +31,14 @@ export function DownloadIcon() {
   );
 }
 
+export function AdminIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+      <path d="M12 3L4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function HamburgerIcon() {
   return (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" style={{ fill: 'white' }}>

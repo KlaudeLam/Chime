@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { usePlayer } from '../contexts/PlayerContext';
 import { ShuffleIcon, PrevIcon, PlayIcon, PauseIcon, NextIcon, LoopIcon } from './icons';
 
@@ -27,7 +28,11 @@ export function MobilePlayer() {
         />
         <div className="w-2/3">
           <div className="w-full category-content-name">{currentTrack?.title || 'Not playing'}</div>
-          <div className="w-full category-content-description">{currentTrack?.artist?.username || ''}</div>
+          {currentTrack?.artist_id && (
+            <Link to={`/artist/${currentTrack.artist_id}`} className="w-full category-content-description">
+              {currentTrack?.artist?.username || ''}
+            </Link>
+          )}
         </div>
       </div>
       <div onClick={handleSeek} className="hidden md:block md:w-1/2 bg-white rounded-sm cursor-pointer h-1">

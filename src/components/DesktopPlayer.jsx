@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { usePlayer } from '../contexts/PlayerContext';
 import { ShuffleIcon, PrevIcon, PlayIcon, PauseIcon, NextIcon, LoopIcon } from './icons';
 
@@ -28,9 +29,14 @@ export function DesktopPlayer() {
         <div className="font-semibold leading-[1.5em] whitespace-nowrap text-ellipsis overflow-hidden">
           {currentTrack?.title || 'Not playing'}
         </div>
-        <div className="w-fit cursor-pointer text-sm block whitespace-nowrap text-ellipsis overflow-hidden hover:underline">
-          {currentTrack?.artist?.username || ''}
-        </div>
+        {currentTrack?.artist_id && (
+          <Link
+            to={`/artist/${currentTrack.artist_id}`}
+            className="w-fit cursor-pointer text-sm block whitespace-nowrap text-ellipsis overflow-hidden hover:underline"
+          >
+            {currentTrack?.artist?.username || ''}
+          </Link>
+        )}
       </div>
       <div onClick={handleSeek} className="w-full bg-lightbittersweet rounded-sm cursor-pointer h-1 mt-2 mb-6">
         <div className="bg-bittersweet rounded-sm h-full transition-[width] duration-[0.01s] ease-linear" style={{ width: `${progressPercent}%` }} />

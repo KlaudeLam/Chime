@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { usePlayer } from '../contexts/PlayerContext';
 import { useAuth } from '../contexts/AuthContext';
 import { useTrackContextMenu } from '../contexts/TrackContextMenuContext';
@@ -21,7 +22,13 @@ export function TrackCard({ track, queue }) {
     <div className="category-content" onClick={handleClick} onContextMenu={handleContextMenu}>
       <img src={track.thumbnail_url} alt="" />
       <div className="category-content-name">{track.title}</div>
-      <div className="category-content-description">{track.artist?.username}</div>
+      <Link
+        to={`/artist/${track.artist_id}`}
+        onClick={(e) => e.stopPropagation()}
+        className="category-content-description hover:underline"
+      >
+        {track.artist?.username}
+      </Link>
     </div>
   );
 }
