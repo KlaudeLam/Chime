@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { fetchUserProfile } from '../api/users';
 
 export function Login() {
   const { signIn } = useAuth();
@@ -10,12 +11,29 @@ export function Login() {
 
   async function handleLogin() {
     try {
-      await signIn(email, password);
-      navigate('/home');
+      const { user } = await signIn(email, password);
+      // Fetch the profile directly rather than watching AuthContext's reactive
+      // state -- see AdminLogin for why (its own profile-fetch effect runs a
+      // render behind this one, so relying on it here would read stale data).
+      const profile = await fetchUserProfile(user.id);
+      navigate(profile?.is_admin ? '/admin' : '/home');
     } catch (err) {
       alert(`Log in failed: ${err.message}`);
     }
   }
+
+// Admin test
+// Email: admin@chime.test
+// Password: ChimeAdmin!2026
+// Username: chime_admin, is_admin = true
+
+// User test
+// Email: usertest@gmail.com
+// Password: 123456
+
+// Artist test
+// Email: artisttest@gmail.com
+// Password: 123456
 
   return (
     <div className="w-full first-letter:bg-white rounded-lg shadow-xl md:mt-0 sm:max-w-md xl:p-0 bg-white">

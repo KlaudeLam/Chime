@@ -7,6 +7,7 @@ export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [profileLoading, setProfileLoading] = useState(true);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -22,10 +23,18 @@ export function AuthProvider({ children }) {
   }, []);
 
   useEffect(() => {
+    // Wait for the initial session check before reacting -- otherwise this
+    // effect fires once on mount with session still undefined, resetting
+    // profileLoading to false a render before it flips back to true once the
+    // real session arrives. That one-render gap let AdminRoute see a stale
+    // "no profile yet" state and wrongly conclude the user isn't an admin.
+    if (loading) return;
     if (!session?.user) {
       setProfile(null);
+      setProfileLoading(false);
       return;
     }
+    setProfileLoading(true);
     supabase
       .from('users')
       .select('*')
@@ -33,8 +42,9 @@ export function AuthProvider({ children }) {
       .single()
       .then(({ data, error }) => {
         if (!error) setProfile(data);
-      });
-  }, [session?.user?.id]);
+      })
+      .finally(() => setProfileLoading(false));
+  }, [loading, session?.user?.id]);
 
   async function signUp(email, password, { username, isArtist }) {
     const { data, error } = await supabase.auth.signUp({
@@ -47,8 +57,9 @@ export function AuthProvider({ children }) {
   }
 
   async function signIn(email, password) {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
+    return data;
   }
 
   async function signOut() {
@@ -56,7 +67,7 @@ export function AuthProvider({ children }) {
     if (error) throw error;
   }
 
-  const value = { session, user: session?.user ?? null, profile, loading, signUp, signIn, signOut };
+  const value = { session, user: session?.user ?? null, profile, loading, profileLoading, signUp, signIn, signOut };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
