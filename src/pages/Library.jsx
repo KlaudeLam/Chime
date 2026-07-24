@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { fetchTracksByArtist, deleteTrack, deleteTrackFiles, trackAudioPath, trackThumbnailPath } from '../api/tracks';
 import { fetchLibraryTracks, removeTrackFromLibrary } from '../api/library';
+import { fetchFollowCounts } from '../api/follows';
+import { fetchFeaturedPodcasts, fetchFeaturedArtists } from '../api/itunes';
 import { usePagination } from '../hooks/usePagination';
 import { LibraryTrackCard } from '../components/LibraryTrackCard';
 import { Pagination } from '../components/Pagination';
@@ -28,6 +30,9 @@ export function Library() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState(0);
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [followCounts, setFollowCounts] = useState({ followers: 0, following: 0 });
+  const [podcasts, setPodcasts] = useState([]);
+  const [artists, setArtists] = useState([]);
 
   const isArtist = profile?.is_artist;
   const tabs = isArtist ? TABS.artist : TABS.fan;
@@ -45,6 +50,16 @@ export function Library() {
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
   }, [user, profile, isArtist]);
+
+  useEffect(() => {
+    if (!user) return;
+    fetchFollowCounts(user.id).then(setFollowCounts).catch((err) => console.error(err));
+  }, [user]);
+
+  useEffect(() => {
+    fetchFeaturedPodcasts().then(setPodcasts).catch((err) => console.error(err));
+    fetchFeaturedArtists().then(setArtists).catch((err) => console.error(err));
+  }, []);
 
   const { page, setPage, totalPages, pageItems } = usePagination(tracks, 5);
 
@@ -73,9 +88,9 @@ export function Library() {
           <div className="flex flex-col justify-end w-[79%] text-left">
             <p className="font-semibold w-fit">{profile?.username}</p>
             <div>
-              <span className="text-gray-500">0 followers</span>
+              <span className="text-gray-500">{followCounts.followers} followers</span>
               <span> • </span>
-              <span className="text-gray-500">0 following</span>
+              <span className="text-gray-500">{followCounts.following} following</span>
             </div>
             {isArtist ? (
               <Link to="/publish" className="w-fit">
@@ -129,11 +144,13 @@ export function Library() {
           <div className="category">
             <div className="category-title">Your episodes</div>
             <div className="category-carousel flex gap-2">
-              <div className="category-content">
-                <img src="https://i.scdn.co/image/ab67656300005f1f826551d2120669d33f365fcd" alt="" />
-                <div className="category-content-name">Ego and Meditation</div>
-                <a href="BTS" className="category-content-description">45 mins</a>
-              </div>
+              {podcasts.map((podcast) => (
+                <a key={podcast.id} href={podcast.url} target="_blank" rel="noreferrer" className="category-content" title={podcast.title}>
+                  <img src={podcast.thumbnail} alt="" />
+                  <div className="category-content-name">{podcast.title}</div>
+                  <div className="category-content-description">{podcast.artist}</div>
+                </a>
+              ))}
             </div>
           </div>
         )}
@@ -142,11 +159,13 @@ export function Library() {
           <div className="category">
             <div className="category-title">Your fav artists</div>
             <div className="category-carousel flex gap-2">
-              <div className="category-content-artist" title="Vũ.">
-                <img src="https://nld.mediacdn.vn/291774122806476800/2022/9/17/anh-chup-man-hinh-2022-09-17-luc-141150-1663399106583640943036.png" alt="" />
-                <div className="category-content-name">Vũ.</div>
-                <a href="" className="category-content-description">Singer</a>
-              </div>
+              {artists.map((artist) => (
+                <a key={artist.id} href={artist.url} target="_blank" rel="noreferrer" className="category-content-artist" title={artist.artist}>
+                  <img src={artist.thumbnail} alt="" />
+                  <div className="category-content-name">{artist.artist}</div>
+                  <div className="category-content-description">{artist.genre}</div>
+                </a>
+              ))}
             </div>
           </div>
         )}

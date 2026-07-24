@@ -1,13 +1,21 @@
 import { useEffect, useState } from 'react';
 import { fetchRecentTracks } from '../api/tracks';
 import { TrackCard } from '../components/TrackCard';
-import { demoAlbums, demoPlaylists, demoEpisodes, demoArtists } from '../data/demoContent';
+import { fetchFeaturedAlbums, fetchFeaturedSongs, fetchFeaturedPodcasts, fetchFeaturedArtists } from '../api/itunes';
 
 export function Home() {
   const [tracks, setTracks] = useState([]);
+  const [albums, setAlbums] = useState([]);
+  const [songs, setSongs] = useState([]);
+  const [podcasts, setPodcasts] = useState([]);
+  const [artists, setArtists] = useState([]);
 
   useEffect(() => {
     fetchRecentTracks(10).then(setTracks).catch((err) => console.error(err));
+    fetchFeaturedAlbums().then(setAlbums).catch((err) => console.error(err));
+    fetchFeaturedSongs().then(setSongs).catch((err) => console.error(err));
+    fetchFeaturedPodcasts().then(setPodcasts).catch((err) => console.error(err));
+    fetchFeaturedArtists().then(setArtists).catch((err) => console.error(err));
   }, []);
 
   return (
@@ -29,38 +37,38 @@ export function Home() {
         <div className="category">
           <div className="category-title">Popular albums</div>
           <div className="category-carousel flex gap-2">
-            {demoAlbums.map((album) => (
-              <div key={album.title} className="category-content" title={`${album.title} - ${album.artist}`}>
+            {albums.map((album) => (
+              <a key={album.id} href={album.url} target="_blank" rel="noreferrer" className="category-content" title={`${album.title} - ${album.artist}`}>
                 <img src={album.thumbnail} alt="" />
                 <div className="category-content-name">{album.title}</div>
-                <a href="BTS" className="category-content-description">Album - {album.artist}</a>
-              </div>
+                <div className="category-content-description">Album - {album.artist}</div>
+              </a>
             ))}
           </div>
         </div>
 
         <div className="category">
-          <div className="category-title">Playlists</div>
+          <div className="category-title">Trending songs</div>
           <div className="category-carousel flex gap-2">
-            {demoPlaylists.map((playlist) => (
-              <div key={playlist.title} className="category-content" title={playlist.title}>
-                <img src={playlist.thumbnail} alt="" />
-                <div className="category-content-name">{playlist.title}</div>
-                <a href="" className="category-content-description">{playlist.duration}</a>
-              </div>
+            {songs.map((song) => (
+              <a key={song.id} href={song.url} target="_blank" rel="noreferrer" className="category-content" title={song.title}>
+                <img src={song.thumbnail} alt="" />
+                <div className="category-content-name">{song.title}</div>
+                <div className="category-content-description">{song.artist}</div>
+              </a>
             ))}
           </div>
         </div>
 
         <div className="category">
-          <div className="category-title">Episodes for you</div>
+          <div className="category-title">Podcasts for you</div>
           <div className="category-carousel flex gap-2">
-            {demoEpisodes.map((episode) => (
-              <div key={episode.title} className="category-content" title={episode.title}>
-                <img src={episode.thumbnail} alt="" />
-                <div className="category-content-name">{episode.title}</div>
-                <a href="" className="category-content-description">{episode.duration}</a>
-              </div>
+            {podcasts.map((podcast) => (
+              <a key={podcast.id} href={podcast.url} target="_blank" rel="noreferrer" className="category-content" title={podcast.title}>
+                <img src={podcast.thumbnail} alt="" />
+                <div className="category-content-name">{podcast.title}</div>
+                <div className="category-content-description">{podcast.artist}</div>
+              </a>
             ))}
           </div>
         </div>
@@ -68,12 +76,12 @@ export function Home() {
         <div className="category">
           <div className="category-title">Fav artists</div>
           <div className="category-carousel flex gap-2">
-            {demoArtists.map((artist) => (
-              <div key={artist.artist} className="category-content-artist" title={artist.artist}>
+            {artists.map((artist) => (
+              <a key={artist.id} href={artist.url} target="_blank" rel="noreferrer" className="category-content-artist" title={artist.artist}>
                 <img src={artist.thumbnail} alt="" />
                 <div className="category-content-name">{artist.artist}</div>
-                <a href="" className="category-content-description">{artist.role}</a>
-              </div>
+                <div className="category-content-description">{artist.genre}</div>
+              </a>
             ))}
           </div>
         </div>
