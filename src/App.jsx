@@ -3,15 +3,23 @@ import { AuthProvider } from './contexts/AuthContext';
 import { PlayerProvider } from './contexts/PlayerContext';
 import { TrackContextMenuProvider } from './contexts/TrackContextMenuContext';
 import { ProtectedRoute, GuestRoute } from './components/ProtectedRoute';
+import { AdminRoute } from './components/AdminRoute';
 import { AppLayout } from './layouts/AppLayout';
 import { AuthLayout } from './layouts/AuthLayout';
+import { AdminLayout } from './layouts/AdminLayout';
 import { Home } from './pages/Home';
+import { ArtistProfile } from './pages/ArtistProfile';
 import { Library } from './pages/Library';
 import { Publish } from './pages/Publish';
 import { Premium } from './pages/Premium';
 import { Download } from './pages/Download';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import { AdminLogin } from './pages/AdminLogin';
+import { AdminPlatform } from './pages/AdminPlatform';
+import { AdminSearch } from './pages/AdminSearch';
+import { AdminFlags } from './pages/AdminFlags';
+import { AdminHidden } from './pages/AdminHidden';
 
 export default function App() {
   return (
@@ -23,14 +31,24 @@ export default function App() {
               <Route element={<AuthLayout />}>
                 <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
                 <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
+                <Route path="/admin/login" element={<AdminLogin />} />
               </Route>
 
               <Route element={<AppLayout />}>
                 <Route path="/home" element={<Home />} />
+                <Route path="/artist/:id" element={<ArtistProfile />} />
                 <Route path="/premium" element={<Premium />} />
                 <Route path="/download" element={<Download />} />
                 <Route path="/library" element={<ProtectedRoute><Library /></ProtectedRoute>} />
                 <Route path="/publish" element={<ProtectedRoute><Publish /></ProtectedRoute>} />
+              </Route>
+
+              <Route element={<AdminRoute><AdminLayout /></AdminRoute>}>
+                <Route path="/admin" element={<Navigate to="/admin/platform" replace />} />
+                <Route path="/admin/platform" element={<AdminPlatform />} />
+                <Route path="/admin/search" element={<AdminSearch />} />
+                <Route path="/admin/flags" element={<AdminFlags />} />
+                <Route path="/admin/hidden" element={<AdminHidden />} />
               </Route>
 
               <Route path="/" element={<Navigate to="/home" replace />} />
